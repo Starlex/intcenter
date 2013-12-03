@@ -1,0 +1,102 @@
+html,body,div,span,p,blockquote,pre,a,abbr,acronym,big,cite,em,img,kbd,q,samp,small,strong,sub,sup,tt,var,b,i,dl,dt,dd,ol,ul,li,form,label,legend,table,caption,tr,th,td,article,aside,canvas,details,figure,figcaption{
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline
+}
+fieldset{
+	border:1px solid #DCDCDC;
+	padding:20px 30px 20px 0;
+}
+fieldset legend{
+	margin:0 30px;
+	padding:5px 10px;
+}
+div{
+	margin:7px 0
+}
+img{
+	border:none
+}
+h1{
+	font-size:2em;
+	margin:.67em 0
+}
+h2{
+	font-size:1.5em;
+	margin:.83em 0
+}
+h3{
+	font-size:1.17em;
+	margin:1em 0
+}
+h4{
+	font-size:1em;
+	margin:1.33em 0
+}
+h5{
+	font-size:.83em;
+	margin:1.67em 0
+}
+h6{
+	font-size:.75em;
+	margin:2.33em 0
+}
+p,pre{
+	margin:1em 0
+}
+pre,code,kbd,samp{
+	font-family:monospace,serif;
+	font-size:1em
+}
+pre{
+	white-space:pre;
+	white-space:pre-wrap;
+	word-wrap:break-word
+}
+sub,sup{
+	font-size:75%;
+	line-height:0;
+	position:relative;
+	vertical-align:baseline
+}
+sup{
+	top:-.5em
+}
+sub{
+	bottom:-.25em
+}
+a:focus{
+	outline:thin dotted
+}
+a:hover,a:active{
+	outline:0
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+	display:block
+}
+body{
+	line-height:1
+}
+ol,ul{
+	list-style:none
+}
+blockquote,q{
+	quotes:none
+}
+blockquote:before,blockquote:after,q:before,q:after{
+	content:'';
+	content:none
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0
+}
+i{
+	font-style: italic;
+}
+b{
+	font-weight: bold;
+}

@@ -1,0 +1,201 @@
+/*##################################   DEFAULT STYLE FOR ELEMENTS   ###############################*/
+html{
+	background-color: #EDF7FD;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+body{
+	display: block;
+	height: 100%;
+	margin: 10px auto;
+	width: 1022px;
+}
+form abbr{
+	border-bottom: 0;
+	color: #20B2AA;
+	font-weight: bold;
+}
+fieldset{
+	border: 1px solid;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	margin: 250px auto 0;
+	padding: 20px;
+	width: 550px;
+}
+	legend{
+		font-size: 20px;
+	}
+
+/*##################################   FORM ELEMENTS   ###############################*/
+label{
+	display: block;
+	margin: 15px 0;
+	padding: 5px;
+}
+	label>span{
+		display: inline-block;
+		font-weight: bold;
+		padding: 5px;
+		width: 200px;
+	}
+	label select, label input[type="text"], label input[type="password"]{
+		border: 1px solid;
+		box-shadow: 5px 5px 3px #757575;
+		-mox-box-shadow: 5px 5px 3px #757575;
+		-webkit-box-shadow: 5px 5px 3px #757575;
+		display: inline-block;
+		padding: 5px;
+		width: 300px;
+	}
+	label select{
+		width: 310px;
+	}
+	label textarea{
+		display: block;
+		border: 1px solid;
+		box-shadow: 5px 5px 3px #757575;
+		-mox-box-shadow: 5px 5px 3px #757575;
+		-webkit-box-shadow: 5px 5px 3px #757575;
+		height: 400px;
+		resize: none;
+		width: 100%;
+	}
+.button_panel{
+	margin-left: 220px;
+}
+	.button{
+		margin-right: 10px;
+		min-height: 30px;
+		min-width: 100px;
+	}
+
+/*############################   MAIN STRUCTURE OF SITE   ############################*/
+/*LEFT BLOCK OF SITE: NVGU LOGO AND MENU*/
+.head{
+	margin: -3px 0 0 0;
+	background-image: url(../img/headtop.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	height: 229px;
+	position: absolute;
+	width: 1022px;
+	z-index: 100;
+}
+	.logo{
+		background-image: url(../img/logo.png);
+		background-position: center top;
+		background-repeat: no-repeat;
+		height: 168px;
+		left: 80px;
+		position: absolute;
+		top: 10px;
+		width: 178px;
+	}
+		.logo a{
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+.maindiv{
+	background-image: url(../img/headfon.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	display: block;
+	margin: 10px auto;
+	outline: 1px solid;
+	position: relative;
+	width: 1000px;
+	height: 100%;
+}
+/*DIV FOR LOGIN ELEMENTS*/
+.login{
+	margin: 0 auto;
+	position: relative;
+}
+
+/*############################   MENU   ############################*/
+.v-menu, .h-menu{
+	border: 0 none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+/* VERTICAL MENU */
+.v-menu ul li{
+	border: solid black;
+	border-width: 1px 0 1px 0;
+	margin-top: -1px;
+	z-index: 1;
+}
+	.v-menu li ul{
+		display: none;
+		position: absolute;
+		margin: -36px 0 0 227px;
+		width: 20%;
+		z-index: 1;
+	}
+		.v-menu li ul li{
+			background-color: #FFFFFF;
+			border-width: 1px;
+		}
+.v-menu li:hover{
+	background-color: #90EE90;
+	opacity: 1;
+}
+.v-menu li:hover ul{
+	display: block;
+}
+.v-menu a{
+	display: block;
+	padding: 10px 0;
+	text-decoration: none;
+}
+/* HORIZONTAL MENU */
+.h-menu ul{
+	margin-top: 20px;
+	text-align: center;
+}
+.h-menu ul li{
+	display: inline-block;
+	text-decoration: none;
+}
+.h-menu li ul{
+	display: none;
+}
+.h-menu li:hover{
+	background-color: #90EE90;
+	opacity: 1;
+}
+.h-menu li:hover a{
+	outline: 1px solid;
+	text-decoration: underline;
+}
+/* links in horizontal menu*/
+.h-menu a{
+	display: inline-block;
+	padding: 7px;
+	text-decoration: none;
+}
+/* selected menu */
+.selected{
+	background-color: #DCDCDC;
+}
+
+/*##################################   OTHER ELEMENTS   ###############################*/
+/* required fields */
+.req{
+	color:red;
+	font-size: 17px;
+	font-style: italic;
+}
+/*positioning text in center*/
+.center{
+	text-align: center;
+}
+/* hidden elements */
+.hide{
+	display: none;
+}
