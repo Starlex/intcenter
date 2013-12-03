@@ -29,48 +29,6 @@ fieldset{
 		font-size: 20px;
 	}
 
-/*##################################   FORM ELEMENTS   ###############################*/
-label{
-	display: block;
-	margin: 15px 0;
-	padding: 5px;
-}
-	label>span{
-		display: inline-block;
-		font-weight: bold;
-		padding: 5px;
-		width: 200px;
-	}
-	label select, label input[type="text"], label input[type="password"]{
-		border: 1px solid;
-		box-shadow: 5px 5px 3px #757575;
-		-mox-box-shadow: 5px 5px 3px #757575;
-		-webkit-box-shadow: 5px 5px 3px #757575;
-		display: inline-block;
-		padding: 5px;
-		width: 300px;
-	}
-	label select{
-		width: 310px;
-	}
-	label textarea{
-		display: block;
-		border: 1px solid;
-		box-shadow: 5px 5px 3px #757575;
-		-mox-box-shadow: 5px 5px 3px #757575;
-		-webkit-box-shadow: 5px 5px 3px #757575;
-		height: 400px;
-		resize: none;
-		width: 100%;
-	}
-.button_panel{
-	margin-left: 220px;
-}
-	.button{
-		margin-right: 10px;
-		min-height: 30px;
-		min-width: 100px;
-	}
 
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
 /*LEFT BLOCK OF SITE: NVGU LOGO AND MENU*/
@@ -99,6 +57,14 @@ label{
 			height: 100%;
 			width: 100%;
 		}
+	.contacts{
+		outline: 1px solid;
+		position: absolute;
+		top: 170px;
+		left: 850px;
+		height: 100px;
+		width: 150px;
+	}
 .maindiv{
 	background-image: url(../img/headfon.png);
 	background-position: center top;
@@ -183,6 +149,48 @@ label{
 .selected{
 	background-color: #DCDCDC;
 }
+/*##################################   FORM ELEMENTS   ###############################*/
+label{
+	display: block;
+	margin: 15px 0;
+	padding: 5px;
+}
+	label>span{
+		display: inline-block;
+		font-weight: bold;
+		padding: 5px;
+		width: 200px;
+	}
+	label select, label input[type="text"], label input[type="password"]{
+		border: 1px solid;
+		box-shadow: 5px 5px 3px #757575;
+		-mox-box-shadow: 5px 5px 3px #757575;
+		-webkit-box-shadow: 5px 5px 3px #757575;
+		display: inline-block;
+		padding: 5px;
+		width: 300px;
+	}
+	label select{
+		width: 310px;
+	}
+	label textarea{
+		display: block;
+		border: 1px solid;
+		box-shadow: 5px 5px 3px #757575;
+		-mox-box-shadow: 5px 5px 3px #757575;
+		-webkit-box-shadow: 5px 5px 3px #757575;
+		height: 400px;
+		resize: none;
+		width: 100%;
+	}
+.button_panel{
+	margin-left: 220px;
+}
+	.button{
+		margin-right: 10px;
+		min-height: 30px;
+		min-width: 100px;
+	}
 
 /*##################################   OTHER ELEMENTS   ###############################*/
 /* required fields */
