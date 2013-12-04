@@ -42,6 +42,18 @@ fieldset{
 	width: 1022px;
 	z-index: 100;
 }
+	.orgname{
+		display: block;
+		font-size: 20px;
+		font-weight: bold;
+		left: 350px;
+		position: absolute;
+		text-align: center;
+		text-shadow: #FFF 1px 0 0, #FFF 0 1px 0, #FFF -1px 0 0, #FFF 0 -1px 0;
+		text-transform: uppercase;
+		top: 50px;
+		max-width: 500px;
+	}
 	.logo{
 		background-image: url(../img/logo.png);
 		background-position: center top;

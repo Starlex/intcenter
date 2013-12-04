@@ -3,6 +3,7 @@ require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
 
+require_once 'block/top.php';
 /*if(isset($_GET['page'])){
 	if(0 === strpos($_GET['page'], '/admin')){
 		session_start();

@@ -14,14 +14,3 @@
 	<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 </head>
 <body>
-	<div class="head">
-		<div class="logo">
-			<a href="http://nggu.ru" target="__blank"></a>
-		</div>
-		<div class="contacts">
-			<div class="citycode"></div>
-			<div class="phone"></div>
-			<address></address>
-		</div>
-	</div>
-	<div class="maindiv">
