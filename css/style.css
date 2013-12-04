@@ -28,6 +28,13 @@ fieldset{
 	legend{
 		font-size: 20px;
 	}
+address{
+	font-family: Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: bold;
+	margin-top: 5px;
+}
 
 
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
@@ -44,9 +51,11 @@ fieldset{
 }
 	.orgname{
 		display: block;
+		font-family: Arial, sans-serif;
 		font-size: 20px;
 		font-weight: bold;
 		left: 350px;
+		line-height: 1.2;
 		position: absolute;
 		text-align: center;
 		text-shadow: #FFF 1px 0 0, #FFF 0 1px 0, #FFF -1px 0 0, #FFF 0 -1px 0;
@@ -70,13 +79,20 @@ fieldset{
 			width: 100%;
 		}
 	.contacts{
-		outline: 1px solid;
+		color: #3761E3;
 		position: absolute;
-		top: 170px;
-		left: 850px;
-		height: 100px;
+		text-align: right;
+		right: 30px;
+		top: 155px;
 		width: 150px;
 	}
+		.citycode{
+			font-weight: bold;
+		}
+		.phone{
+			font-size: 1.7em;
+			font-weight: bold;
+		}
 .maindiv{
 	background-image: url(../img/headfon.png);
 	background-position: center top;

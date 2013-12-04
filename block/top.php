@@ -4,9 +4,9 @@
 			<a href="http://nggu.ru" target="__blank"></a>
 		</div>
 		<div class="contacts">
-			<div class="citycode"></div>
-			<div class="phone"></div>
-			<address></address>
+			<span class="citycode">(3466)</span>
+			<span class="phone">45&nbsp;76&nbsp;10</span>
+			<address>г. Нижневартовск, ул.&nbsp;Ленини 56, каб. 210</address>
 		</div>
 	</div>
 	<div class="maindiv">
