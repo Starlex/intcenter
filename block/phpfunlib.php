@@ -43,34 +43,21 @@ function cyrillic2latin($str){
     return strtr($str, $converter);
 }
 
-/* Draw menu (vertical or horizontal) */
-function drawMenu($db, $row_pages, $row_sub_pages, $vertical = true){
-    $selected_page = '/home-page/';
-    if(isset($_GET['page'])):
-        $selected_page = $_GET['page'];
-    endif;
-    $style = 'v-menu';
-    if(!$vertical):
-        $style = 'h-menu';
-    endif;
-
-    echo "<div class='$style'>",
+/* function for creating menu */
+function drawMenu($db, $isAdmin=0){
+    try{
+        $query = $db->prepare("SELECT link, name FROM intcenter_pages WHERE isAdmin=?");
+        $query->execute(array($isAdmin));
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $pages = $query->fetchAll();        
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    echo "<div class='top-menu'>",
     "\n\t\t", "<ul>";
-        foreach ($row_pages as $page):
-            $selected_style = "";
-            if($page['link'] === $selected_page):
-                $selected_style = " class='selected'";
-            endif;
-            echo "\n\t\t\t", "<li$selected_style><a href='$page[link]'>$page[name]</a>",
-                    "\n\t\t\t\t", "<ul>";
-                foreach ($row_sub_pages as $sub_page):
-                    $sub_page_link = $page['link'].$sub_page['link'];
-                    if($page['page_id'] === $sub_page['page_id']):
-                        echo "\n\t\t\t\t\t", "<li><a href='$sub_page_link'>$sub_page[name]</a>";
-                    endif;
-                endforeach;
-            echo "\n\t\t\t\t", "</ul>",
-            "\n\t\t\t", "</li>";
+        foreach ($pages as $page):
+            echo "\n\t\t\t", "<li><a href='$page[link]'>$page[name]</a></li>";
         endforeach;
     echo "\n\t\t", "</ul>",
     "\n\t", "</div>";

@@ -39,6 +39,19 @@ address{
 
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
 /*LEFT BLOCK OF SITE: NVGU LOGO AND MENU*/
+.shadowright, .shadowleft{
+	height: 100%;
+	position: absolute;
+	width: 10px;
+}
+.shadowleft{
+	background-image: url(../img/shadowleft.png);
+	left: 0;
+}
+.shadowright{
+	background-image: url(../img/shadowright.png);
+	right: 0;
+}
 .head{
 	margin: -3px 0 0 0;
 	background-image: url(../img/headtop.png);
@@ -81,14 +94,12 @@ address{
 	.contacts{
 		color: #3761E3;
 		position: absolute;
+		font-weight: bold;
 		text-align: right;
 		right: 30px;
 		top: 155px;
 		width: 150px;
 	}
-		.citycode{
-			font-weight: bold;
-		}
 		.phone{
 			font-size: 1.7em;
 			font-weight: bold;
@@ -99,7 +110,7 @@ address{
 	background-repeat: no-repeat;
 	display: block;
 	margin: 10px auto;
-	outline: 1px solid;
+	/*outline: 1px solid;*/
 	position: relative;
 	width: 1000px;
 	height: 100%;
@@ -111,38 +122,38 @@ address{
 }
 
 /*############################   MENU   ############################*/
-.v-menu, .h-menu{
+.top-menu, .h-menu{
 	border: 0 none;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 /* VERTICAL MENU */
-.v-menu ul li{
+.top-menu ul li{
 	border: solid black;
 	border-width: 1px 0 1px 0;
 	margin-top: -1px;
 	z-index: 1;
 }
-	.v-menu li ul{
+	.top-menu li ul{
 		display: none;
 		position: absolute;
 		margin: -36px 0 0 227px;
 		width: 20%;
 		z-index: 1;
 	}
-		.v-menu li ul li{
+		.top-menu li ul li{
 			background-color: #FFFFFF;
 			border-width: 1px;
 		}
-.v-menu li:hover{
+.top-menu li:hover{
 	background-color: #90EE90;
 	opacity: 1;
 }
-.v-menu li:hover ul{
+.top-menu li:hover ul{
 	display: block;
 }
-.v-menu a{
+.top-menu a{
 	display: block;
 	padding: 10px 0;
 	text-decoration: none;
