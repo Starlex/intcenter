@@ -36,7 +36,6 @@ address{
 	margin-top: 5px;
 }
 
-
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
 /*LEFT BLOCK OF SITE: NVGU LOGO AND MENU*/
 .shadowright, .shadowleft{
@@ -115,6 +114,31 @@ address{
 	width: 1000px;
 	height: 100%;
 }
+.bottom{
+	background-color: #13549A;
+	bottom: -7px;
+	color: #FFFFFF;
+	height: 70px;
+	margin: 0;
+	position: absolute;
+	width: 100%;
+}
+	.leftpart, .rightpart{
+		font-size: 13px;
+		margin-top: 17px;
+		position: absolute;
+	}
+	.leftpart{
+		left: 20px;
+		text-align: left;
+	}
+	.rightpart{
+		right: 20px;
+		text-align: right;
+	}
+	.bottom a{
+		color: #FFFFFF;
+	}
 /*DIV FOR LOGIN ELEMENTS*/
 .login{
 	margin: 0 auto;
@@ -165,6 +189,7 @@ address{
 	min-height: 28px;
 	padding: 5px 0;
 }
+
 /*##################################   FORM ELEMENTS   ###############################*/
 label{
 	display: block;

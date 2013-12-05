@@ -20,6 +20,6 @@ require_once 'block/top.php';
 elseif(empty($_GET)){
 	require_once 'pages/main.php';
 }*/
-
+require_once 'block/bottom.php';
 require_once 'block/footer.php';
 ?>
