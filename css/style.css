@@ -124,6 +124,7 @@ address{
 /*############################   MENU   ############################*/
 .v-menu, .h-menu{
 	font-family: Arial, sans-serif;
+	font-size: 14px;
 	left: 40px;
 	list-style: none;
 	min-width: 140px;
@@ -134,7 +135,6 @@ address{
 }
 /* VERTICAL MENU */
 .v-menu{
-	font-size: 14px;
 	text-transform: uppercase;
 	top: 230px;
 }
@@ -157,10 +157,12 @@ address{
 .h-menu ul li{
 	display: inline-block;
 	margin: 0 10px;
+	vertical-align: middle;
 }
-/* links in horizontal menu*/
 .h-menu a{
 	display: block;
+	max-width: 160px;
+	min-height: 28px;
 	padding: 5px 0;
 }
 /*##################################   FORM ELEMENTS   ###############################*/
