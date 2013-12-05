@@ -1,7 +1,8 @@
+
 	<div class="head">
 		<div class="orgname">Центр международного&nbsp;образования&nbsp;и&nbsp;туризма</div>
 		<div class="logo">
-			<a href="http://nggu.ru" target="__blank"></a>
+			<a href="http://nggu.ru" target="_blank"></a>
 		</div>
 		<div class="contacts">
 			(3466)
@@ -15,4 +16,3 @@
 		<div class="shadowright"></div>
 
 		<?php drawHorizontalMenu($db); ?>
-		

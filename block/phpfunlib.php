@@ -55,24 +55,40 @@ function drawVerticalMenu($db, $isAdmin=0){
         echo $e->getMessage();
     }
     echo "<div class='v-menu'>",
-    "\n\t\t", "<ul>";
+    "\n\t\t\t", "<ul>";
         foreach ($pages as $page):
-            echo "\n\t\t\t", "<li><a href='$page[link]'>$page[name]</a></li>";
+            echo "\n\t\t\t\t", "<li><a href='$page[link]'>$page[name]</a></li>";
         endforeach;
-    echo "\n\t\t", "</ul>",
-    "\n\t", "</div>";
+    echo "\n\t\t\t", "</ul>",
+    "\n\t\t", "</div>\n";
 }
 
 /* function for creating horizontal menu */
 function drawHorizontalMenu($db, $isAdmin=0){
     echo "<div class='h-menu'>",
-    "\n\t\t", "<ul>";
-    echo "\n\t\t\t", "<li>",
-        "<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
-        "<a href='#'>sdgfdgsd</a>",
-    "\n\t\t\t","</li>";
-    echo "\n\t\t", "</ul>",
-    "\n\t", "</div>";
+    "\n\t\t\t", "<ul>";
+    echo "\n\t\t\t\t", "<li>",
+            "<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
+            "<a href='#'>sdgfdgsd</a>",
+        "</li>";
+    echo "\n\t\t\t\t", "<li>",
+            "<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
+            "<a href='#'>sdgfdgsd</a>",
+        "</li>";
+    echo "\n\t\t\t\t", "<li>",
+            "<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
+            "<a href='#'>sdgfdgsd</a>",
+        "</li>";
+    echo "\n\t\t\t\t", "<li>",
+            "<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
+            "<a href='#'>sdgfdgsd</a>",
+        "</li>";
+    echo "\n\t\t\t\t", "<li>",
+            "<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
+            "<a href='#'>sdgfdgsd</a>",
+        "</li>";
+    echo "\n\t\t\t", "</ul>",
+    "\n\t\t", "</div>";
 }
 
 /* Get page name and link from DB */

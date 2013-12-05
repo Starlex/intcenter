@@ -154,6 +154,10 @@ address{
 .h-menu{
 	top: 545px;
 }
+.h-menu ul li{
+	display: inline-block;
+	margin: 0 10px;
+}
 /* links in horizontal menu*/
 .h-menu a{
 	display: block;
