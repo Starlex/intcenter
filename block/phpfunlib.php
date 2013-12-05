@@ -54,10 +54,11 @@ function drawMenu($db, $isAdmin=0){
     catch(PDOException $e){
         echo $e->getMessage();
     }
+    // $page[link]
     echo "<div class='top-menu'>",
     "\n\t\t", "<ul>";
         foreach ($pages as $page):
-            echo "\n\t\t\t", "<li><a href='$page[link]'>$page[name]</a></li>";
+            echo "\n\t\t\t", "<li><a href='#'>$page[name]</a></li>";
         endforeach;
     echo "\n\t\t", "</ul>",
     "\n\t", "</div>";
