@@ -123,38 +123,29 @@ address{
 
 /*############################   MENU   ############################*/
 .top-menu{
-	outline: 1px solid;
-	position: absolute;
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	left: 40px;
 	list-style: none;
 	margin: 0;
+	min-width: 140px;
 	padding: 0;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	top: 230px;
 }
 /* VERTICAL MENU */
 .top-menu ul li{
-	margin-top: -1px;
-	z-index: 1;
-}
-	.top-menu li ul{
-		display: none;
-		position: absolute;
-		margin: -36px 0 0 227px;
-		width: 20%;
-		z-index: 1;
-	}
-		.top-menu li ul li{
-			background-color: #FFFFFF;
-			border-width: 1px;
-		}
-.top-menu li:hover{
-	background-color: #90EE90;
-	opacity: 1;
-}
-.top-menu li:hover ul{
-	display: block;
+	background-image: url(../img/menu_btn.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	margin: 5px 0;
 }
 .top-menu a{
+	color: #FFFFFF;
 	display: block;
-	padding: 10px 0;
+	padding: 8px 0;
 	text-decoration: none;
 }
 /* HORIZONTAL MENU */
@@ -168,14 +159,6 @@ address{
 }
 .h-menu li ul{
 	display: none;
-}
-.h-menu li:hover{
-	background-color: #90EE90;
-	opacity: 1;
-}
-.h-menu li:hover a{
-	outline: 1px solid;
-	text-decoration: underline;
 }
 /* links in horizontal menu*/
 .h-menu a{
