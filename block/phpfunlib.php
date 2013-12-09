@@ -1,11 +1,17 @@
 <?php
 /* show errors */
-function showMsg($string, $link, $text='Назад'){
+function showMsg($string, $link='', $text='Назад'){
+    if('' !== $link){
+        $anchor = "<a href='$link'>$text</a>";
+    }
+    else{
+        $anchor = '';
+    }
     ?>
     <p>
         <b class='req'><?=$string?></b>
     </p>
-    <a href='<?=$link?>'><?=$text?></a>
+    <?=$anchor?>
 </div>
     <?php
     require_once 'block/footer.php';

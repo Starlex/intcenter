@@ -37,7 +37,6 @@ address{
 }
 
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
-/*LEFT BLOCK OF SITE: NVGU LOGO AND MENU*/
 .shadowright, .shadowleft{
 	height: 100%;
 	position: absolute;
