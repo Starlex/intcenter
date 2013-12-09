@@ -12,7 +12,7 @@ catch(PDOException $e){
 	<div class="head">
 		<div class="orgname">Центр международного&nbsp;образования&nbsp;и&nbsp;туризма</div>
 		<div class="logo">
-			<a href="http://nggu.ru" target="_blank"></a>
+			<a href="http://<?=$_SERVER['SERVER_NAME']?>"></a>
 		</div>
 		<div class="contacts">
 			<?=$contacts['phone_code']?>

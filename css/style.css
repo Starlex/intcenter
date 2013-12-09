@@ -7,8 +7,8 @@ html{
 }
 body{
 	display: block;
-	height: 100%;
 	margin: 10px auto;
+	height: 100%;
 	width: 1022px;
 }
 form abbr{
@@ -37,23 +37,11 @@ address{
 }
 
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
-.shadowright, .shadowleft{
-	height: 100%;
-	position: absolute;
-	width: 10px;
-}
-.shadowleft{
-	background-image: url(../img/shadowleft.png);
-	left: 0;
-}
-.shadowright{
-	background-image: url(../img/shadowright.png);
-	right: 0;
-}
 .head{
 	background-image: url(../img/headtop.png);
 	background-position: center top;
 	background-repeat: no-repeat;
+	/* display: none; */
 	height: 229px;
 	margin: -3px 0 0 0;
 	position: absolute;
@@ -113,30 +101,50 @@ address{
 	width: 1000px;
 	height: 100%;
 }
-.bottom{
-	background-color: #13549A;
-	bottom: -7px;
-	color: #FFFFFF;
-	height: 70px;
-	margin: 0;
-	position: absolute;
-	width: 100%;
-}
-	.leftpart, .rightpart{
-		font-size: 13px;
-		margin-top: 17px;
+	.shadowright, .shadowleft{
+		height: 100%;
 		position: absolute;
+		width: 10px;
 	}
-	.leftpart{
-		left: 20px;
-		text-align: left;
+	.shadowleft{
+		background-image: url(../img/shadowleft.png);
+		left: 0;
 	}
-	.rightpart{
-		right: 20px;
-		text-align: right;
+	.shadowright{
+		background-image: url(../img/shadowright.png);
+		right: 0;
 	}
-	.bottom a{
+	.bottom{
+		background-color: #13549A;
+		bottom: -7px;
 		color: #FFFFFF;
+		height: 70px;
+		margin: 0;
+		position: absolute;
+		width: 100%;
+	}
+		.leftpart, .rightpart{
+			font-size: 13px;
+			margin-top: 17px;
+			position: absolute;
+		}
+		.leftpart{
+			left: 20px;
+			text-align: left;
+		}
+		.rightpart{
+			right: 20px;
+			text-align: right;
+		}
+		.bottom a{
+			color: #FFFFFF;
+		}
+	.container{
+		margin: 750px 10px 0;
+		max-width: 980px;
+		outline: 1px solid;
+		position: absolute;
+		height: 500px;
 	}
 /*DIV FOR LOGIN ELEMENTS*/
 .login{

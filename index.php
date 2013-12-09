@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
@@ -22,7 +24,7 @@ elseif(empty($_GET)){
 	require_once 'pages/main.php';
 }
 
-<a href='/admin/'>Adminka</a>
+echo "<a href='/admin/'>Adminka</a>";
 
 require_once 'block/bottom.php';
 require_once 'block/footer.php';
