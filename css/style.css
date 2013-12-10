@@ -2,14 +2,12 @@
 html{
 	background-color: #EDF7FD;
 	height: 100%;
-	position: absolute;
 	width: 100%;
 }
 body{
-	display: block;
+	/*height: 100%;*/
 	margin: 10px auto;
-	height: 100%;
-	width: 1022px;
+	width: 1021px;
 }
 form abbr{
 	border-bottom: 0;
@@ -43,32 +41,18 @@ address{
 	background-repeat: no-repeat;
 	/* display: none; */
 	height: 229px;
-	margin: -3px 0 0 0;
+	margin: 0;
 	position: absolute;
 	width: 1022px;
 	z-index: 100;
 }
-	.orgname{
-		display: block;
-		font-family: Arial, sans-serif;
-		font-size: 20px;
-		font-weight: bold;
-		left: 350px;
-		line-height: 1.2;
-		position: absolute;
-		text-align: center;
-		text-shadow: #FFF 1px 0 0, #FFF 0 1px 0, #FFF -1px 0 0, #FFF 0 -1px 0;
-		text-transform: uppercase;
-		top: 50px;
-		max-width: 500px;
-	}
 	.logo{
 		background-image: url(../img/logo.png);
 		background-position: center top;
 		background-repeat: no-repeat;
 		height: 168px;
 		left: 80px;
-		position: absolute;
+		position: relative;
 		top: 10px;
 		width: 178px;
 	}
@@ -77,29 +61,14 @@ address{
 			height: 100%;
 			width: 100%;
 		}
-	.contacts{
-		color: #3761E3;
-		position: absolute;
-		font-weight: bold;
-		text-align: right;
-		right: 30px;
-		top: 155px;
-		width: 150px;
-	}
-		.phone{
-			font-size: 1.7em;
-			font-weight: bold;
-		}
 .maindiv{
 	background-image: url(../img/headfon.png);
 	background-position: center top;
 	background-repeat: no-repeat;
-	display: block;
 	margin: 10px auto;
 	/*outline: 1px solid;*/
 	position: relative;
 	width: 1000px;
-	height: 100%;
 }
 	.shadowright, .shadowleft{
 		height: 100%;
@@ -114,13 +83,39 @@ address{
 		background-image: url(../img/shadowright.png);
 		right: 0;
 	}
+	.orgname{
+		font-family: Arial, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		left: 350px;
+		line-height: 1.2;
+		position: relative;
+		text-align: center;
+		text-shadow: #FFF 1px 0 0, #FFF 0 1px 0, #FFF -1px 0 0, #FFF 0 -1px 0;
+		text-transform: uppercase;
+		top: 50px;
+		max-width: 500px;
+	}
+	.contacts{
+		color: #3761E3;
+		position: absolute;
+		font-weight: bold;
+		text-align: right;
+		right: 20px;
+		top: 155px;
+		width: 160px;
+	}
+		.phone{
+			font-size: 1.7em;
+			font-weight: bold;
+		}
 	.bottom{
 		background-color: #13549A;
 		bottom: -7px;
 		color: #FFFFFF;
 		height: 70px;
 		margin: 0;
-		position: absolute;
+		position: relative;
 		width: 100%;
 	}
 		.leftpart, .rightpart{
@@ -140,65 +135,64 @@ address{
 			color: #FFFFFF;
 		}
 	.container{
-		margin: 750px 10px 0;
+		margin: 280px 10px 20px;
 		max-width: 980px;
 		outline: 1px solid;
-		position: absolute;
-		height: 500px;
+		position: relative;
 	}
+/*############################   MENU'S   ############################*/
+	.v-menu, .h-menu{
+		font-family: Arial, sans-serif;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		text-align: center;
+	}
+	/* VERTICAL MENU */
+	.v-menu{
+		font-size: 14px;
+		left: 20px;
+		text-transform: uppercase;
+		top: 170px;
+	}
+	.v-menu ul li{
+		background-image: url(../img/menu_btn.png);
+		background-position: center top;
+		background-repeat: no-repeat;
+		margin: 7px 0;
+		max-width: 140px
+	}
+	.v-menu a{
+		color: #FFFFFF;
+		display: block;
+		padding: 8px 0;
+		text-decoration: none;
+	}
+	/* HORIZONTAL MENU */
+	.h-menu{
+		font-size: 13px;
+		top: 250px;
+	}
+		.h-menu ul li{
+			display: inline-block;
+			margin: 0 10px;
+			vertical-align: middle;
+		}
+			.h-menu a{
+				color: #2281F4;
+				display: block;
+				font-weight: bold;
+				max-width: 160px;
+				min-height: 28px;
+				padding: 5px 0;
+			}
 /*DIV FOR LOGIN ELEMENTS*/
 .login{
 	margin: 0 auto;
 	position: relative;
 }
 
-/*############################   MENU   ############################*/
-.v-menu, .h-menu{
-	font-family: Arial, sans-serif;
-	left: 40px;
-	list-style: none;
-	min-width: 140px;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	text-align: center;
-}
-/* VERTICAL MENU */
-.v-menu{
-	font-size: 14px;
-	text-transform: uppercase;
-	top: 230px;
-}
-.v-menu ul li{
-	background-image: url(../img/menu_btn.png);
-	background-position: center top;
-	background-repeat: no-repeat;
-	margin: 7px 0;
-}
-.v-menu a{
-	color: #FFFFFF;
-	display: block;
-	padding: 8px 0;
-	text-decoration: none;
-}
-/* HORIZONTAL MENU */
-.h-menu{
-	font-size: 13px;
-	top: 545px;
-}
-.h-menu ul li{
-	display: inline-block;
-	margin: 0 10px;
-	vertical-align: middle;
-}
-.h-menu a{
-	color: #2281F4;
-	display: block;
-	font-weight: bold;
-	max-width: 160px;
-	min-height: 28px;
-	padding: 5px 0;
-}
 
 /*##################################   FORM ELEMENTS   ###############################*/
 label{
