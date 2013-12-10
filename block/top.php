@@ -17,7 +17,7 @@ catch(PDOException $e){
 	<div class="maindiv">
 		<div class="shadowleft"></div>
 		<div class="shadowright"></div>
-		
+
 		<div class="orgname">Центр международного&nbsp;образования&nbsp;и&nbsp;туризма</div>
 		<div class="contacts">
 			<?=$contacts['phone_code']?>
@@ -47,5 +47,34 @@ catch(PDOException $e){
 		            <a href=''><img src='../img/doc_translate.png' alt='Перевод документов'></a>
 		            <a href=''>Перевод документов</a>
         		</li>
+    		</ul>
+    	</div>
+    	<div class="prog-menu">
+    		<ul>
+    			<li><a href="#">Пустая ссылка</a>
+    				<ul>
+    					<li>as;djfapsdjfaspdfn</li>
+    					<li>as;djfapsdjfaspdfn</li>
+    					<li>as;djfapsdjfaspdfn</li>
+    				</ul>
+    			</li>
+    		</ul>
+    		<ul>
+    			<li><a href="#">Пустая ссылка</a>
+    				<ul>
+    					<li>as;djfapsdjfaspdfn</li>
+    					<li>as;djfapsdjfaspdfn</li>
+    					<li>as;djfapsdjfaspdfn</li>
+    				</ul>
+    			</li>
+    		</ul>
+    		<ul>
+    			<li><a href="#">Пустая ссылка</a>
+    				<ul>
+    					<li>as;djfapsdjfaspdfn</li>
+    					<li>as;djfapsdjfaspdfn</li>
+    					<li>as;djfapsdjfaspdfn</li>
+    				</ul>
+    			</li>
     		</ul>
     	</div>

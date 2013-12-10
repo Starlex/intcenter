@@ -69,6 +69,7 @@ address{
 	/*outline: 1px solid;*/
 	position: relative;
 	width: 1000px;
+	overflow: hidden;
 }
 	.shadowright, .shadowleft{
 		height: 100%;
@@ -117,6 +118,7 @@ address{
 		margin: 0;
 		position: relative;
 		width: 100%;
+		overflow: hidden;
 	}
 		.leftpart, .rightpart{
 			font-size: 13px;
@@ -135,10 +137,10 @@ address{
 			color: #FFFFFF;
 		}
 	.container{
+		display: inline-block;
 		margin: 280px 10px 20px;
-		max-width: 980px;
+		max-width: 750px;
 		outline: 1px solid;
-		position: relative;
 	}
 /*############################   MENU'S   ############################*/
 	.v-menu, .h-menu{
@@ -186,6 +188,22 @@ address{
 				max-width: 160px;
 				min-height: 28px;
 				padding: 5px 0;
+			}
+	/* MENU FOR PROGRAMS */
+	.prog-menu{
+		float: left;
+		outline: 1px solid;
+		display: inline-block;
+		margin: 280px 0 0 20px;
+		width: 210px;
+	}
+		.prog-menu ul li{
+			background-image: url(../img/prog_bg.png);
+			height: 60px;
+			margin: 10px 0;
+		}
+			.prog-menu li ul{
+				display: none;
 			}
 /*DIV FOR LOGIN ELEMENTS*/
 .login{
