@@ -10,20 +10,21 @@ catch(PDOException $e){
 }
 ?>
 	<div class="head">
-		<div class="orgname">Центр международного&nbsp;образования&nbsp;и&nbsp;туризма</div>
 		<div class="logo">
 			<a href="http://<?=$_SERVER['SERVER_NAME']?>"></a>
 		</div>
+	</div>
+	<div class="maindiv">
+		<div class="shadowleft"></div>
+		<div class="shadowright"></div>
+		
+		<div class="orgname">Центр международного&nbsp;образования&nbsp;и&nbsp;туризма</div>
 		<div class="contacts">
 			<?=$contacts['phone_code']?>
 			<span class="phone"><?=$contacts['phone']?></span>
 			<address><?=$contacts['address']?></address>
 		</div>
 		<?php drawVerticalMenu($db); ?>
-	</div>
-	<div class="maindiv">
-		<div class="shadowleft"></div>
-		<div class="shadowright"></div>
 		<div class='h-menu'>
     		<ul>
     			<li>
