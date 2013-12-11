@@ -17,7 +17,11 @@ catch(PDOException $e){
 	<div class="maindiv">
 		<div class="shadowleft"></div>
 		<div class="shadowright"></div>
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 9f4f683284b39f5a0b0df73975b241310a29d21e
 		<div class="orgname">Центр международного&nbsp;образования&nbsp;и&nbsp;туризма</div>
 		<div class="contacts">
 			<?=$contacts['phone_code']?>
