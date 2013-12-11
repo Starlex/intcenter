@@ -1,3 +1,5 @@
+</div>
+<div style="clear:both;"></div>
 
 		<div class="bottom">
 			<div class="leftpart">

@@ -62,6 +62,7 @@ address{
 			width: 100%;
 		}
 .maindiv{
+	font-family: Arial, sans-serif;
 	background-image: url(../img/headfon.png);
 	background-position: center top;
 	background-repeat: no-repeat;
@@ -110,6 +111,13 @@ address{
 			font-size: 1.7em;
 			font-weight: bold;
 		}
+	.container{
+		display: inline-block;
+		float: left;
+		margin: 270px 10px 20px 40px;
+		max-width: 700px;
+		/*outline: 1px solid;*/
+	}
 	.bottom{
 		background-color: #13549A;
 		bottom: -7px;
@@ -136,81 +144,100 @@ address{
 		.bottom a{
 			color: #FFFFFF;
 		}
-	.container{
-		display: inline-block;
-		margin: 280px 10px 20px;
-		max-width: 750px;
-		outline: 1px solid;
-	}
-/*############################   MENU'S   ############################*/
-	.v-menu, .h-menu{
-		font-family: Arial, sans-serif;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		position: relative;
-		text-align: center;
-	}
-	/* VERTICAL MENU */
-	.v-menu{
-		font-size: 14px;
-		left: 20px;
-		text-transform: uppercase;
-		top: 170px;
-	}
-	.v-menu ul li{
-		background-image: url(../img/menu_btn.png);
-		background-position: center top;
-		background-repeat: no-repeat;
-		margin: 7px 0;
-		max-width: 140px
-	}
-	.v-menu a{
-		color: #FFFFFF;
-		display: block;
-		padding: 8px 0;
-		text-decoration: none;
-	}
-	/* HORIZONTAL MENU */
-	.h-menu{
-		font-size: 13px;
-		top: 250px;
-	}
-		.h-menu ul li{
-			display: inline-block;
-			margin: 0 10px;
-			vertical-align: middle;
-		}
-			.h-menu a{
-				color: #2281F4;
-				display: block;
-				font-weight: bold;
-				max-width: 160px;
-				min-height: 28px;
-				padding: 5px 0;
-			}
-	/* MENU FOR PROGRAMS */
-	.prog-menu{
-		float: left;
-		outline: 1px solid;
-		display: inline-block;
-		margin: 280px 0 0 20px;
-		width: 210px;
-	}
-		.prog-menu ul li{
-			background-image: url(../img/prog_bg.png);
-			height: 60px;
-			margin: 10px 0;
-		}
-			.prog-menu li ul{
-				display: none;
-			}
 /*DIV FOR LOGIN ELEMENTS*/
 .login{
 	margin: 0 auto;
 	position: relative;
 }
 
+/*############################   MENU'S   ############################*/
+.v-menu, .h-menu{
+	font-family: Arial, sans-serif;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+}
+/* VERTICAL MENU */
+.v-menu{
+	font-size: 14px;
+	left: 20px;
+	text-transform: uppercase;
+	top: 170px;
+}
+.v-menu ul li{
+	background-image: url(../img/menu_btn.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	margin: 7px 0;
+	max-width: 140px
+}
+.v-menu a{
+	color: #FFFFFF;
+	display: block;
+	padding: 8px 0;
+	text-decoration: none;
+}
+/* HORIZONTAL MENU */
+.h-menu{
+	font-size: 13px;
+	top: 250px;
+}
+	.h-menu ul li{
+		display: inline-block;
+		margin: 0 10px;
+		vertical-align: middle;
+	}
+		.h-menu a{
+			color: #2281F4;
+			display: block;
+			font-weight: bold;
+			max-width: 160px;
+			min-height: 28px;
+			padding: 5px 0;
+		}
+/* MENU FOR PROGRAMS */
+.prog-menu{
+	/*outline: 1px solid;*/
+	display: inline-block;
+	float: left;
+	margin: 270px 0 0 20px;
+	width: 210px;
+}
+	.prog-menu>ul>li{
+		background-image: url(../img/prog_bg.png);
+		height: 60px;
+		margin: 10px 0;
+		/*overflow: hidden;*/
+	}
+		.prog-menu ul li span{
+			display: block;
+			cursor: pointer;
+			color: #FFFFFF;
+			font-size: 13px;
+			height: 45px;
+			padding: 15px 0 0 20px;
+			/*width: 100%;*/
+		}
+			.prog-menu li span big{
+				display: block;
+				text-transform: uppercase;
+			}
+			.prog-menu li span small{
+				text-transform: lowercase;
+				display: block;
+			}
+			.prog-menu li span img{
+				display: block;
+				float: right;
+				margin: -20px 20px 0 0;
+			}
+		.prog-menu li>ul{
+			outline: 1px solid;
+			display: block;
+			/*display: none;*/
+		}
 
 /*##################################   FORM ELEMENTS   ###############################*/
 label{
