@@ -1,11 +1,8 @@
 /*##################################   DEFAULT STYLE FOR ELEMENTS   ###############################*/
 html{
 	background-color: #EDF7FD;
-	height: 100%;
-	width: 100%;
 }
 body{
-	/*height: 100%;*/
 	margin: 10px auto;
 	width: 1021px;
 }
@@ -39,7 +36,7 @@ address{
 	background-image: url(../img/headtop.png);
 	background-position: center top;
 	background-repeat: no-repeat;
-	/* display: none; */
+	/*display: none; */
 	height: 229px;
 	margin: 0;
 	position: absolute;
@@ -160,12 +157,12 @@ address{
 	margin: 0;
 	padding: 0;
 	position: relative;
-	text-align: center;
 }
 /* VERTICAL MENU */
 .v-menu{
 	font-size: 14px;
 	left: 20px;
+	text-align: center;
 	text-transform: uppercase;
 	top: 170px;
 }
@@ -184,13 +181,16 @@ address{
 }
 /* HORIZONTAL MENU */
 .h-menu{
+	/*outline: 1px solid;*/
 	font-size: 13px;
+	left: 20px;
 	top: 250px;
+	/*overflow: hidden;*/
 }
 	.h-menu ul li{
-		outline: 1px solid;
+		/*outline: 1px solid;*/
 		display: inline-block;
-		margin: 0 15px;
+		margin: 0 23px 0 0;
 		vertical-align: middle;
 	}
 	.h-menu ul li:first-child{
@@ -206,6 +206,7 @@ address{
 			max-width: 170px;
 			min-height: 28px;
 			padding: 5px 0;
+			text-align: center;
 		}
 /* MENU FOR PROGRAMS */
 .prog-menu{
