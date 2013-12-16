@@ -64,7 +64,6 @@ address{
 	background-position: center top;
 	background-repeat: no-repeat;
 	margin: 10px auto;
-	/*outline: 1px solid;*/
 	position: relative;
 	width: 1000px;
 	overflow: hidden;
@@ -113,7 +112,6 @@ address{
 		float: left;
 		margin: 270px 10px 20px 40px;
 		max-width: 700px;
-		/*outline: 1px solid;*/
 	}
 		.container h3{
 			text-transform: uppercase;
@@ -181,14 +179,12 @@ address{
 }
 /* HORIZONTAL MENU */
 .h-menu{
-	/*outline: 1px solid;*/
 	font-size: 13px;
 	left: 20px;
 	top: 250px;
-	/*overflow: hidden;*/
 }
 	.h-menu ul li{
-		/*outline: 1px solid;*/
+		
 		display: inline-block;
 		margin: 0 23px 0 0;
 		vertical-align: middle;
