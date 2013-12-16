@@ -1,6 +1,3 @@
-</div>
-<div style="clear:both;"></div>
-
 		<div class="bottom">
 			<div class="leftpart">
 				Центр международного сотрудничества и туризма &copy; <?=date('Y', time())?>

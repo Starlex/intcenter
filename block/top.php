@@ -49,37 +49,40 @@ catch(PDOException $e){
 				</li>
 			</ul>
 		</div>
-		<div class="float_div">
-			<div class="prog-menu">
-				<h3>Программы обучения</h3>
-				<ul>
-					<li>
-						<span>
-							<big>Английский язык</big>
-							<small>Для детей</small>
-							<img src="../img/arrow_right.png" alt="Программы обучения">
-						</span>
-						<ul>
-							<li>as;djfapsdjfaspdfn</li>
-							<li>as;djfapsdjfaspdfn</li>
-							<li>as;djfapsdjfaspdfn</li>
-						</ul>
-					</li>
-					<li>
-						<span>Пустая ссылка</span>
-						<ul>
-							<li>as;djfapsdjfaspdfn</li>
-							<li>as;djfapsdjfaspdfn</li>
-							<li>as;djfapsdjfaspdfn</li>
-						</ul>
-					</li>
-					<li>
-						<span>Пустая ссылка</span>
-						<ul>
-							<li>as;djfapsdjfaspdfn</li>
-							<li>as;djfapsdjfaspdfn</li>
-							<li>as;djfapsdjfaspdfn</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+		<div class="prog-menu">
+			<h3>Программы обучения</h3>
+			<ul>
+				<li>
+					<span>
+						<big>Английский язык</big>
+						<small>Для детей</small>
+						<img src="../img/arrow_right.png" alt="Программы обучения">
+					</span>
+					<ul>
+						<li>
+							<span>1</span>
+							<small>some text</small>
+							<b>some bold text</b>
+						</li>
+						<li>as;djfapsdjfaspdfn</li>
+						<li>as;djfapsdjfaspdfn</li>
+					</ul>
+				</li>
+				<li>
+					<span>Пустая ссылка</span>
+					<ul>
+						<li>as;djfapsdjfaspdfn</li>
+						<li>as;djfapsdjfaspdfn</li>
+						<li>as;djfapsdjfaspdfn</li>
+					</ul>
+				</li>
+				<li>
+					<span>Пустая ссылка</span>
+					<ul>
+						<li>as;djfapsdjfaspdfn</li>
+						<li>as;djfapsdjfaspdfn</li>
+						<li>as;djfapsdjfaspdfn</li>
+					</ul>
+				</li>
+			</ul>
+		</div>

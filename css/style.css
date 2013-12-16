@@ -118,6 +118,9 @@ address{
 		max-width: 700px;
 		/*outline: 1px solid;*/
 	}
+		.container h3{
+			text-transform: uppercase;
+		}
 	.bottom{
 		background-color: #13549A;
 		bottom: -7px;
@@ -185,15 +188,22 @@ address{
 	top: 250px;
 }
 	.h-menu ul li{
+		outline: 1px solid;
 		display: inline-block;
-		margin: 0 10px;
+		margin: 0 15px;
 		vertical-align: middle;
+	}
+	.h-menu ul li:first-child{
+		margin-left: 0;
+	}
+	.h-menu ul li:last-child{
+		margin-right: 0;
 	}
 		.h-menu a{
 			color: #2281F4;
 			display: block;
 			font-weight: bold;
-			max-width: 160px;
+			max-width: 170px;
 			min-height: 28px;
 			padding: 5px 0;
 		}
@@ -207,9 +217,7 @@ address{
 }
 	.prog-menu>ul>li{
 		background-image: url(../img/prog_bg.png);
-		height: 60px;
 		margin: 10px 0;
-		/*overflow: hidden;*/
 	}
 		.prog-menu ul li span{
 			display: block;
@@ -233,11 +241,25 @@ address{
 				float: right;
 				margin: -20px 20px 0 0;
 			}
-		.prog-menu li>ul{
-			outline: 1px solid;
-			display: block;
+		.prog-menu li ul li{
+			background-color: #FFFFFF;
+			/*display: block;*/
 			/*display: none;*/
+			outline: 1px solid red;
 		}
+			.prog-menu li ul li span{
+				background-image: url(../img/num_fon.png);
+				background-repeat: no-repeat;
+				font-size: 11pt;
+				font-weight: bold;
+				/*display: inline-block;*/
+				padding: 5px;
+				height: 10px;
+				width: 10px;
+				outline: 1px solid black;
+				overflow: hidden;
+				line-height: 10px;
+			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
 label{
