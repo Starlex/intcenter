@@ -62,7 +62,8 @@ catch(PDOException $e){
 						<li>
 							<span>1</span>
 							<small>some text</small>
-							<b>some bold text</b>
+							<b>some text</b>
+							<div style="clear:both"></div>
 						</li>
 						<li>as;djfapsdjfaspdfn</li>
 						<li>as;djfapsdjfaspdfn</li>
