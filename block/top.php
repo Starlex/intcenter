@@ -66,7 +66,13 @@ catch(PDOException $e){
 								<b>"Young Tourist" - Юный турист</b>
 							</a>
 						</li>
-						<li>as;djfapsdjfaspdfn</li>
+						<li>
+							<a href="#">
+								<span>2</span>
+								<small>Для школьников 5 - 8 классов</small>
+								<b>"Funny conversational English / English for kids"</b>
+							</a>
+						</li>
 						<li>as;djfapsdjfaspdfn</li>
 					</ul>
 				</li>
