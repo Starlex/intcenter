@@ -227,7 +227,7 @@ address{
 	display: inline-block;
 	float: left;
 	margin: 270px 0 0 20px;
-	width: 210px;
+	width: 230px;
 }
 	.prog-menu>ul>li{
 		background-color: #FFFFFF;
@@ -237,7 +237,7 @@ address{
 		font-family: Times, sans-serif;
 		margin: 10px 0;
 	}
-		.prog-menu ul li>span{
+		.prog-menu>ul>li>span{
 			background-color: #2167EA;
 			border-radius: 5px;
 			-moz-border-radius: 5px;
@@ -273,35 +273,51 @@ address{
 			background-color: #FFFFFF;
 			border-bottom: 1px solid #D8D8D8;
 			font-family: Tahoma, sans-serif;
+			line-height: 30px;
 			/*display: block;*/
 			/*display: none;*/
 		}
 		.prog-menu li ul li:last-child{
-			line-height: 100%;
 			border-bottom: 0;
 			border-radius: 0 0 5px 5px;
 			-moz-border-radius: 0 0 5px 5px;
 			-webkit-border-radius: 0 0 5px 5px;
 		}
-			.prog-menu li ul li span{
-				position: relative;
-				behavior: url(../PIE/PIE.htc);
-				border-radius: 10px;
-				-moz-border-radius: 10px;
-				-webkit-border-radius: 10px;
-				display: inline-block;
+			.prog-menu ul li a{
+				color: #000;
+				display: block;
+				line-height: 100%;
+				text-decoration: none;
+				overflow: hidden;
+			}
+			.prog-menu ul li a span{
+				background-image: url(../img/num_fon.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				color: #FFF;
 				float: left;
 				font-size: 15px;
 				height: 20px;
 				line-height: 18px;
 				margin: 20px 10px;
-				padding: 0;
-				/*border: 1px solid black;*/
 				text-align: center;
 				width: 20px;
+				/*outline: 1px solid black;*/
 			}
-			.prog-menu li ul li small{
+			.prog-menu ul li a small{
+				position: relative;
 				display: block;
+				float: left;
+				font-size: 12px;
+				height: 100%;
+				margin-top: 15px;
+				min-width: 70%;
+				/*outline:1px solid black;*/
+			}
+			.prog-menu ul li a b{
+				font-size: 11px;
+				/*outline:1px solid black;*/
+				padding-right: 5px;
 			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
