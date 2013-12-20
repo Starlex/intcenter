@@ -62,10 +62,8 @@ catch(PDOException $e){
 						<li>
 							<a href="#">
 								<span>1</span>
-								<small>
-									Для учащихся 5-8 классов<br>
-								</small>
-									<b>"Young Tourist" - Юный турист</b>
+								<small>Для учащихся 5-8 классов</small>
+								<b>"Young Tourist" - Юный турист</b>
 							</a>
 						</li>
 						<li>as;djfapsdjfaspdfn</li>
