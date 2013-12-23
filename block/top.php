@@ -77,10 +77,26 @@ catch(PDOException $e){
 					</ul>
 				</li>
 				<li>
-					<span>Пустая ссылка</span>
+					<span>
+						<span class="big">Английский язык</span>
+						<small>Для школьников выпускных классов</small>
+						<img src="../img/arrow_right.png" alt="Программы обучения">
+					</span>
 					<ul>
-						<li>as;djfapsdjfaspdfn</li>
-						<li>as;djfapsdjfaspdfn</li>
+						<li>
+							<a href="#">
+								<span>1</span>
+								<small>Для учащихся 5-8 классов</small>
+								<b>"Young Tourist" - Юный турист</b>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span>2</span>
+								<small>Для школьников 5 - 8 классов</small>
+								<b>"Funny conversational English / English for kids"</b>
+							</a>
+						</li>
 						<li>as;djfapsdjfaspdfn</li>
 					</ul>
 				</li>
