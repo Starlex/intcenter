@@ -273,9 +273,7 @@ address{
 			background-color: #FFFFFF;
 			border-bottom: 1px solid #D8D8D8;
 			font-family: Tahoma, sans-serif;
-			line-height: 30px;
-			/*display: block;*/
-			/*display: none;*/
+			padding: 10px 0;
 		}
 		.prog-menu li ul li:last-child{
 			border-bottom: 0;
@@ -284,41 +282,40 @@ address{
 			-webkit-border-radius: 0 0 5px 5px;
 		}
 			.prog-menu ul li a{
+				position: relative;
 				color: #000;
 				display: block;
 				line-height: 100%;
 				overflow: hidden;
 				text-decoration: none;
-				/*outline: 1px solid black;*/
-				vertical-align: middle;
 			}
 			.prog-menu ul li a span{
 				background-image: url(../img/num_fon.png);
 				background-position: center;
 				background-repeat: no-repeat;
 				color: #FFF;
-				float: left;
 				font-size: 15px;
 				height: 20px;
 				line-height: 18px;
-				margin: 20px 10px;
+				margin: auto 0;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 10px;
 				text-align: center;
 				width: 20px;
-				/*outline: 1px solid black;*/
 			}
 			.prog-menu ul li a small{
-				position: relative;
 				display: block;
-				float: left;
 				font-size: 12px;
-				height: 100%;
-				margin-top: 15px;
+				margin-left: 40px;
 				min-width: 70%;
-				/*outline:1px solid black;*/
 			}
 			.prog-menu ul li a b{
+				display: block;
 				font-size: 11px;
 				padding-right: 5px;
+				margin-left: 40px;
 			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
