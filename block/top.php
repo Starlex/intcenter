@@ -54,8 +54,10 @@ catch(PDOException $e){
 			<ul>
 				<li>
 					<span>
+						<div>
 						<span class="big">Английский язык</span>
 						<small>Для детей</small>
+						</div>
 						<img src="../img/arrow_right.png" alt="Программы обучения">
 					</span>
 					<ul>

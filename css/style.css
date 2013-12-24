@@ -249,6 +249,7 @@ address{
 			height: 60px;
 			padding: 0 0 0 20px;
 			position: relative;
+			line-height: 30px;
 		}
 			.prog-menu li span span.big{
 				display: block;
@@ -293,7 +294,6 @@ address{
 				color: #000;
 				display: block;
 				line-height: 100%;
-				/*overflow: hidden;*/
 				text-decoration: none;
 			}
 			.prog-menu ul li a span{
@@ -312,7 +312,6 @@ address{
 				left: 10px;
 				text-align: center;
 				width: 20px;
-				/*outline: 1px solid black;*/
 			}
 			.prog-menu ul li a small{
 				display: block;
