@@ -236,7 +236,6 @@ address{
 		-webkit-border-radius: 5px;
 		font-family: Times, sans-serif;
 		margin: 10px 0;
-		position: relative;
 	}
 		.prog-menu>ul>li>span{
 			background-color: #2167EA;
@@ -294,13 +293,14 @@ address{
 				color: #000;
 				display: block;
 				line-height: 100%;
-				overflow: hidden;
+				/*overflow: hidden;*/
 				text-decoration: none;
 			}
 			.prog-menu ul li a span{
-				background-image: url(../img/num_fon.png);
-				background-position: center;
-				background-repeat: no-repeat;
+				background-color: #2167EA;
+				border-radius: 10px;
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
 				color: #FFF;
 				font-size: 15px;
 				height: 20px;
@@ -312,6 +312,7 @@ address{
 				left: 10px;
 				text-align: center;
 				width: 20px;
+				/*outline: 1px solid black;*/
 			}
 			.prog-menu ul li a small{
 				display: block;
