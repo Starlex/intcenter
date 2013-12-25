@@ -236,20 +236,22 @@ address{
 		-webkit-border-radius: 5px;
 		font-family: Times, sans-serif;
 		margin: 10px 0;
+		position: relative;
 	}
 		.prog-menu>ul>li>span{
 			background-color: #2167EA;
 			border-radius: 5px;
 			-moz-border-radius: 5px;
 			-webkit-border-radius: 5px;
-			display: block;
+			display: table-cell;
 			cursor: pointer;
 			color: #FFFFFF;
 			font-size: 13px;
 			height: 60px;
 			padding: 0 0 0 20px;
 			position: relative;
-			line-height: 30px;
+			vertical-align: middle;
+			width: 1000px;
 		}
 			.prog-menu li span span.big{
 				display: block;
@@ -263,10 +265,8 @@ address{
 			.prog-menu li span img{
 				display: block;
 				float: right;
-				top: 0;
-				bottom: 0;
+				top: 24px;
 				right: 20px;
-				margin: auto 0;
 				position: absolute;
 			}
 		.prog-menu li ul{
