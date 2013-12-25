@@ -49,7 +49,8 @@ catch(PDOException $e){
 				</li>
 			</ul>
 		</div>
-		<div class="prog-menu">
+		<?php drawProgramsMenu($db);?>
+		<!-- <div class="prog-menu">
 			<h3>Программы обучения</h3>
 			<ul>
 				<li>
@@ -109,4 +110,4 @@ catch(PDOException $e){
 					</ul>
 				</li>
 			</ul>
-		</div>
+		</div> -->

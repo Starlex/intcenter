@@ -58,7 +58,8 @@ function drawVerticalMenu($db, $isAdmin=0){
 		$pages = $query->fetchAll();        
 	}
 	catch(PDOException $e){
-		echo $e->getMessage();
+		echo "Internal server error";
+		exit;
 	}
 	echo "<div class='v-menu'>",
 	"\n\t\t\t", "<ul>";
@@ -70,32 +71,56 @@ function drawVerticalMenu($db, $isAdmin=0){
 }
 
 /* function for creating horizontal menu */
-function drawHorizontalMenu($db, $isAdmin=0){
-	echo "<div class='h-menu'>",
-	"\n\t\t\t", "<ul>";
-	echo "\n\t\t\t\t", "<li>",
-			"<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
-			"<a href='#'>sdgfdgsd</a>",
-		"</li>";
-	echo "\n\t\t\t\t", "<li>",
-			"<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
-			"<a href='#'>sdgfdgsd</a>",
-		"</li>";
-	echo "\n\t\t\t\t", "<li>",
-			"<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
-			"<a href='#'>sdgfdgsd</a>",
-		"</li>";
-	echo "\n\t\t\t\t", "<li>",
-			"<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
-			"<a href='#'>sdgfdgsd</a>",
-		"</li>";
-	echo "\n\t\t\t\t", "<li>",
-			"<a href='#'><img src='../img/foreign_lang.png' alt='qwe'></a>",
-			"<a href='#'>sdgfdgsd</a>",
-		"</li>";
-	echo "\n\t\t\t", "</ul>",
-	"\n\t\t", "</div>";
+function drawProgramsMenu($db, $isAdmin=0){
+	try{
+		$query = $db->prepare("SELECT * FROM intcenter_prog_categories");
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$progCat = $query->fetchAll();
+		$query = $db->prepare("SELECT * FROM intcenter_programs");
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$progs = $query->fetchAll();
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+	// echo "<pre>";
+	// print_r($row);
+	echo "\t<div class='prog-menu'>";
+	echo "\t\t<h3>Программы обучения</h3>";
+	echo "\t\t<ul>";
+	foreach($progCat as $pCat){
+		echo "
+			<li>
+				<span>
+					<span class='big'>$pCat[language]</span>
+					<small>$pCat[category]</small>
+					<img src='../img/arrow_right.png' alt='Программы обучения''>
+				</span>
+				<ul>";
+				$i = 0;
+				foreach($progs as $prog){
+					if($pCat['id'] === $prog['cat_id']){
+						++$i;
+						echo "
+							<li>
+								<a href='$prog[link]'>
+									<span>$i</span>
+									<small>$prog[category]</small>
+									<b>$prog[name]</b>
+								</a>
+							</li>";
+					}
+				}
+				echo"</ul>
+			</li>";
+	}
+	echo "</ul>
+	</div>";
 }
+
+
 
 /* Get page name and link from DB */
 function getPageNameAndLink($db){
