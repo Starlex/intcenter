@@ -70,13 +70,14 @@ function drawVerticalMenu($db, $isAdmin=0){
 	"\n\t\t", "</div>\n";
 }
 
-/* function for creating horizontal menu */
+/* function for creating programs menu */
 function drawProgramsMenu($db, $isAdmin=0){
 	try{
 		$query = $db->prepare("SELECT * FROM intcenter_prog_categories");
 		$query->execute();
 		$query->setFetchMode(PDO::FETCH_ASSOC);
 		$progCat = $query->fetchAll();
+
 		$query = $db->prepare("SELECT * FROM intcenter_programs");
 		$query->execute();
 		$query->setFetchMode(PDO::FETCH_ASSOC);
@@ -85,36 +86,54 @@ function drawProgramsMenu($db, $isAdmin=0){
 	catch(PDOException $e){
 		echo $e->getMessage();
 	}
-	// echo "<pre>";
-	// print_r($row);
-	echo "\t<div class='prog-menu'>";
-	echo "\t\t<h3>Программы обучения</h3>";
-	echo "\t\t<ul>";
+	echo "<div class='prog-menu'>";
+	echo "
+			<h3>Программы обучения</h3>";
+	echo "
+			<ul>";
+
+	// print_r($);
 	foreach($progCat as $pCat){
-		echo "
-			<li>
-				<span>
-					<span class='big'>$pCat[language]</span>
-					<small>$pCat[category]</small>
-					<img src='../img/arrow_right.png' alt='Программы обучения''>
-				</span>
-				<ul>";
-				$i = 0;
-				foreach($progs as $prog){
-					if($pCat['id'] === $prog['cat_id']){
-						++$i;
-						echo "
-							<li>
-								<a href='$prog[link]'>
-									<span>$i</span>
-									<small>$prog[category]</small>
-									<b>$prog[name]</b>
-								</a>
-							</li>";
-					}
+		$sql = "SELECT COUNT(*)
+				FROM intcenter_prog_categories ipc
+				LEFT JOIN intcenter_programs ip
+				ON ipc.id=ip.cat_id
+				WHERE $pCat[id]=ip.cat_id";
+		try{
+			$query = $db->prepare($sql);
+			$query->execute();
+			$num = $query->fetchColumn();	
+		}
+		catch(PDOException $e){
+			echo $e->getMessage;
+		}
+		if($num > 0){
+			echo "
+					<li>
+						<span>
+							<span class='big'>$pCat[language]</span>
+							<small>$pCat[category]</small>
+							<img src='../img/arrow_right.png' alt='Программы обучения'>
+						</span>
+						<ul>";
+			$i = 0;
+			foreach($progs as $prog){
+				if($pCat['id'] === $prog['cat_id']){
+					++$i;
+					echo "
+					<li>
+						<a href='$prog[link]'>
+							<span>$i</span>
+							<small>$prog[category]</small>
+							<b>$prog[name]</b>
+						</a>
+					</li>";
 				}
-				echo"</ul>
-			</li>";
+			}
+			echo"
+				</ul>";
+		}
+		echo "</li>";
 	}
 	echo "</ul>
 	</div>";
