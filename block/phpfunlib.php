@@ -92,7 +92,6 @@ function drawProgramsMenu($db, $isAdmin=0){
 	echo "
 			<ul>";
 
-	// print_r($);
 	foreach($progCat as $pCat){
 		$sql = "SELECT COUNT(*)
 				FROM intcenter_prog_categories ipc
@@ -139,9 +138,7 @@ function drawProgramsMenu($db, $isAdmin=0){
 	</div>";
 }
 
-
-
-/* Get page name and link from DB */
+/* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/
 function getPageNameAndLink($db){
 	$page = array('link' => '/glavnaya/', 'name' => '', 'tbl_name' => 'tbl_pages');
 	if(isset($_GET['page'])):
@@ -167,7 +164,7 @@ function getPageNameAndLink($db){
 	}
 }
 
-/* Get page content from DB */
+/* Get page content from DB (NOT USED IN THIS PROJECT YET)*/
 function getPageContent($db, $pageData){
 	try{
 		$query = $db->prepare("SELECT page_content FROM $pageData[tbl_name] WHERE link=?");
