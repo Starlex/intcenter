@@ -111,7 +111,7 @@ address{
 	.container{
 		display: inline-block;
 		float: left;
-		margin: 270px 10px 20px 40px;
+		margin: 270px 10px 20px 20px;
 		max-width: 700px;
 	}
 		.container h3{
@@ -143,6 +143,49 @@ address{
 		.bottom a{
 			color: #FFFFFF;
 		}
+.news{
+	/*outline: 1px solid;*/
+	font-family: 'tahoma';
+	margin-bottom: 20px;
+	overflow: hidden;
+	width: 690px;
+}
+	.news img{
+		border: 2px solid #A2A2A2;
+		margin-right: 20px;
+		float: left;
+	}
+	.news div{
+		float: left;
+		margin: 0;
+		width: 546px;
+	}
+		.news small{
+			background-color: #E1A93C;
+			color: #FFF;
+			display: inline-block;
+			font-size: 12px;
+			margin-bottom: 10px;
+			padding: 5px 15px;
+		}
+		.news a{
+			display: block;
+			width: 546px;
+			font-size: 14px;
+			font-weight: bold;
+			margin-bottom: 15px;
+		}
+		.news a:visited{
+			color: #2281F4;
+		}
+		.news span{
+			display: block;
+			float: left;
+			font-size: 14px;
+		}
+div.news+hr{
+	border: 1px solid #C9D1D6;
+}
 /*DIV FOR LOGIN ELEMENTS*/
 .login{
 	margin: 0 auto;

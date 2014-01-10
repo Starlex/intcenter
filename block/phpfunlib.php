@@ -138,6 +138,11 @@ function drawProgramsMenu($db, $isAdmin=0){
 	</div>";
 }
 
+/* show news on main page */
+function showNews($db){
+	
+}
+
 /* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/
 function getPageNameAndLink($db){
 	$page = array('link' => '/glavnaya/', 'name' => '', 'tbl_name' => 'tbl_pages');
