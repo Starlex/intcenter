@@ -39,11 +39,11 @@ if(0 === (int) $num){
 		<div class="pagination">
 			<ul>
 				<li><a href="">&larr;</a></li>
-				<li><a href="">1</a></li>
-				<li><a href="">2</a></li>
-				<li><a href="">3</a></li>
-				<li><a href="">4</a></li>
-				<li><a href="">5</a></li>
+				<li><a href="/1/">1</a></li>
+				<li><a href="/2/">2</a></li>
+				<li><a href="/3/">3</a></li>
+				<li><a href="/4/">4</a></li>
+				<li><a href="/5/">5</a></li>
 				<li><a href="">&rarr;</a></li>
 			</ul>
 		</div>

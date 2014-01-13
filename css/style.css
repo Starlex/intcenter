@@ -209,11 +209,30 @@ div.news+hr{
 }
 /* PAGINATION */
 .pagination{
+	font-size: 18px;
+	margin-top: 30px;
 	text-align: center;
 }
-	.pagination ul li{
+	.pagination li{
 		display: inline-block;
+		margin-left: -5px;
 	}
+	.pagination li:first-child a, .pagination li:last-child a{
+		text-decoration: none;
+	}
+		.pagination a{
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			color: #4C4C4C;
+			display: block;
+			padding: 5px 10px;
+		}
+.pagination a.active{
+	background: linear-gradient(to bottom, #0070F4, #3B5FE1);
+	color: #fff;
+	text-decoration: none;
+}
 
 /*############################   MENU'S   ############################*/
 .v-menu, .h-menu{
