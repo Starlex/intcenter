@@ -196,9 +196,10 @@ function pagination($resultCount, $contentNum, $page = ''){
 	(!isset($_GET['page'])) ? $active = 1 : $active = str_replace('/', '', $_GET['page']);
 	($active <= 1) ? $prev = 1 : $prev = $active-1;
 	($active >= $countPages) ? $next = $countPages : $next = $active+1;
-	
+	$shownPages = $countPages/2;
+
 	if($countPages > 1){
-		echo "
+		/*echo "
 		<div class='pagination'>
 			<ul>
 				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>";
@@ -209,6 +210,40 @@ function pagination($resultCount, $contentNum, $page = ''){
 			} 
 			echo "<li><a$style href='$page/$i/'>$i</a></li>";
 		}
+		echo "<li><a title='Следующая страница' href='$page/$next/'>&rarr;</a></li>
+			</ul>
+		</div>";*/
+
+		echo "
+		<div class='pagination'>
+			<ul>
+				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>";
+		if($active >= $maxShownPages){
+			echo "<li><a href='$page/1/'>1</a></li>";
+			echo "<li> ... </li>";
+			for ($i=$active-1; $i < $active+2 ; $i++) { 
+				$style = '';
+				if((int)$active === $i)
+					$style = " class='active'"; 
+				echo "<li><a$style href='$page/$i/'>$i</a></li>";
+			}
+			echo "<li> ... </li>";
+			echo "<li><a href='$page/$countPages/'>$countPages</a></li>";
+		}
+		else{
+			for ($i=1; $i <= $maxShownPages; $i++) {
+				$style = '';
+				if((int)$active === $i){
+					$style = " class='active'";
+				} 
+				echo "<li><a$style href='$page/$i/'>$i</a></li>";
+			}
+			if($countPages > $maxShownPages){
+				echo "<li> ... </li>";
+				echo "<li><a href='$page/$countPages/'>$countPages</a></li>";
+			}
+		}
+
 		echo "<li><a title='Следующая страница' href='$page/$next/'>&rarr;</a></li>
 			</ul>
 		</div>";

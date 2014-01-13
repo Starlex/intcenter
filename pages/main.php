@@ -33,7 +33,7 @@ if(0 === (int) $num){
 		<h3>Новости</h3>
 		<?php
 			$num = showNews($db);
-			pagination(28, 4);
+			pagination(500, 4);
 		?>
 
 		
