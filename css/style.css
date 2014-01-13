@@ -242,7 +242,7 @@ div.news+hr{
 	.h-menu ul li{
 		display: inline-block;
 		margin: 0 23px 0 0;
-		vertical-align: middle;
+		vertical-align: top;
 	}
 	.h-menu ul li:first-child{
 		margin-left: 0;
@@ -250,23 +250,23 @@ div.news+hr{
 	.h-menu ul li:last-child{
 		margin-right: 0;
 	}
-		.h-menu ul li img{
-			border-radius: 5px;
-			-moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-		}
 		.h-menu a{
 			color: #2281F4;
 			display: block;
 			font-weight: bold;
-			max-width: 170px;
-			min-height: 28px;
+			width: 170px;
+			height: 150px;
 			padding: 5px 0;
 			text-align: center;
 		}
+			.h-menu ul li img{
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				margin-bottom: 10px;
+			}
 /* MENU FOR PROGRAMS */
 .prog-menu{
-	/*outline: 1px solid;*/
 	display: inline-block;
 	float: left;
 	margin: 270px 0 0 20px;

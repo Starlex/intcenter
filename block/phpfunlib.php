@@ -14,6 +14,7 @@ function showMsg($string, $link='', $text='Назад'){
 	<?=$anchor?>
 </div>
 	<?php
+	require_once 'block/bottom.php';
 	require_once 'block/footer.php';
 	exit;
 }
@@ -108,39 +109,75 @@ function drawProgramsMenu($db, $isAdmin=0){
 		}
 		if($num > 0){
 			echo "
-					<li>
-						<span>
-							<span class='big'>$pCat[language]</span>
-							<small>$pCat[category]</small>
-							<img src='../img/arrow_right.png' alt='Программы обучения'>
-						</span>
-						<ul>";
+				<li>
+					<span>
+						<span class='big'>$pCat[language]</span>
+						<small>$pCat[category]</small>
+						<img src='../img/arrow_right.png' alt='Программы обучения'>
+					</span>
+					<ul>";
 			$i = 0;
 			foreach($progs as $prog){
 				if($pCat['id'] === $prog['cat_id']){
 					++$i;
 					echo "
-					<li>
-						<a href='$prog[link]'>
-							<span>$i</span>
-							<small>$prog[category]</small>
-							<b>$prog[name]</b>
-						</a>
-					</li>";
+						<li>
+							<a href='$prog[link]'>
+								<span>$i</span>
+								<small>$prog[category]</small>
+								<b>$prog[name]</b>
+							</a>
+						</li>";
 				}
 			}
 			echo"
-				</ul>";
+					</ul>";
 		}
-		echo "</li>";
 	}
-	echo "</ul>
-	</div>";
+	echo "
+				</li>";
+	echo "
+			</ul>
+		</div>";
 }
 
 /* show news on main page */
 function showNews($db){
-	
+	try{
+		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_news");
+		$query->execute();
+		$num = $query->fetchColumn();
+	}
+	catch(PDOException $e){
+		$e->getMessage();
+	}
+	if(0 === $num){
+		echo "	Новостей нет
+		</div>";
+		require_once 'block/bottom.php';
+		require_once 'block/footer.php';
+		exit;
+	}
+	try{
+		$query = $db->prepare("SELECT * FROM intcenter_news");
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$row = $query->fetchAll();
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+	foreach ($row as $news) {
+	echo "<div class='news'>
+			<img src='$news[img]' alt='Изображение'>
+			<div>
+				<small>".date('d.m.Y', $news['date'])."</small>
+				<a href=''>$news[name]</a>
+				<span>$news[annotation]</span>
+			</div>
+		</div>
+		<hr>";
+	}
 }
 
 /* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/
