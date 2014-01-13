@@ -85,7 +85,8 @@ function drawProgramsMenu($db, $isAdmin=0){
 		$progs = $query->fetchAll();
 	}
 	catch(PDOException $e){
-		echo $e->getMessage();
+		echo "Error 500 - Internal server error";
+		exit;
 	}
 	echo "<div class='prog-menu'>";
 	echo "
@@ -105,7 +106,8 @@ function drawProgramsMenu($db, $isAdmin=0){
 			$num = $query->fetchColumn();	
 		}
 		catch(PDOException $e){
-			echo $e->getMessage;
+			echo "Error 500 - Internal server error";
+			exit;
 		}
 		if($num > 0){
 			echo "
@@ -113,7 +115,7 @@ function drawProgramsMenu($db, $isAdmin=0){
 					<span>
 						<span class='big'>$pCat[language]</span>
 						<small>$pCat[category]</small>
-						<img src='../img/arrow_right.png' alt='Программы обучения'>
+						<img src='../../../../img/arrow_right.png' alt='Программы обучения'>
 					</span>
 					<ul>";
 			$i = 0;
@@ -149,7 +151,8 @@ function showNews($db){
 		$num = $query->fetchColumn();
 	}
 	catch(PDOException $e){
-		$e->getMessage();
+		echo "Error 500 - Internal server error";
+		exit;
 	}
 	if(0 === $num){
 		echo "	Новостей нет
@@ -165,19 +168,33 @@ function showNews($db){
 		$row = $query->fetchAll();
 	}
 	catch(PDOException $e){
-		echo $e->getMessage();
+		echo "Error 500 - Internal server error";
+		exit;
 	}
 	foreach ($row as $news) {
 	echo "<div class='news'>
 			<img src='$news[img]' alt='Изображение'>
 			<div>
 				<small>".date('d.m.Y', $news['date'])."</small>
-				<a href=''>$news[name]</a>
+				<a href='/news/$news[id]/'>$news[name]</a>
 				<span>$news[annotation]</span>
 			</div>
 		</div>
 		<hr>";
 	}
+	return $num;
+}
+
+/* Pagination */
+function pagination($resultCount, $showedNum){
+	if(!isset($_GET['page'])){
+		$active = 1;
+	}
+	else{
+		$active = (int)$_GET['pages'];
+	}
+	$countPages = (int)($resultCount/$showedNum)+1;
+	echo $active;
 }
 
 /* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/

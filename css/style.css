@@ -117,6 +117,22 @@ address{
 		.container h3{
 			text-transform: uppercase;
 		}
+	/* view news page */
+		.container h2{
+			margin: 15px 0 5px;
+		}
+		.date{
+			color: #B6B8B9;
+			display: block;
+			font-family: 'Tahoma';
+			font-size: 12px;
+			margin-bottom: 15px;
+		}
+		.annotation{
+			display: block;
+			font-style: italic;
+			margin-bottom: 15px;
+		}
 	.bottom{
 		background-color: #13549A;
 		bottom: -7px;
@@ -144,7 +160,6 @@ address{
 			color: #FFFFFF;
 		}
 .news{
-	/*outline: 1px solid;*/
 	font-family: 'tahoma';
 	margin-bottom: 20px;
 	overflow: hidden;
@@ -169,6 +184,7 @@ address{
 			padding: 5px 15px;
 		}
 		.news a{
+			color: #2281F4;
 			display: block;
 			width: 546px;
 			font-size: 14px;
@@ -191,6 +207,13 @@ div.news+hr{
 	margin: 0 auto;
 	position: relative;
 }
+/* PAGINATION */
+.pagination{
+	text-align: center;
+}
+	.pagination ul li{
+		display: inline-block;
+	}
 
 /*############################   MENU'S   ############################*/
 .v-menu, .h-menu{
@@ -270,7 +293,7 @@ div.news+hr{
 	display: inline-block;
 	float: left;
 	margin: 270px 0 0 20px;
-	width: 230px;
+	width: 210px;
 }
 	.prog-menu>ul>li{
 		background-color: #FFFFFF;
@@ -303,7 +326,7 @@ div.news+hr{
 			.prog-menu li span small{
 				display: block;
 				text-transform: lowercase;
-				margin-right: 40px;
+				margin-right: 30px;
 			}
 			.prog-menu li span img{
 				display: block;
