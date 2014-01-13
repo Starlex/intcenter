@@ -33,20 +33,10 @@ if(0 === (int) $num){
 		<h3>Новости</h3>
 		<?php
 			$num = showNews($db);
-			// pagination($num, 4);
+			pagination(28, 4);
 		?>
 
-		<div class="pagination">
-			<ul>
-				<li><a href="">&larr;</a></li>
-				<li><a href="/1/">1</a></li>
-				<li><a href="/2/">2</a></li>
-				<li><a href="/3/">3</a></li>
-				<li><a href="/4/">4</a></li>
-				<li><a href="/5/">5</a></li>
-				<li><a href="">&rarr;</a></li>
-			</ul>
-		</div>
+		
 
 		<!-- dsfgsdf gsdfds fgsdfg sdfdsfg sdfg sdfdsf gsdfgs dfdsfg sdfgsd fdsfgs dfgsdf dsfgs dfgsdf dsfgsdf gsdfdsf gsdfg sdfdsfg sdfgs dfdsfg sdfgsd fdsfgs dfgsd fdsfgsd fgsdfd sfgsdfgs dfdsfgsdf gsdfd sfgsdfg sdfdsfg sdfgs dfdsfgsd fgsdfd sfgsd fgsdfd sfgsdf gsdfdsfg sdfgsdf<br>
 		dsfgsdf gsdfds fgsdfg sdfdsfg sdfg sdfdsf gsdfgs dfdsfg sdfgsd fdsfgs dfgsdf dsfgs dfgsdf dsfgsdf gsdfdsf gsdfg sdfdsfg sdfgs dfdsfg sdfgsd fdsfgs dfgsd fdsfgsd fgsdfd sfgsdfgs dfdsfgsdf gsdfd sfgsdfg sdfdsfg sdfgs dfdsfgsd fgsdfd sfgsd fgsdfd sfgsdf gsdfdsfg sdfgsdf<br>

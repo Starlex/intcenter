@@ -186,15 +186,33 @@ function showNews($db){
 }
 
 /* Pagination */
-function pagination($resultCount, $showedNum){
-	if(!isset($_GET['page'])){
-		$active = 1;
+function pagination($resultCount, $contentNum, $page = ''){
+	$maxShownPages = 7;
+	$countPages = ($resultCount/$contentNum);
+	if(is_float($countPages))
+		$countPages = (int)$countPages+1;
+	if('' !== $page)
+		$page = '/'.$page;
+	(!isset($_GET['page'])) ? $active = 1 : $active = str_replace('/', '', $_GET['page']);
+	($active <= 1) ? $prev = 1 : $prev = $active-1;
+	($active >= $countPages) ? $next = $countPages : $next = $active+1;
+	
+	if($countPages > 1){
+		echo "
+		<div class='pagination'>
+			<ul>
+				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>";
+		for ($i=1; $i <= $countPages; $i++) {
+			$style = '';
+			if((int)$active === $i){
+				$style = " class='active'";
+			} 
+			echo "<li><a$style href='$page/$i/'>$i</a></li>";
+		}
+		echo "<li><a title='Следующая страница' href='$page/$next/'>&rarr;</a></li>
+			</ul>
+		</div>";
 	}
-	else{
-		$active = (int)$_GET['pages'];
-	}
-	$countPages = (int)($resultCount/$showedNum)+1;
-	echo $active;
 }
 
 /* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/
