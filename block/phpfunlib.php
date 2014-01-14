@@ -218,7 +218,7 @@ function pagination($resultCount, $contentNum, $page = ''){
 		<div class='pagination'>
 			<ul>
 				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>";
-		if($active >= $maxShownPages){
+		if($active >= $maxShownPages and $active <= $countPages-3){
 			echo "<li><a href='$page/1/'>1</a></li>";
 			echo "<li> ... </li>";
 			for ($i=$active-1; $i < $active+2 ; $i++) { 
@@ -229,6 +229,16 @@ function pagination($resultCount, $contentNum, $page = ''){
 			}
 			echo "<li> ... </li>";
 			echo "<li><a href='$page/$countPages/'>$countPages</a></li>";
+		}
+		elseif($active > $countPages-3){
+			echo "<li><a href='$page/1/'>1</a></li>";
+			echo "<li> ... </li>";
+			for ($i=$countPages-3; $i <= $countPages; $i++) { 
+				$style = '';
+				if((int)$active === $i)
+					$style = " class='active'"; 
+				echo "<li><a$style href='$page/$i/'>$i</a></li>";
+			}
 		}
 		else{
 			for ($i=1; $i <= $maxShownPages; $i++) {
