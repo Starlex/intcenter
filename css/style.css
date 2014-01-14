@@ -191,9 +191,9 @@ address{
 			font-weight: bold;
 			margin-bottom: 15px;
 		}
-		.news a:visited{
+		/*.news a:visited{
 			color: #2281F4;
-		}
+		}*/
 		.news span{
 			display: block;
 			float: left;

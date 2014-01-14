@@ -168,8 +168,7 @@ function showNews($db){
 		echo "Error 500 - Internal server error";
 		exit;
 	}
-	$page = str_replace('/', '', $_GET['page']);
-	(!isset($_GET['page'])) ? $page = 0 : $page = (int)$page-1;
+	(!isset($_GET['page'])) ? $page = 0 : $page = (int)str_replace('/', '', $_GET['page'])-1;
 	$firstNews = $page*4+1;
 	foreach ($row as $news) {
 		if($news['id'] >= $firstNews and $news['id'] <= $firstNews+3){
