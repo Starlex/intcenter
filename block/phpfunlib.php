@@ -88,10 +88,8 @@ function drawProgramsMenu($db, $isAdmin=0){
 		echo "Error 500 - Internal server error";
 		exit;
 	}
-	echo "<div class='prog-menu'>";
-	echo "
-			<h3>Программы обучения</h3>";
-	echo "
+	echo "<div class='prog-menu'>
+			<h3>Программы обучения</h3>
 			<ul>";
 
 	foreach($progCat as $pCat){
@@ -133,11 +131,10 @@ function drawProgramsMenu($db, $isAdmin=0){
 				}
 			}
 			echo"
-					</ul>";
+					</ul>
+				</li>";
 		}
 	}
-	echo "
-				</li>";
 	echo "
 			</ul>
 		</div>";
@@ -171,89 +168,78 @@ function showNews($db){
 		echo "Error 500 - Internal server error";
 		exit;
 	}
+	$page = str_replace('/', '', $_GET['page']);
+	(!isset($_GET['page'])) ? $page = 0 : $page = (int)$page-1;
+	$firstNews = $page*4+1;
 	foreach ($row as $news) {
-	echo "<div class='news'>
-			<img src='$news[img]' alt='Изображение'>
-			<div>
-				<small>".date('d.m.Y', $news['date'])."</small>
-				<a href='/news/$news[id]/'>$news[name]</a>
-				<span>$news[annotation]</span>
+		if($news['id'] >= $firstNews and $news['id'] <= $firstNews+3){
+			echo "<div class='news'>
+				<img src='$news[img]' alt='Изображение'>
+				<div>
+					<small>".date('d.m.Y', $news['date'])."</small>
+					<a href='/news/$news[id]/'>$news[name]</a>
+					<span>$news[annotation]</span>
+				</div>
 			</div>
-		</div>
-		<hr>";
+			<hr>";
+		}
 	}
 	return $num;
 }
 
 /* Pagination */
 function pagination($resultCount, $contentNum, $page = ''){
-	$maxShownPages = 7;
+	$maxShownPages = 6;
 	$countPages = ($resultCount/$contentNum);
 	if(is_float($countPages))
 		$countPages = (int)$countPages+1;
 	if('' !== $page)
 		$page = '/'.$page;
-	(!isset($_GET['page'])) ? $active = 1 : $active = str_replace('/', '', $_GET['page']);
+	(!isset($_GET['page'])) ? $active = 1 : $active = (int)str_replace('/', '', $_GET['page']);
 	($active <= 1) ? $prev = 1 : $prev = $active-1;
 	($active >= $countPages) ? $next = $countPages : $next = $active+1;
 	$shownPages = $countPages/2;
 
 	if($countPages > 1){
-		/*echo "
-		<div class='pagination'>
-			<ul>
-				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>";
-		for ($i=1; $i <= $countPages; $i++) {
-			$style = '';
-			if((int)$active === $i){
-				$style = " class='active'";
-			} 
-			echo "<li><a$style href='$page/$i/'>$i</a></li>";
-		}
-		echo "<li><a title='Следующая страница' href='$page/$next/'>&rarr;</a></li>
-			</ul>
-		</div>";*/
-
 		echo "
 		<div class='pagination'>
 			<ul>
-				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>";
-		if($active >= $maxShownPages and $active <= $countPages-3){
-			echo "<li><a href='$page/1/'>1</a></li>";
-			echo "<li> ... </li>";
-			for ($i=$active-1; $i < $active+2 ; $i++) { 
-				$style = '';
-				if((int)$active === $i)
-					$style = " class='active'"; 
-				echo "<li><a$style href='$page/$i/'>$i</a></li>";
-			}
-			echo "<li> ... </li>";
-			echo "<li><a href='$page/$countPages/'>$countPages</a></li>";
-		}
-		elseif($active > $countPages-3){
-			echo "<li><a href='$page/1/'>1</a></li>";
-			echo "<li> ... </li>";
-			for ($i=$countPages-3; $i <= $countPages; $i++) { 
-				$style = '';
-				if((int)$active === $i)
-					$style = " class='active'"; 
-				echo "<li><a$style href='$page/$i/'>$i</a></li>";
+				<li><a title='Предыдущая страница' href='$page/$prev/'>&larr;</a></li>\n\t\t\t\t";
+		$style = '';
+		if($countPages <= $maxShownPages){
+			for ($i=1; $i <= $countPages; $i++, $style = '') {
+				if($active === $i){
+					$style = " class='active'";
+				} 
+				echo "<li><a$style href='$page/$i/'>$i</a></li>\n\t\t\t\t";
 			}
 		}
 		else{
-			for ($i=1; $i <= $maxShownPages; $i++) {
-				$style = '';
-				if((int)$active === $i){
-					$style = " class='active'";
-				} 
-				echo "<li><a$style href='$page/$i/'>$i</a></li>";
+			if($active < $maxShownPages-1){
+				for ($i=1; $i < $maxShownPages; $i++, $style = '') {
+					if($active === $i){
+						$style = " class='active'";
+					} 
+					echo "<li><a$style href='$page/$i/'>$i</a></li>\n\t\t\t\t";
+				}				
 			}
-			if($countPages > $maxShownPages){
-				echo "<li> ... </li>";
-				echo "<li><a href='$page/$countPages/'>$countPages</a></li>";
+			else{
+				echo "<li><a href='$page/1/'>1</a></li>\n\t\t\t\t";
+				echo "<li> ... </li>\n\t\t\t\t";
+				($active >= $countPages) ? $endNum = $countPages+1 : $endNum = $active+2;
+				for ($i=$active-1; $i < $endNum ; $i++, $style='') { 
+					if($active === $i)
+						$style = " class='active'"; 
+					echo "<li><a$style href='$page/$i/'>$i</a></li>\n\t\t\t\t";
+				}
+			}
+			if($active < $countPages-1){
+				if($active < $countPages-2){
+					echo "<li> ... </li>\n\t\t\t\t";
+				}
+				echo "<li><a href='$page/$countPages/'>$countPages</a></li>\n\t\t\t\t";				
 			}
 		}
-
 		echo "<li><a title='Следующая страница' href='$page/$next/'>&rarr;</a></li>
 			</ul>
 		</div>";

@@ -214,7 +214,9 @@ div.news+hr{
 	text-align: center;
 }
 	.pagination li{
+		cursor: pointer;
 		display: inline-block;
+		margin-left: -5px;
 	}
 	.pagination li:first-child a, .pagination li:last-child a{
 		text-decoration: none;
