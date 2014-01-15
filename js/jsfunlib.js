@@ -14,6 +14,21 @@ $(document).ready(function(){
 	});
 });
 
+/* function for up button */
+$(document).ready(function(){
+	$(window).scroll(function(){
+		if($(window).scrollTop() < 10){
+			$('.up-btn').fadeOut();
+		}
+		else{
+			$('.up-btn').fadeIn();
+		}
+	});
+	$('.up-btn').click(function(){
+		$('html').animate({scrollTop: 0}, 300);
+	});
+});
+
 function showDiv(chb1, div, chb2, form){
 	var cke = $('.ckeditor').attr('name');
 	if('checked' === $(chb1).attr('checked')){

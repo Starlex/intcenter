@@ -1,3 +1,14 @@
+<?php
+try{
+	$query = $db->prepare("SELECT * FROM intcenter_contacts");
+	$query->execute();
+	$query->setFetchMode(PDO::FETCH_ASSOC);
+	$contacts = $query->fetch();	
+}
+catch(PDOException $e){
+	showMsg('Внутренняя ошибка сервера');
+}
+?>
 		<div class="bottom">
 			<div class="leftpart">
 				Центр международного сотрудничества и туризма &copy; <?=date('Y', time())?>

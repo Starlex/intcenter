@@ -9,6 +9,7 @@ catch(PDOException $e){
 	showMsg('Внутренняя ошибка сервера');
 }
 ?>
+<div class="up-btn">&uarr;</div>
 	<div class="head">
 		<div class="logo">
 			<a href="http://<?=$_SERVER['SERVER_NAME']?>"></a>

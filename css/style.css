@@ -112,7 +112,7 @@ address{
 		display: inline-block;
 		float: left;
 		margin: 270px 10px 20px 20px;
-		max-width: 700px;
+		width: 720px;
 	}
 		.container h3{
 			text-transform: uppercase;
@@ -352,7 +352,7 @@ div.news+hr{
 				display: block;
 				float: right;
 				top: 24px;
-				right: 20px;
+				right: 15px;
 				position: absolute;
 			}
 		.prog-menu li ul{
@@ -367,7 +367,7 @@ div.news+hr{
 			background-color: #FFFFFF;
 			border-bottom: 1px solid #D8D8D8;
 			font-family: Tahoma, sans-serif;
-			padding: 10px 0;
+			/*padding: 10px 0;*/
 		}
 		.prog-menu li ul li:last-child{
 			border-bottom: 0;
@@ -401,15 +401,18 @@ div.news+hr{
 			}
 			.prog-menu ul li a small{
 				display: block;
-				font-size: 12px;
+				font-size: 11px;
 				margin-left: 40px;
-				min-width: 70%;
+				margin-right: 10px;	
+				padding-top: 10px;
 			}
 			.prog-menu ul li a b{
 				display: block;
 				font-size: 11px;
 				padding-right: 5px;
 				margin-left: 40px;
+				margin-right: 10px;
+				padding-bottom: 10px;
 			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
@@ -469,4 +472,24 @@ label{
 /* hidden elements */
 .hide{
 	display: none;
+}
+.up-btn{
+	background: #dcdcdc;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	bottom: 10px;
+	color: #fff;
+	cursor: pointer;
+	display: none;
+	font-size: 8em;
+	height: 150px;
+	left: 20px;
+	position: fixed;
+	text-align: center;
+	width: 90px;
+}
+.up-btn:hover{
+	box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,0.5);
+	-webkit-box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,0.5);
 }
