@@ -1,4 +1,4 @@
-/*Show prog-submenu on click*/
+// Show prog-submenu on click
 $(document).ready(function(){
 	$('.prog-menu>ul>li').click(function(){
 		var img = $(this).children('span').children('img');
@@ -14,10 +14,10 @@ $(document).ready(function(){
 	});
 });
 
-/* function for up button */
+// function for up button
 $(document).ready(function(){
 	$(window).scroll(function(){
-		if($(window).scrollTop() < 10){
+		if($(window).scrollTop() < 50){
 			$('.up-btn').fadeOut();
 		}
 		else{
@@ -25,7 +25,7 @@ $(document).ready(function(){
 		}
 	});
 	$('.up-btn').click(function(){
-		$('html').animate({scrollTop: 0}, 300);
+		$('html').scrollTo(0, 800, {queue:true});
 	});
 });
 

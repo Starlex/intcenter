@@ -72,7 +72,10 @@ function drawVerticalMenu($db, $isAdmin=0){
 }
 
 /* function for creating programs menu */
-function drawProgramsMenu($db, $isAdmin=0){
+function drawProgramsMenu($db, $dontDraw=false){
+	if(true === $dontDraw){
+		return false;
+	}
 	try{
 		$query = $db->prepare("SELECT * FROM intcenter_prog_categories");
 		$query->execute();
@@ -138,6 +141,7 @@ function drawProgramsMenu($db, $isAdmin=0){
 	echo "
 			</ul>
 		</div>";
+	return true;
 }
 
 /* show news on main page */

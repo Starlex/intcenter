@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
-
+$dontDraw = false;
 require_once 'block/top.php';
 
 if(isset($_GET['page'])){

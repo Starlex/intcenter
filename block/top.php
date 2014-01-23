@@ -9,7 +9,7 @@ catch(PDOException $e){
 	showMsg('Внутренняя ошибка сервера');
 }
 ?>
-<div class="up-btn">&uarr;</div>
+<div title="Наверх" class="up-btn">&uarr;</div>
 	<div class="head">
 		<div class="logo">
 			<a href="http://<?=$_SERVER['SERVER_NAME']?>"></a>
@@ -46,4 +46,4 @@ catch(PDOException $e){
 				</li>
 			</ul>
 		</div>
-		<?php drawProgramsMenu($db);?>
+		<?php drawProgramsMenu($db, $dontDraw);?>

@@ -1,9 +1,10 @@
 /*##################################   DEFAULT STYLE FOR ELEMENTS   ###############################*/
 html{
 	background-color: #EDF7FD;
+	color: #313131;
 }
 body{
-	margin: 10px auto;
+	margin: 0 auto;
 	width: 1021px;
 }
 form abbr{
@@ -82,7 +83,7 @@ address{
 		right: 0;
 	}
 	.orgname{
-		/*behavior: url(../PIE/PIE.htc);*/
+		color: #11317c;
 		font-family: Arial, sans-serif;
 		font-size: 20px;
 		font-weight: bold;
@@ -92,7 +93,7 @@ address{
 		text-align: center;
 		text-shadow: #FFF 1px 0 0, #FFF 0 1px 0, #FFF -1px 0 0, #FFF 0 -1px 0;
 		text-transform: uppercase;
-		top: 50px;
+		top: 45px;
 		max-width: 500px;
 	}
 	.contacts{
@@ -186,14 +187,10 @@ address{
 		.news a{
 			color: #2281F4;
 			display: block;
-			width: 546px;
 			font-size: 14px;
 			font-weight: bold;
 			margin-bottom: 15px;
 		}
-		/*.news a:visited{
-			color: #2281F4;
-		}*/
 		.news span{
 			display: block;
 			float: left;
@@ -234,6 +231,40 @@ div.news+hr{
 	color: #fff;
 	text-decoration: none;
 }
+
+/* Default style for tables*/
+table{
+	background-color: #E6F9FF;
+	font-family: 'tahoma';
+	font-size: 13px;
+	margin: 270px 15px 60px 15px;
+	width: 970px;
+}
+	table tr:nth-of-type(2n){
+		background-color: #fff;
+	}
+		table tr:first-child td{
+			background: linear-gradient(to bottom, rgba(2,147,202,1), rgba(7,106,163,1));
+			border-color: #0395CF;
+			border-width: 0 1px 0 1px;
+			color: #fff;
+			cursor: default;
+			font-weight: bold;
+			text-align: center;
+		}
+		table td{
+			border: 1px solid #CDE4EA;
+			padding: 15px 15px;
+			vertical-align: top;
+		}
+		table td:first-child{
+			/*width: 100px;*/
+			/*text-align: center;*/
+		}
+			table img{
+				border: 10px solid #dedede;
+				margin: 0;
+			}
 
 /*############################   MENU'S   ############################*/
 .v-menu, .h-menu{
@@ -367,7 +398,6 @@ div.news+hr{
 			background-color: #FFFFFF;
 			border-bottom: 1px solid #D8D8D8;
 			font-family: Tahoma, sans-serif;
-			/*padding: 10px 0;*/
 		}
 		.prog-menu li ul li:last-child{
 			border-bottom: 0;
@@ -474,22 +504,20 @@ label{
 	display: none;
 }
 .up-btn{
-	background: #dcdcdc;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	bottom: 10px;
+	background: rgba(220,220,220,0.6);
 	color: #fff;
 	cursor: pointer;
 	display: none;
-	font-size: 8em;
-	height: 150px;
-	left: 20px;
+	font-size: 4em;
+	height: 100%;
+	left: 0;
+	margin: 0;
 	position: fixed;
 	text-align: center;
-	width: 90px;
+	top: 0;
+	width: 45px;
 }
 .up-btn:hover{
-	box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,0.5);
-	-webkit-box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,0.5);
+	box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,1);
+	-webkit-box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,1);
 }
