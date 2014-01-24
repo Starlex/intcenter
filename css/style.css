@@ -24,13 +24,6 @@ fieldset{
 	legend{
 		font-size: 20px;
 	}
-address{
-	font-family: Arial, sans-serif;
-	font-size: 13px;
-	font-style: normal;
-	font-weight: bold;
-	margin-top: 5px;
-}
 
 /*############################   MAIN STRUCTURE OF SITE   ############################*/
 .head{
@@ -42,7 +35,7 @@ address{
 	margin: 0;
 	position: absolute;
 	width: 1022px;
-	z-index: 100;
+	z-index: 99;
 }
 	.logo{
 		background-image: url(../img/logo.png);
@@ -60,11 +53,11 @@ address{
 			width: 100%;
 		}
 .maindiv{
-	font-family: Arial, sans-serif;
+	font-family: 'Arial';
 	background-image: url(../img/headfon.png);
 	background-position: center top;
 	background-repeat: no-repeat;
-	margin: 10px auto;
+	margin: 0 auto;
 	position: relative;
 	width: 1000px;
 	overflow: hidden;
@@ -84,30 +77,40 @@ address{
 	}
 	.orgname{
 		color: #11317c;
-		font-family: Arial, sans-serif;
+		font-family: 'Arial';
 		font-size: 20px;
 		font-weight: bold;
 		left: 350px;
 		line-height: 1.2;
+		max-width: 500px;
 		position: relative;
 		text-align: center;
 		text-shadow: #FFF 1px 0 0, #FFF 0 1px 0, #FFF -1px 0 0, #FFF 0 -1px 0;
 		text-transform: uppercase;
 		top: 45px;
-		max-width: 500px;
+		z-index: 100;
 	}
 	.contacts{
 		color: #3761E3;
 		position: absolute;
-		font-weight: bold;
+		font-family: 'times';
+		font-size: 14px;
 		text-align: right;
 		right: 20px;
 		top: 155px;
 		width: 160px;
+		z-index: 100;
 	}
 		.phone{
-			font-size: 1.7em;
+			font-size: 24px;
 			font-weight: bold;
+		}
+		address{
+			font-family: 'Arial';
+			font-size: 13px;
+			font-style: normal;
+			line-height: 18px;
+			margin-top: 5px;
 		}
 	.container{
 		display: inline-block;
@@ -206,14 +209,15 @@ div.news+hr{
 }
 /* PAGINATION */
 .pagination{
-	font-size: 18px;
+	font-size: 14px;
 	margin-top: 30px;
 	text-align: center;
 }
 	.pagination li{
+		/*outline:1px solid;*/
 		cursor: pointer;
 		display: inline-block;
-		margin-left: -5px;
+		margin-left: -2px;
 	}
 	.pagination li:first-child a, .pagination li:last-child a{
 		text-decoration: none;
@@ -224,12 +228,16 @@ div.news+hr{
 			-webkit-border-radius: 3px;
 			color: #4C4C4C;
 			display: block;
-			padding: 5px 10px;
+			padding: 5px 8px;
 		}
+
 .pagination a.active{
 	background: linear-gradient(to bottom, #0070F4, #3B5FE1);
 	color: #fff;
 	text-decoration: none;
+}
+* .pagination a.active{
+	background-color: #0070F4;
 }
 
 /* Default style for tables*/
@@ -238,7 +246,7 @@ table{
 	font-family: 'tahoma';
 	font-size: 13px;
 	margin: 270px 15px 60px 15px;
-	width: 970px;
+	/*width: 970px;*/
 }
 	table tr:nth-of-type(2n){
 		background-color: #fff;
@@ -257,10 +265,6 @@ table{
 			padding: 15px 15px;
 			vertical-align: top;
 		}
-		table td:first-child{
-			/*width: 100px;*/
-			/*text-align: center;*/
-		}
 			table img{
 				border: 10px solid #dedede;
 				margin: 0;
@@ -268,7 +272,7 @@ table{
 
 /*############################   MENU'S   ############################*/
 .v-menu, .h-menu{
-	font-family: Arial, sans-serif;
+	font-family: 'Arial';
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -280,21 +284,19 @@ table{
 	left: 20px;
 	text-align: center;
 	text-transform: uppercase;
-	top: 170px;
+	top: 160px;
+	z-index: 100;
 }
 .v-menu ul li{
-	background-color: #3162E5;
+	background: url(../../../../img/menu_bg.png);
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	margin: 7px 0;
+	margin: 10px 0;
 	max-width: 140px
 }
 .v-menu ul li:hover{
-	background: #4174e9;
-	background: linear-gradient(to bottom, #3162e5, #568cef);
-	box-shadow: 1px 1px 3px rgba(44, 16, 1, 0.3), inset 1px 1px #5c93f0;
-	-moz-box-shadow: 1px 1px 3px rgba(44, 16, 1, 0.3), inset 1px 1px #5c93f0;
+	background: url(../../../../img/menu_hover.png);
 }
 	.v-menu a{
 		color: #FFFFFF;
@@ -303,9 +305,7 @@ table{
 		text-decoration: none;
 	}
 .v-menu ul li.active{
-	background: #13549A;
-	box-shadow: none;
-	-moz-box-shadow: none;
+	background: url(../../../../img/menu_selected.png);
 }
 /* HORIZONTAL MENU */
 .h-menu{
@@ -351,7 +351,7 @@ table{
 		border-radius: 5px;
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
-		font-family: Times, sans-serif;
+		font-family: 'times';
 		margin: 10px 0;
 		position: relative;
 	}
@@ -495,29 +495,20 @@ label{
 	font-size: 17px;
 	font-style: italic;
 }
-/*positioning text in center*/
 .center{
 	text-align: center;
 }
-/* hidden elements */
 .hide{
 	display: none;
 }
 .up-btn{
-	background: rgba(220,220,220,0.6);
-	color: #fff;
+	background: url(../../../../img/up-btn.png);
+	bottom: 90px;
 	cursor: pointer;
 	display: none;
-	font-size: 4em;
-	height: 100%;
-	left: 0;
+	height: 33px;
+	right: 40px;
 	margin: 0;
 	position: fixed;
-	text-align: center;
-	top: 0;
-	width: 45px;
-}
-.up-btn:hover{
-	box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,1);
-	-webkit-box-shadow:inset 0px 0px 20px 5px rgba(240,240,240,1);
+	width: 54px;
 }
