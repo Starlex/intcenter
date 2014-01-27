@@ -59,7 +59,7 @@ function drawVerticalMenu($db, $isAdmin=0){
 		$pages = $query->fetchAll();        
 	}
 	catch(PDOException $e){
-		echo "Internal server error";
+		echo "Error 500 - Internal server error";
 		exit;
 	}
 	echo "<div class='v-menu'>",
@@ -144,7 +144,6 @@ function drawProgramsMenu($db, $dontDraw=false){
 	return true;
 }
 
-/* show news on main page */
 function showNews($db){
 	try{
 		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_news");
@@ -190,7 +189,6 @@ function showNews($db){
 	return $num;
 }
 
-/* Pagination */
 function pagination($resultCount, $contentNum, $page = ''){
 	$maxShownPages = 6;
 	$countPages = ($resultCount/$contentNum);
@@ -248,6 +246,11 @@ function pagination($resultCount, $contentNum, $page = ''){
 		</div>";
 	}
 }
+
+
+
+
+
 
 /* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/
 function getPageNameAndLink($db){

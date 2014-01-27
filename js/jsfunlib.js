@@ -29,6 +29,11 @@ $(document).ready(function(){
 	});
 });
 
+// function for zebra table style (IE8 штоб ты сдох!!)
+$(document).ready(function(){
+	$('table tr:nth-of-type(2n)').css('background-color', '#fff');
+});
+
 function showDiv(chb1, div, chb2, form){
 	var cke = $('.ckeditor').attr('name');
 	if('checked' === $(chb1).attr('checked')){
