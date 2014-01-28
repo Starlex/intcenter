@@ -190,10 +190,14 @@ fieldset{
 	.breadcrumbs{
 		/*outline: 1px solid;*/
 		display: block;
-		font-size: 13px;
+		color: #aeaeae;
+		font-size: 11px;
 		padding-left: 20px;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
+		.breadcrumbs a, .breadcrumbs span{
+			color: #fd768e;
+		}
 
 	.container{
 		/*outline: 1px solid;*/
