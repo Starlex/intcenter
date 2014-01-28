@@ -26,7 +26,8 @@ catch(PDOException $e){
 			<span class="phone"><?=$contacts['phone']?></span>
 			<address><?=$contacts['address']?></address>
 		</div>
+		<div class="empty"></div>
 		<?php
 		drawVerticalMenu($db);
-		drawHorizontalMenu($dontDrawHMenu);
+		drawHorizontalMenu($drawHMenu);
 		?>

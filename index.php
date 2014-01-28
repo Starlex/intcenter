@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
-$dontDrawProgMenu = false;
-$dontDrawHMenu = false;
+$drawProgMenu = true;
+$drawHMenu = true;
 
 if(isset($_GET['page'])){
 	if(0 === strpos($_GET['page'], '/admin')){
@@ -16,7 +16,7 @@ if(isset($_GET['page'])){
 	elseif('/login/' === $_GET['page'] or '/logout/' === $_GET['page']){
 		require_once 'pages/loginout.php';
 	}
-	elseif('/news/' === $_GET['page']){
+	elseif(0 === strpos($_GET['page'], '/news')){
 		require_once 'block/top.php';
 		require_once 'pages/news.php';
 		require_once 'block/bottom.php';

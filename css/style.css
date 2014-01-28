@@ -112,6 +112,11 @@ fieldset{
 			line-height: 19px;
 			margin-top: 5px;
 		}
+	.empty{
+		display: block;
+		height: 150px;
+		margin: 0;
+	}
 	/* VERTICAL AND HORIZONTAL MENU'S */
 	.v-menu, .h-menu{
 	font-family: 'Arial';
@@ -124,9 +129,9 @@ fieldset{
 	.v-menu{
 		font-size: 14px;
 		left: 20px;
+		margin-bottom: 75px;
 		text-align: center;
 		text-transform: uppercase;
-		top: 160px;
 		z-index: 100;
 	}
 	.v-menu ul li{
@@ -152,12 +157,12 @@ fieldset{
 	/* HORIZONTAL MENU */
 	.h-menu{
 		font-size: 13px;
-		left: 20px;
-		top: 220px;
+		left: 40px;
+		margin-bottom: 30px;
 	}
 		.h-menu ul li{
 			display: inline-block;
-			margin: 0 23px 0 0;
+			margin: 0 13px 0 0;
 			vertical-align: top;
 		}
 		.h-menu ul li:first-child{
@@ -182,11 +187,19 @@ fieldset{
 					margin-bottom: 10px;
 				}
 
+	.breadcrumbs{
+		/*outline: 1px solid;*/
+		display: block;
+		font-size: 13px;
+		padding-left: 20px;
+		margin-bottom: 30px;
+	}
+
 	.container{
 		/*outline: 1px solid;*/
 		display: block;
 		overflow: hidden;
-		margin: 250px 20px 20px;
+		margin: 0 20px 20px;
 	}
 		/* MENU FOR PROGRAMS */
 		.prog-menu{
@@ -302,22 +315,22 @@ fieldset{
 			.content h3{
 				text-transform: uppercase;
 			}
-		/* view news page */
-		.container h2{
-			margin: 15px 0 5px;
-		}
-		.date{
-			color: #B6B8B9;
-			display: block;
-			font-family: 'Tahoma';
-			font-size: 12px;
-			margin-bottom: 15px;
-		}
-		.annotation{
-			display: block;
-			font-style: italic;
-			margin-bottom: 15px;
-		}
+			/* view news page */
+			.content h2{
+				margin: 15px 0 10px;
+			}
+			.date{
+				color: #B6B8B9;
+				display: block;
+				font-family: 'Tahoma';
+				font-size: 12px;
+				margin-bottom: 20px;
+			}
+			.annotation{
+				display: block;
+				font-style: italic;
+				margin-bottom: 20px;
+			}
 	.bottom{
 		background-color: #13549A;
 		color: #FFFFFF;
