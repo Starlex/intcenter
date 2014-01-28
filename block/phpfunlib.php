@@ -71,6 +71,33 @@ function drawVerticalMenu($db, $isAdmin=0){
 	"\n\t\t", "</div>\n";
 }
 
+function drawHorizontalMenu($dontDraw = false){
+	if(true === $dontDraw){
+		return false;
+	}
+	echo "		<div class='h-menu'>
+			<ul>
+				<li>
+					<a href='learn-language/'><img src='../../../../img/foreign_lang.png' alt='Изучение иностранных языков'>
+					Изучение иностранных&nbsp;языков</a>
+				</li>
+				<li>
+					<a href='visa-support/'><img src='../../../../img/visa_support.png' alt='Визовая поддержка'>Визовая поддержка</a>
+				</li>
+				<li>
+					<a href='summer-schools/'><img src='../../../../img/lang_schools.png' alt='Летние и зимние языковые школы'>Летние и зимние языковые школы</a>
+				</li>
+				<li>
+					<a href='prof-internships/'><img src='../../../../img/prof_internships.png' alt='Профессиональные стажеровки за рубежом'>Профессиональные стажировки за рубежом</a>
+				</li>
+				<li>
+					<a href='translate-documents/'><img src='../../../../img/doc_translate.png' alt='Перевод документов'>Перевод документов</a>
+				</li>
+			</ul>
+		</div>";
+	return true;
+}
+
 /* function for creating programs menu */
 function drawProgramsMenu($db, $dontDraw=false){
 	if(true === $dontDraw){
@@ -173,6 +200,7 @@ function showNews($db){
 	}
 	(!isset($_GET['page'])) ? $page = 0 : $page = (int)str_replace('/', '', $_GET['page'])-1;
 	$firstNews = $page*4+1;
+	echo '<h3>Новости</h3>';
 	foreach ($row as $news) {
 		if($news['id'] >= $firstNews and $news['id'] <= $firstNews+3){
 			echo "<div class='news'>

@@ -25,9 +25,9 @@ fieldset{
 		font-size: 20px;
 	}
 
-/*############################   MAIN STRUCTURE OF SITE   ############################*/
+/*############################   STRUCTURE OF SITE   ############################*/
 .head{
-	background-image: url(../img/headtop.png);
+	background-image: url(../../../../img/headtop.png);
 	background-position: center top;
 	background-repeat: no-repeat;
 	/*display: none; */
@@ -38,7 +38,7 @@ fieldset{
 	z-index: 99;
 }
 	.logo{
-		background-image: url(../img/logo.png);
+		background-image: url(../../../../img/logo.png);
 		background-position: center top;
 		background-repeat: no-repeat;
 		height: 168px;
@@ -54,10 +54,11 @@ fieldset{
 		}
 .maindiv{
 	font-family: 'Arial';
-	background-image: url(../img/headfon.png);
+	background-image: url(../../../../img/headfon.png);
 	background-position: center top;
 	background-repeat: no-repeat;
 	margin: 0 auto;
+	padding: 0 20px;
 	position: relative;
 	width: 1000px;
 	overflow: hidden;
@@ -68,11 +69,11 @@ fieldset{
 		width: 10px;
 	}
 	.shadowleft{
-		background-image: url(../img/shadowleft.png);
+		background-image: url(../../../../img/shadowleft.png);
 		left: 0;
 	}
 	.shadowright{
-		background-image: url(../img/shadowright.png);
+		background-image: url(../../../../img/shadowright.png);
 		right: 0;
 	}
 	.orgname{
@@ -110,18 +111,196 @@ fieldset{
 			font-size: 13px;
 			font-style: normal;
 			line-height: 18px;
-			margin-top: 5px;
+			/*margin-top: 5px;*/
 		}
-	.container{
-		display: inline-block;
-		float: left;
-		margin: 270px 10px 20px 20px;
-		width: 720px;
+	/* VERTICAL AND HORIZONTAL MENU'S */
+	.v-menu, .h-menu{
+	font-family: 'Arial';
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
 	}
-		.container h3{
-			text-transform: uppercase;
+	/* VERTICAL MENU */
+	.v-menu{
+		font-size: 14px;
+		left: 20px;
+		text-align: center;
+		text-transform: uppercase;
+		top: 160px;
+		z-index: 100;
+	}
+	.v-menu ul li{
+		background: url(../../../../img/menu_bg.png);
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		margin: 10px 0;
+		max-width: 140px
+	}
+	.v-menu ul li.active{
+		background: url(../../../../img/menu_selected.png);
+	}
+	.v-menu ul li:hover{
+		background: url(../../../../img/menu_hover.png);
+	}
+		.v-menu a{
+			color: #FFFFFF;
+			display: block;
+			padding: 8px 0;
+			text-decoration: none;
 		}
-	/* view news page */
+	/* HORIZONTAL MENU */
+	.h-menu{
+		font-size: 13px;
+		top: 220px;
+	}
+		.h-menu ul li{
+			display: inline-block;
+			margin: 0 33px 0 0;
+			vertical-align: top;
+		}
+		.h-menu ul li:first-child{
+			margin-left: 0;
+		}
+		.h-menu ul li:last-child{
+			margin-right: 0;
+		}
+			.h-menu a{
+				color: #2281F4;
+				display: block;
+				font-weight: bold;
+				width: 170px;
+				height: 150px;
+				padding: 5px 0;
+				text-align: center;
+			}
+				.h-menu ul li img{
+					border-radius: 5px;
+					-moz-border-radius: 5px;
+					-webkit-border-radius: 5px;
+					margin-bottom: 10px;
+				}
+
+	.container{
+		outline: 1px solid;
+		display: block;
+		overflow: hidden;
+		margin: 250px 0 20px 0;
+		width: 100%;
+	}
+		/* MENU FOR PROGRAMS */
+		.prog-menu{
+			outline: 1px solid;
+			display: inline-block;
+			float: left;
+			margin: 0;
+			width: 210px;
+		}
+			.prog-menu>ul>li{
+				background-color: #FFFFFF;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				font-family: 'times';
+				margin: 10px 0;
+				position: relative;
+			}
+				.prog-menu>ul>li>span{
+					background-color: #2167EA;
+					border-radius: 5px;
+					-moz-border-radius: 5px;
+					-webkit-border-radius: 5px;
+					display: table-cell;
+					cursor: pointer;
+					color: #FFFFFF;
+					font-size: 13px;
+					height: 60px;
+					padding: 0 0 0 20px;
+					position: relative;
+					vertical-align: middle;
+					width: 1000px;
+				}
+					.prog-menu li span span.big{
+						display: block;
+						text-transform: uppercase;
+					}
+					.prog-menu li span small{
+						display: block;
+						text-transform: lowercase;
+						margin-right: 30px;
+					}
+					.prog-menu li span img{
+						display: block;
+						float: right;
+						top: 24px;
+						right: 15px;
+						position: absolute;
+					}
+				.prog-menu li ul{
+					border-radius: 0 0 5px 5px;
+					-moz-border-radius: 0 0 5px 5px;
+					-webkit-border-radius: 0 0 5px 5px;
+					box-shadow: 0px 6px 6px rgba(44, 16, 1, 0.3);
+					display: none;
+					margin-bottom: 25px;
+				}
+				.prog-menu li ul li{
+					background-color: #FFFFFF;
+					border-bottom: 1px solid #D8D8D8;
+					font-family: Tahoma, sans-serif;
+				}
+				.prog-menu li ul li:last-child{
+					border-bottom: 0;
+					border-radius: 0 0 5px 5px;
+					-moz-border-radius: 0 0 5px 5px;
+					-webkit-border-radius: 0 0 5px 5px;
+				}
+					.prog-menu ul li a{
+						position: relative;
+						color: #000;
+						display: block;
+						line-height: 100%;
+						text-decoration: none;
+					}
+					.prog-menu ul li a span{
+						background-color: #2167EA;
+						border-radius: 10px;
+						-moz-border-radius: 10px;
+						-webkit-border-radius: 10px;
+						color: #FFF;
+						font-size: 15px;
+						height: 20px;
+						line-height: 18px;
+						margin: auto 0;
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: 10px;
+						text-align: center;
+						width: 20px;
+					}
+					.prog-menu ul li a small{
+						display: block;
+						font-size: 11px;
+						margin-left: 40px;
+						margin-right: 10px;	
+						padding-top: 10px;
+					}
+					.prog-menu ul li a b{
+						display: block;
+						font-size: 11px;
+						padding-right: 5px;
+						margin-left: 40px;
+						margin-right: 10px;
+						padding-bottom: 10px;
+					}
+		.content{
+			outline: 1px solid;
+			float: left;
+			margin: 0;
+		}
+		/* view news page */
 		.container h2{
 			margin: 15px 0 5px;
 		}
@@ -139,7 +318,6 @@ fieldset{
 		}
 	.bottom{
 		background-color: #13549A;
-		bottom: -7px;
 		color: #FFFFFF;
 		height: 70px;
 		margin: 0;
@@ -148,8 +326,8 @@ fieldset{
 		overflow: hidden;
 	}
 		.leftpart, .rightpart{
-			font-size: 13px;
-			margin-top: 17px;
+			font-size: 11px;
+			margin-top: 20px;
 			position: absolute;
 		}
 		.leftpart{
@@ -274,179 +452,8 @@ table{
 			}
 
 /*############################   MENU'S   ############################*/
-.v-menu, .h-menu{
-	font-family: 'Arial';
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
-/* VERTICAL MENU */
-.v-menu{
-	font-size: 14px;
-	left: 20px;
-	text-align: center;
-	text-transform: uppercase;
-	top: 160px;
-	z-index: 100;
-}
-.v-menu ul li{
-	background: url(../../../../img/menu_bg.png);
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	margin: 10px 0;
-	max-width: 140px
-}
-.v-menu ul li:hover{
-	background: url(../../../../img/menu_hover.png);
-}
-	.v-menu a{
-		color: #FFFFFF;
-		display: block;
-		padding: 8px 0;
-		text-decoration: none;
-	}
-.v-menu ul li.active{
-	background: url(../../../../img/menu_selected.png);
-}
-/* HORIZONTAL MENU */
-.h-menu{
-	font-size: 13px;
-	left: 20px;
-	top: 250px;
-}
-	.h-menu ul li{
-		display: inline-block;
-		margin: 0 23px 0 0;
-		vertical-align: top;
-	}
-	.h-menu ul li:first-child{
-		margin-left: 0;
-	}
-	.h-menu ul li:last-child{
-		margin-right: 0;
-	}
-		.h-menu a{
-			color: #2281F4;
-			display: block;
-			font-weight: bold;
-			width: 170px;
-			height: 150px;
-			padding: 5px 0;
-			text-align: center;
-		}
-			.h-menu ul li img{
-				border-radius: 5px;
-				-moz-border-radius: 5px;
-				-webkit-border-radius: 5px;
-				margin-bottom: 10px;
-			}
-/* MENU FOR PROGRAMS */
-.prog-menu{
-	display: inline-block;
-	float: left;
-	margin: 270px 0 0 20px;
-	width: 210px;
-}
-	.prog-menu>ul>li{
-		background-color: #FFFFFF;
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		font-family: 'times';
-		margin: 10px 0;
-		position: relative;
-	}
-		.prog-menu>ul>li>span{
-			background-color: #2167EA;
-			border-radius: 5px;
-			-moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-			display: table-cell;
-			cursor: pointer;
-			color: #FFFFFF;
-			font-size: 13px;
-			height: 60px;
-			padding: 0 0 0 20px;
-			position: relative;
-			vertical-align: middle;
-			width: 1000px;
-		}
-			.prog-menu li span span.big{
-				display: block;
-				text-transform: uppercase;
-			}
-			.prog-menu li span small{
-				display: block;
-				text-transform: lowercase;
-				margin-right: 30px;
-			}
-			.prog-menu li span img{
-				display: block;
-				float: right;
-				top: 24px;
-				right: 15px;
-				position: absolute;
-			}
-		.prog-menu li ul{
-			border-radius: 0 0 5px 5px;
-			-moz-border-radius: 0 0 5px 5px;
-			-webkit-border-radius: 0 0 5px 5px;
-			box-shadow: 0px 6px 6px rgba(44, 16, 1, 0.3);
-			display: none;
-			margin-bottom: 25px;
-		}
-		.prog-menu li ul li{
-			background-color: #FFFFFF;
-			border-bottom: 1px solid #D8D8D8;
-			font-family: Tahoma, sans-serif;
-		}
-		.prog-menu li ul li:last-child{
-			border-bottom: 0;
-			border-radius: 0 0 5px 5px;
-			-moz-border-radius: 0 0 5px 5px;
-			-webkit-border-radius: 0 0 5px 5px;
-		}
-			.prog-menu ul li a{
-				position: relative;
-				color: #000;
-				display: block;
-				line-height: 100%;
-				text-decoration: none;
-			}
-			.prog-menu ul li a span{
-				background-color: #2167EA;
-				border-radius: 10px;
-				-moz-border-radius: 10px;
-				-webkit-border-radius: 10px;
-				color: #FFF;
-				font-size: 15px;
-				height: 20px;
-				line-height: 18px;
-				margin: auto 0;
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: 10px;
-				text-align: center;
-				width: 20px;
-			}
-			.prog-menu ul li a small{
-				display: block;
-				font-size: 11px;
-				margin-left: 40px;
-				margin-right: 10px;	
-				padding-top: 10px;
-			}
-			.prog-menu ul li a b{
-				display: block;
-				font-size: 11px;
-				padding-right: 5px;
-				margin-left: 40px;
-				margin-right: 10px;
-				padding-bottom: 10px;
-			}
+
+
 
 /*##################################   FORM ELEMENTS   ###############################*/
 label{

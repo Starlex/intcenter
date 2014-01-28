@@ -9,7 +9,8 @@ catch(PDOException $e){
 	showMsg('Внутренняя ошибка сервера');
 }
 ?>
-<div title="Наверх" class="up-btn"></div>
+
+	<div title="Наверх" class="up-btn"></div>
 	<div class="head">
 		<div class="logo">
 			<a href="http://<?=$_SERVER['SERVER_NAME']?>"></a>
@@ -25,25 +26,7 @@ catch(PDOException $e){
 			<span class="phone"><?=$contacts['phone']?></span>
 			<address><?=$contacts['address']?></address>
 		</div>
-		<?php drawVerticalMenu($db); ?>
-		<div class='h-menu'>
-			<ul>
-				<li>
-					<a href='learn-language/'><img src='../../../../img/foreign_lang.png' alt='Изучение иностранных языков'>
-					Изучение иностранных&nbsp;языков</a>
-				</li>
-				<li>
-					<a href='visa-support/'><img src='../../../../img/visa_support.png' alt='Визовая поддержка'>Визовая поддержка</a>
-				</li>
-				<li>
-					<a href='summer-schools/'><img src='../../../../img/lang_schools.png' alt='Летние и зимние языковые школы'>Летние и зимние языковые школы</a>
-				</li>
-				<li>
-					<a href='prof-internships/'><img src='../../../../img/prof_internships.png' alt='Профессиональные стажеровки за рубежом'>Профессиональные стажировки за рубежом</a>
-				</li>
-				<li>
-					<a href='translate-documents/'><img src='../../../../img/doc_translate.png' alt='Перевод документов'>Перевод документов</a>
-				</li>
-			</ul>
-		</div>
-		<?php drawProgramsMenu($db, $dontDraw);?>
+		<?php
+		drawVerticalMenu($db);
+		drawHorizontalMenu($dontDrawHMenu);
+		?>
