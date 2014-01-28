@@ -58,7 +58,6 @@ fieldset{
 	background-position: center top;
 	background-repeat: no-repeat;
 	margin: 0 auto;
-	padding: 0 20px;
 	position: relative;
 	width: 1000px;
 	overflow: hidden;
@@ -98,20 +97,20 @@ fieldset{
 		font-size: 14px;
 		text-align: right;
 		right: 20px;
-		top: 155px;
+		top: 150px;
 		width: 160px;
 		z-index: 100;
 	}
 		.phone{
-			font-size: 24px;
+			font-size: 25px;
 			font-weight: bold;
 		}
 		address{
 			font-family: 'Arial';
 			font-size: 13px;
 			font-style: normal;
-			line-height: 18px;
-			/*margin-top: 5px;*/
+			line-height: 19px;
+			margin-top: 5px;
 		}
 	/* VERTICAL AND HORIZONTAL MENU'S */
 	.v-menu, .h-menu{
@@ -153,11 +152,12 @@ fieldset{
 	/* HORIZONTAL MENU */
 	.h-menu{
 		font-size: 13px;
+		left: 20px;
 		top: 220px;
 	}
 		.h-menu ul li{
 			display: inline-block;
-			margin: 0 33px 0 0;
+			margin: 0 23px 0 0;
 			vertical-align: top;
 		}
 		.h-menu ul li:first-child{
@@ -183,18 +183,16 @@ fieldset{
 				}
 
 	.container{
-		outline: 1px solid;
+		/*outline: 1px solid;*/
 		display: block;
 		overflow: hidden;
-		margin: 250px 0 20px 0;
-		width: 100%;
+		margin: 250px 20px 20px;
 	}
 		/* MENU FOR PROGRAMS */
 		.prog-menu{
-			outline: 1px solid;
-			display: inline-block;
+			/*outline: 1px solid;*/
 			float: left;
-			margin: 0;
+			margin: 0 40px 0 0;
 			width: 210px;
 		}
 			.prog-menu>ul>li{
@@ -296,10 +294,14 @@ fieldset{
 						padding-bottom: 10px;
 					}
 		.content{
-			outline: 1px solid;
+			/*outline: 1px solid;*/
 			float: left;
 			margin: 0;
+			width: 710px;
 		}
+			.content h3{
+				text-transform: uppercase;
+			}
 		/* view news page */
 		.container h2{
 			margin: 15px 0 5px;
@@ -342,10 +344,11 @@ fieldset{
 			color: #FFFFFF;
 		}
 .news{
+	display: block;
 	font-family: 'tahoma';
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	overflow: hidden;
-	width: 690px;
+	/*width: 690px;*/
 }
 	.news img{
 		border: 2px solid #A2A2A2;
@@ -379,6 +382,7 @@ fieldset{
 		}
 div.news+hr{
 	border: 1px solid #C9D1D6;
+	margin: 20px 0;
 }
 /*DIV FOR LOGIN ELEMENTS*/
 .login{

@@ -1,7 +1,6 @@
 
 		<div class="container">
 			<?php drawProgramsMenu($db, $dontDrawProgMenu);?>
-			
 			<div class="content">
 				<?php
 				$num = showNews($db);

@@ -273,6 +273,10 @@ function pagination($resultCount, $contentNum, $page = ''){
 			</ul>
 		</div>";
 	}
+	else{
+		return false;
+	}
+	return true;
 }
 
 
