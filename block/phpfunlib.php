@@ -125,10 +125,10 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 				FROM intcenter_prog_categories ipc
 				LEFT JOIN intcenter_programs ip
 				ON ipc.id=ip.cat_id
-				WHERE $pCat[id]=ip.cat_id";
+				WHERE ip.cat_id=?";
 		try{
 			$query = $db->prepare($sql);
-			$query->execute();
+			$query->execute(array($pCat['id']));
 			$num = $query->fetchColumn();	
 		}
 		catch(PDOException $e){
@@ -202,7 +202,7 @@ function showNews($db){
 				<img src='$news[img]' alt='Изображение'>
 				<div>
 					<small>".date('d.m.Y', $news['date'])."</small>
-					<a href='/news-$news[date]/'>$news[name]</a>
+					<a href='/news/$news[date]/'>$news[name]</a>
 					<span>$news[annotation]</span>
 				</div>
 			</div>
@@ -273,6 +273,65 @@ function pagination($resultCount, $contentNum, $page = ''){
 	}
 	return true;
 }
+
+function breadcrumbs($db, $url, $tbl_name){
+	if(!isset($_GET['page'])){
+		return false;
+	}
+	else{
+		$page = $_GET['page'];
+	}
+	(!isset($_GET['var1'])) ? $var1 = '' : $var1 = $_GET['var1'];
+	$crumbs = explode('/', $url);
+	$count = count($crumbs)-1;
+
+	echo '<div class="breadcrumbs">';
+	if('/news/' === $page){
+		try{
+			$query = $db->prepare("SELECT date FROM intcenter_news WHERE date=?");
+			$query->execute(array($var1));
+			$data = $query->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e){
+			header('Location: /error/');
+		}
+		echo '<a href="/">Главная</a> ';
+		echo ' <span>&gt;</span> ';
+		echo date('d.m.Y', $data['date']);
+	}
+	else{
+		try{
+			$query = $db->prepare("SELECT * FROM $tbl_name WHERE link=?");
+			$query->execute(array($page));
+			$data = $query->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e){
+			// header('Location: /error/');
+			echo $e->getMessage();
+		}
+		for ($i=0; $i < $count; $i++) { 
+			if(0 === $i){
+				echo '<a href="/">Главная</a> ';
+				echo ' <span>&gt;</span> ';
+			}
+			elseif($count-1 === $i){
+				echo $data['name'];
+			}
+			else{
+				echo "<a href='/$crumbs[$i]/'>$crumbs[$i]</a>";
+				echo ' <span>&gt;</span> ';
+			}
+		}
+	}
+	echo '</div>';
+}
+
+
+
+
+
+
+
 
 
 

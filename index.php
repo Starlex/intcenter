@@ -16,7 +16,7 @@ if(isset($_GET['page'])){
 	elseif('/login/' === $_GET['page'] or '/logout/' === $_GET['page']){
 		require_once 'pages/loginout.php';
 	}
-	elseif(0 === strpos($_GET['page'], '/news')){
+	elseif('/news/' === $_GET['page']){
 		require_once 'block/top.php';
 		require_once 'pages/news.php';
 		require_once 'block/bottom.php';

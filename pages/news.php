@@ -1,35 +1,15 @@
 <?php
-$news = explode('-', $_GET['page']);
+$date = (int)$_GET['var1'];
 try{
-	$query = $db->prepare("SELECT * FROM intcenter_news WHERE date='$news[1]'");
-	$query->execute();
-	$query->setFetchMode(PDO::FETCH_ASSOC);
-	$data = $query->fetch();
+	$query = $db->prepare("SELECT * FROM intcenter_news WHERE date=?");
+	$query->execute(array($date));
+	$data = $query->fetch(PDO::FETCH_ASSOC);
 }
 catch(PDOException $e){
 	header('Location: /error/');
 }
 $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-$crumbs = explode('/', $url);
-$count = count($crumbs)-1;
-
-echo '<div class="breadcrumbs">';
-
-for ($i=0; $i < $count; $i++) { 
-	if(0 === $i){
-		echo '<a href="/">Главная</a> ';
-		echo '<span>&gt;</span>';
-	}
-	elseif($count-1 === $i){
-		echo date("d.m.Y", $data['date']);
-	}
-	else{
-		echo $crumbs[$i];
-		echo '<span>&gt;</span>';
-	}
-}
-
-echo '</div>';
+breadcrumbs($db, $url, 'intcenter_news');
 ?>
 
 <div class="container">
