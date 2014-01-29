@@ -6,7 +6,6 @@ try{
 	$db->exec('set names utf8');
 }
 catch(PDOException $e){
-	echo '<h1>Ошибка сервера. Попробуйте позже</h2>';
-	exit;
+	header('Location: /error/');
 }
 ?>

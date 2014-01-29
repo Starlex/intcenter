@@ -22,6 +22,9 @@ if(isset($_GET['page'])){
 		require_once 'block/bottom.php';
 
 	}
+	elseif('/error/' === $_GET['page']){
+		require_once 'pages/error.php';
+	}
 	else{
 		require_once 'block/top.php';
 		require_once 'pages/main.php';

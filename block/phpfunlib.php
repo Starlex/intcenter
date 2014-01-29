@@ -1,22 +1,22 @@
 <?php
-/* show errors */
-function showMsg($string, $link='', $text='Назад'){
-	if('' !== $link){
-		$anchor = "<a href='$link'>$text</a>";
-	}
-	else{
-		$anchor = '';
+/* show errors MAYBE I'LL RETURN TO IT AND CREATE SOME USEFUL FUNCTIONAL */
+function showErr($string, $link='', $text='Назад'){
+	if('' === $link){
+		$text = '';
 	}
 	?>
-	<p>
-		<b class='req'><?=$string?></b>
-	</p>
-	<?=$anchor?>
-</div>
+	<form name='errData' action="/error/" method="post">
+		<input type="hidden" name="msg" value='<?=$string?>'>
+		<input type="hidden" name="link" value='<?=$link?>'>
+		<input type="hidden" name="text" value='<?=$text?>'>
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			document.forms.errData.submit();
+		});
+	</script>
 	<?php
-	require_once 'block/bottom.php';
-	require_once 'block/footer.php';
-	exit;
+	// Чувствую себя извращенцем, пихая JavaScript в PHP-функцию
 }
 
 /* Change cyrillic symbols to latin */
@@ -59,8 +59,7 @@ function drawVerticalMenu($db, $isAdmin=0){
 		$pages = $query->fetchAll();        
 	}
 	catch(PDOException $e){
-		echo "Error 500 - Internal server error";
-		exit;
+		header('Location: /error/');
 	}
 	echo "<div class='v-menu'>",
 	"\n\t\t\t", "<ul>";
@@ -115,8 +114,7 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 		$progs = $query->fetchAll();
 	}
 	catch(PDOException $e){
-		echo "Error 500 - Internal server error";
-		exit;
+		header('Location: /error/');
 	}
 	echo "<div class='prog-menu'>
 			<h3>Программы обучения</h3>
@@ -134,8 +132,7 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 			$num = $query->fetchColumn();	
 		}
 		catch(PDOException $e){
-			echo "Error 500 - Internal server error";
-			exit;
+			header('Location: /error/');
 		}
 		if($num > 0){
 			echo "
@@ -178,8 +175,7 @@ function showNews($db){
 		$num = $query->fetchColumn();
 	}
 	catch(PDOException $e){
-		echo "Error 500 - Internal server error";
-		exit;
+		header('Location: /error/');
 	}
 	if(0 === $num){
 		echo "	Новостей нет
@@ -195,8 +191,7 @@ function showNews($db){
 		$row = $query->fetchAll();
 	}
 	catch(PDOException $e){
-		echo "Error 500 - Internal server error";
-		exit;
+		header('Location: /error/');
 	}
 	(!isset($_GET['page'])) ? $page = 0 : $page = (int)str_replace('/', '', $_GET['page'])-1;
 	$firstNews = $page*4+1;
@@ -305,8 +300,7 @@ function getPageNameAndLink($db){
 		return $page;
 	}
 	catch(PDOException $e){
-		echo '<h1>Internal server error</h1>';
-		exit;
+		header('Location: /error/');
 	}
 }
 
@@ -320,8 +314,7 @@ function getPageContent($db, $pageData){
 		return $row['page_content'];
 	}
 	catch(PDOException $e){
-		echo '<h1>Internal server error</h1>';
-		exit;
+		header('Location: /error/');
 	}
 }
 
@@ -334,8 +327,7 @@ function getPagesList($db){
 		$row_pages = $query->fetchAll();
 	}
 	catch(PDOException $e){
-		echo '<h1>Internal server error</h1>';
-		exit;
+		header('Location: /error/');
 	}
 	echo '<option value="" selected> - - - - - - - Не выбрано - - - - - - - </option>';
 	foreach($row_pages as $page){
@@ -357,8 +349,7 @@ function getSubpagesList($db){
 		$row_sub_pages = $query->fetchAll();
 	}
 	catch(PDOException $e){
-		echo '<h1>Internal server error</h1>';
-		exit;
+		header('Location: /error/');
 	}
 	echo '<option value="" selected> - - - - - - - Не выбрано - - - - - - - </option>';
 	foreach($row_sub_pages as $sub_page){

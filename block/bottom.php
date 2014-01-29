@@ -3,10 +3,10 @@ try{
 	$query = $db->prepare("SELECT * FROM intcenter_contacts");
 	$query->execute();
 	$query->setFetchMode(PDO::FETCH_ASSOC);
-	$contacts = $query->fetch();	
+	$contacts = $query->fetch();
 }
 catch(PDOException $e){
-	showMsg('Внутренняя ошибка сервера');
+	header('Location: /error/');
 }
 ?>
 	<div class="bottom">
@@ -15,7 +15,7 @@ catch(PDOException $e){
 			<p>Все права защищены.</p>
 		</div>
 		<div class="rightpart">
-			+7 (3466) 45 76 10
-			<p><a href="mailto:nvsu.intercenter@gmail.com">nvsu.intercenter@gmail.com</a></p>
+			+7 <?=$contacts['phone_code']?> <?=$contacts['phone']?>
+			<p><a href="mailto:<?=$contacts['email']?>"><?=$contacts['email']?></a></p>
 		</div>
 	</div>

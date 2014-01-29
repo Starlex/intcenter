@@ -6,7 +6,7 @@ try{
 	$contacts = $query->fetch();	
 }
 catch(PDOException $e){
-	showMsg('Внутренняя ошибка сервера');
+	header('Location: /error/');
 }
 ?>
 
