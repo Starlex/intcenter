@@ -5,7 +5,6 @@ require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
 $drawProgMenu = true;
-$drawHMenu = true;
 
 if(isset($_GET['page'])){
 	if(0 === strpos($_GET['page'], '/admin')){

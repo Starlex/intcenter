@@ -50,9 +50,12 @@ function cyrillic2latin($str){
 	return strtr($str, $converter);
 }
 
-/* function for creating vertical menu */
 function drawVerticalMenu($db, $isAdmin=0){
 	try{
+		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_pages WHERE isAdmin=?");
+		$query->execute(array($isAdmin));
+		$num = $query->fetch(PDO::FETCH_COLUMN);   
+
 		$query = $db->prepare("SELECT link, name FROM intcenter_pages WHERE isAdmin=?");
 		$query->execute(array($isAdmin));
 		$pages = $query->fetchAll(PDO::FETCH_ASSOC);        
@@ -60,19 +63,22 @@ function drawVerticalMenu($db, $isAdmin=0){
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
-	echo "<div class='v-menu'>",
-	"\n\t\t\t", "<ul>";
-		foreach ($pages as $page):
-			echo "\n\t\t\t\t", "<li><a href='$page[link]'>$page[name]</a></li>";
-		endforeach;
-	echo "\n\t\t\t", "</ul>",
-	"\n\t\t", "</div>\n";
-}
-
-function drawHorizontalMenu($drawHMenu = true){
-	if(!$drawHMenu){
+	if(0 === $num){
 		return false;
 	}
+	(!isset($_GET['page'])) ? $page_link = '' : $page_link = $_GET['page'];
+	echo "<div class='v-menu'>",
+	"\n\t\t\t", "<ul>";
+		foreach ($pages as $page){
+			($page['link'] === $page_link) ? $active = ' class="active"' : $active = '';
+			echo "\n\t\t\t\t", "<li$active><a href='$page[link]'>$page[name]</a></li>";
+		}
+	echo "\n\t\t\t", "</ul>",
+	"\n\t\t", "</div>\n";
+	return true;
+}
+
+function drawHorizontalMenu(){
 	echo "		<div class='h-menu'>
 			<ul>
 				<li>
@@ -321,42 +327,37 @@ function breadcrumbs($db, $url){
 	echo '</div>';
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Get page name and link from DB (NOT USED IN THIS PROJECT YET)*/
-function getPageNameAndLink($db){
-	$page = array('link' => '/glavnaya/', 'name' => '', 'tbl_name' => 'tbl_pages');
+function getPageName($db){
+	$link = '';
 	if(isset($_GET['page'])):
-		$page['link'] = $_GET['page'];
-		$page['tbl_name'] = 'tbl_pages';
-	endif;
-	if(isset($_GET['var1'])):
-		$page['link'] .= $_GET['var1'];
-		$page['tbl_name'] = 'tbl_sub_pages';
-		$page['link'] = substr($page['link'], strpos($page['link'], '/', 1)+1);
+		$link = $_GET['page'];
 	endif;
 	try{
-		$query = $db->prepare("SELECT name FROM $page[tbl_name] WHERE link=?");
-		$query->execute(array($page['link']));
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$row = $query->fetch();
-		$page['name'] = $row['name'];
+		$query = $db->prepare("SELECT name FROM intcenter_pages WHERE link=?");
+		$query->execute(array($link));
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+		$page = $row['name'];
 		return $page;
 	}
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Get page content from DB (NOT USED IN THIS PROJECT YET)*/
 function getPageContent($db, $pageData){

@@ -48,6 +48,11 @@ function showDiv(chb1, div, chb2, form){
 	}
 }
 
+// function for showing add forms
+$(document).ready(function(){
+	$('#news')
+});
+
 // this function used in updating pages.
 // It fills name of page and page content accourdingly to selected page.
 $(document).ready(function(){

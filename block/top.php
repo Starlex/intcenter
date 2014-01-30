@@ -28,6 +28,6 @@ catch(PDOException $e){
 		<div class="empty"></div>
 		<?php
 		drawVerticalMenu($db);
-		drawHorizontalMenu($drawHMenu);
+		drawHorizontalMenu();
 		
 		?>

@@ -12,19 +12,21 @@ form abbr{
 	color: #20B2AA;
 	font-weight: bold;
 }
-fieldset{
-	background-color: #fff;
-	border: 0px;
-	border-radius: 20px;
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
+div.login{
 	margin: 250px auto 0;
-	padding: 20px;
-	width: 550px;
+	width: 600px;
 }
-	legend{
-		font-size: 20px;
+	fieldset{
+		background-color: #fff;
+		border-radius: 20px;
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		border: 0px;
+		padding: 20px;
 	}
+		legend{
+			font-size: 20px;
+		}
 
 /*############################   STRUCTURE OF SITE   ############################*/
 .head{
@@ -142,7 +144,7 @@ fieldset{
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		margin: 10px 0;
-		max-width: 140px
+		width: 140px;
 	}
 	.v-menu ul li.active{
 		background: url(../../../../img/menu_selected.png);
@@ -474,14 +476,10 @@ table{
 				margin: 0;
 			}
 
-/*############################   MENU'S   ############################*/
-
-
-
 /*##################################   FORM ELEMENTS   ###############################*/
 label{
-	display: block;
-	margin: 15px 0;
+	display: inline-block;
+	margin: 0 10px 10px 0;
 	padding: 5px;
 }
 	label>span{
@@ -513,6 +511,7 @@ label{
 		width: 100%;
 	}
 .button_panel{
+	display: none;
 	margin-left: 220px;
 }
 	.button{
