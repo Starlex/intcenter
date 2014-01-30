@@ -48,9 +48,17 @@ function showDiv(chb1, div, chb2, form){
 	}
 }
 
-// function for showing add forms
+// function for showing add form
 $(document).ready(function(){
-	$('#news')
+	$('input[type="radio"]').click(function(){
+		if(this.checked){
+			$('#addNewsForm').fadeIn();
+		}
+		else{
+			$('#addNewsForm').fadeOut();
+		}
+	});
+	console.log($('#addNews').checked);
 });
 
 // this function used in updating pages.
