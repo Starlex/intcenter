@@ -9,7 +9,7 @@ catch(PDOException $e){
 	header('Location: /error/');
 }
 $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-breadcrumbs($db, $url, 'intcenter_news');
+breadcrumbs($db, $url);
 ?>
 
 <div class="container">

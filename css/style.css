@@ -133,6 +133,7 @@ fieldset{
 		margin-bottom: 75px;
 		text-align: center;
 		text-transform: uppercase;
+		width: 140px;
 		z-index: 100;
 	}
 	.v-menu ul li{

@@ -2,8 +2,7 @@
 try{
 	$query = $db->prepare("SELECT * FROM intcenter_contacts");
 	$query->execute();
-	$query->setFetchMode(PDO::FETCH_ASSOC);
-	$contacts = $query->fetch();	
+	$contacts = $query->fetch(PDO::FETCH_ASSOC);	
 }
 catch(PDOException $e){
 	header('Location: /error/');

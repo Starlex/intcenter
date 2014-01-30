@@ -11,12 +11,12 @@ function showErr($string, $link='', $text='Назад'){
 		<input type="hidden" name="text" value='<?=$text?>'>
 	</form>
 	<script type="text/javascript">
+	// Чувствую себя извращенцем, пихая JavaScript в PHP-функцию
 		$(document).ready(function(){
 			document.forms.errData.submit();
 		});
 	</script>
 	<?php
-	// Чувствую себя извращенцем, пихая JavaScript в PHP-функцию
 }
 
 /* Change cyrillic symbols to latin */
@@ -55,8 +55,7 @@ function drawVerticalMenu($db, $isAdmin=0){
 	try{
 		$query = $db->prepare("SELECT link, name FROM intcenter_pages WHERE isAdmin=?");
 		$query->execute(array($isAdmin));
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$pages = $query->fetchAll();        
+		$pages = $query->fetchAll(PDO::FETCH_ASSOC);        
 	}
 	catch(PDOException $e){
 		header('Location: /error/');
@@ -105,13 +104,11 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 	try{
 		$query = $db->prepare("SELECT * FROM intcenter_prog_categories");
 		$query->execute();
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$progCat = $query->fetchAll();
+		$progCat = $query->fetchAll(PDO::FETCH_ASSOC);
 
 		$query = $db->prepare("SELECT * FROM intcenter_programs");
 		$query->execute();
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$progs = $query->fetchAll();
+		$progs = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 	catch(PDOException $e){
 		header('Location: /error/');
@@ -187,8 +184,7 @@ function showNews($db){
 	try{
 		$query = $db->prepare("SELECT * FROM intcenter_news");
 		$query->execute();
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$row = $query->fetchAll();
+		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 	catch(PDOException $e){
 		header('Location: /error/');
@@ -274,7 +270,7 @@ function pagination($resultCount, $contentNum, $page = ''){
 	return true;
 }
 
-function breadcrumbs($db, $url, $tbl_name){
+function breadcrumbs($db, $url){
 	if(!isset($_GET['page'])){
 		return false;
 	}
@@ -301,13 +297,12 @@ function breadcrumbs($db, $url, $tbl_name){
 	}
 	else{
 		try{
-			$query = $db->prepare("SELECT * FROM $tbl_name WHERE link=?");
+			$query = $db->prepare("SELECT name FROM intcenter_pages WHERE link=?");
 			$query->execute(array($page));
 			$data = $query->fetch(PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $e){
-			// header('Location: /error/');
-			echo $e->getMessage();
+			header('Location: /error/');
 		}
 		for ($i=0; $i < $count; $i++) { 
 			if(0 === $i){
