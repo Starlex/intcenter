@@ -511,7 +511,8 @@ label{
 		width: 100%;
 	}
 .button_panel{
-	text-align: right;
+	display: none;
+	margin-left: 220px;
 }
 	.button{
 		margin-right: 10px;

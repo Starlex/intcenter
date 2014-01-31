@@ -6,7 +6,6 @@ require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
 $drawProgMenu = true;
 
-echo "<a href='/admin/'>Adminka</a>";
 if(isset($_GET['page'])){
 	if(0 === strpos($_GET['page'], '/admin')){
 		session_start();
@@ -37,6 +36,7 @@ elseif(empty($_GET)){
 	require_once 'block/bottom.php';
 }
 
+// echo "<a href='/admin/'>Adminka</a>";
 
 require_once 'block/footer.php';
 ?>
