@@ -52,13 +52,10 @@ function showDiv(chb1, div, chb2, form){
 $(document).ready(function(){
 	$('input[type="radio"]').click(function(){
 		if(this.checked){
-			$('#addNewsForm').fadeIn();
-		}
-		else{
-			$('#addNewsForm').fadeOut();
+			var formID = '#'+this.id+'Form';
+			$(formID).slideDown().siblings('form').trigger('reset').slideUp();
 		}
 	});
-	console.log($('#addNews').checked);
 });
 
 // this function used in updating pages.
