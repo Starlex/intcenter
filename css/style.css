@@ -511,8 +511,7 @@ label{
 		width: 100%;
 	}
 .button_panel{
-	display: none;
-	margin-left: 220px;
+	text-align: right;
 }
 	.button{
 		margin-right: 10px;
@@ -521,7 +520,7 @@ label{
 	}
 
 /*##################################   OTHER ELEMENTS   ###############################*/
-/* required fields */
+/* required fields asdf */
 .req{
 	color:red;
 	font-size: 17px;
