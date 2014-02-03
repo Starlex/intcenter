@@ -1,11 +1,16 @@
 <h1 class='center'><?=getPageName($db);?></h1>
 <?php
 drawVerticalMenu($db, 1);
-
 // echo getPageContent($db, $_GET['page']);
+
+if(isset($_POST['sendNews'])){
+	$name = $_POST['name'];
+	$annotation = $_POST['annotation'];
+	$news_content = $_POST['news_content'];
+}
 ?>
 
-<!-- <div class="container">
+<div class="container">
 	<fieldset>
 		<legend>Форма добавления контента</legend>
 		<div class="radio">
@@ -23,7 +28,7 @@ drawVerticalMenu($db, 1);
 			</label>
 		</div>
 
-		<form class="hide" action="" method="post" id='addNewsForm'>
+		<form class="hide" action="" method="post" id='addNewsForm' 'multipart/form-data'>
 			<label>
 				<span>Картинка:</span>
 				<input type="file" name="news_image">
@@ -66,4 +71,4 @@ drawVerticalMenu($db, 1);
 			</div>
 		</form>
 	</fieldset>
-</div> -->
+</div>
