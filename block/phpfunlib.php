@@ -66,8 +66,9 @@ function drawVerticalMenu($db, $isAdmin=0){
 	if(0 === $num){
 		return false;
 	}
-	(!isset($_GET['page'])) ? $page_link = '' : $page_link = $_GET['page'];
-	echo "<div class='v-menu'>",
+	$admCSS = (1 === $isAdmin) ? $admStyle = ' v-adm-menu' : '';
+	$page_link = !isset($_GET['page']) ? '' : $_GET['page'];
+	echo "<div class='v-menu$admCSS'>",
 	"\n\t\t\t", "<ul>";
 		foreach ($pages as $page){
 			($page['link'] === $page_link) ? $active = ' class="active"' : $active = '';
@@ -195,7 +196,7 @@ function showNews($db){
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
-	(!isset($_GET['page'])) ? $page = 0 : $page = (int)str_replace('/', '', $_GET['page'])-1;
+	$page = !isset($_GET['page']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
 	$firstNews = $page*4+1;
 	echo '<h3>Новости</h3>';
 	foreach ($row as $news) {
@@ -221,9 +222,9 @@ function pagination($resultCount, $contentNum, $page = ''){
 		$countPages = (int)$countPages+1;
 	if('' !== $page)
 		$page = '/'.$page;
-	(!isset($_GET['page'])) ? $active = 1 : $active = (int)str_replace('/', '', $_GET['page']);
-	($active <= 1) ? $prev = 1 : $prev = $active-1;
-	($active >= $countPages) ? $next = $countPages : $next = $active+1;
+	$active = !isset($_GET['page']) ? 1 : (int)str_replace('/', '', $_GET['page']);
+	$prev = ($active <= 1) ? 1 : $active-1;
+	$next = ($active >= $countPages) ? $countPages : $active+1;
 	$shownPages = $countPages/2;
 
 	if($countPages > 1){
@@ -252,7 +253,7 @@ function pagination($resultCount, $contentNum, $page = ''){
 			else{
 				echo "<li><a href='$page/1/'>1</a></li>\n\t\t\t\t";
 				echo "<li> ... </li>\n\t\t\t\t";
-				($active >= $countPages) ? $endNum = $countPages+1 : $endNum = $active+2;
+				$endNum = $active >= $countPages ? $countPages+1 : $active+2;
 				for ($i=$active-1; $i < $endNum ; $i++, $style='') { 
 					if($active === $i)
 						$style = " class='active'"; 
@@ -283,7 +284,7 @@ function breadcrumbs($db, $url){
 	else{
 		$page = $_GET['page'];
 	}
-	(!isset($_GET['var1'])) ? $var1 = '' : $var1 = $_GET['var1'];
+	$var1 = !isset($_GET['var1']) ? '' : $_GET['var1'];
 	$crumbs = explode('/', $url);
 	$count = count($crumbs)-1;
 
@@ -344,34 +345,33 @@ function getPageName($db){
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Get page content from DB (NOT USED IN THIS PROJECT YET)*/
-function getPageContent($db, $pageData){
+/* Get page content from DB*/
+function getPageContent($db, $link){
 	try{
-		$query = $db->prepare("SELECT page_content FROM $pageData[tbl_name] WHERE link=?");
-		$query->execute(array($pageData['link']));
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$row = $query->fetch();
-		return $row['page_content'];
+		$query = $db->prepare("SELECT content FROM intcenter_pages WHERE link=?");
+		$query->execute(array($link));
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+		return $row['content'];
 	}
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* get list of pages */
 function getPagesList($db){

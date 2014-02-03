@@ -2,21 +2,13 @@
 html{
 	background-color: #EDF7FD;
 	color: #313131;
+	overflow-y: scroll;
 }
 body{
 	margin: 0 auto;
 	width: 1021px;
 }
-form abbr{
-	border-bottom: 0;
-	color: #20B2AA;
-	font-weight: bold;
-}
-div.login{
-	margin: 250px auto 0;
-	width: 600px;
-}
-	fieldset{
+fieldset{
 		background-color: #fff;
 		border-radius: 20px;
 		-moz-border-radius: 20px;
@@ -133,9 +125,9 @@ div.login{
 		font-size: 14px;
 		left: 20px;
 		margin-bottom: 75px;
+		overflow: hidden;
 		text-align: center;
 		text-transform: uppercase;
-		width: 140px;
 		z-index: 100;
 	}
 	.v-menu ul li{
@@ -145,6 +137,10 @@ div.login{
 		-webkit-border-radius: 5px;
 		margin: 10px 0;
 		width: 140px;
+	}
+	.v-adm-menu ul li{
+		float: left;
+		margin-right: 30px;
 	}
 	.v-menu ul li.active{
 		background: url(../../../../img/menu_selected.png);
@@ -163,6 +159,7 @@ div.login{
 		font-size: 13px;
 		left: 40px;
 		margin-bottom: 30px;
+
 	}
 		.h-menu ul li{
 			display: inline-block;
@@ -477,36 +474,43 @@ table{
 			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
-label{
+form abbr{
+	border-bottom: 0;
+	color: #20B2AA;
+	font-weight: bold;
+}
+div.login{
+	margin: 250px auto 0;
+	width: 600px;
+}
+
+div.radio label{
 	display: inline-block;
-	margin: 0 10px 10px 0;
-	padding: 5px;
+}
+label{
+	display: block;
+	margin: 0 0 20px 0;
 }
 	label>span{
 		display: inline-block;
 		font-weight: bold;
-		padding: 5px;
+		margin: 5px 10px 5px 0;
 		width: 200px;
 	}
 	label select, label input[type="text"], label input[type="password"]{
 		border: 1px solid;
-		box-shadow: 5px 5px 3px #757575;
-		-mox-box-shadow: 5px 5px 3px #757575;
-		-webkit-box-shadow: 5px 5px 3px #757575;
 		display: inline-block;
 		padding: 5px;
 		width: 300px;
+	}
+	label input[type='file']{
+		display: block;
 	}
 	label select{
 		width: 310px;
 	}
 	label textarea{
-		display: block;
 		border: 1px solid;
-		box-shadow: 5px 5px 3px #757575;
-		-mox-box-shadow: 5px 5px 3px #757575;
-		-webkit-box-shadow: 5px 5px 3px #757575;
-		height: 400px;
 		resize: none;
 		width: 100%;
 	}

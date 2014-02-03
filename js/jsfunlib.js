@@ -50,10 +50,10 @@ function showDiv(chb1, div, chb2, form){
 
 // function for showing add form
 $(document).ready(function(){
-	$('input[type="radio"]').click(function(){
+	$('.radio input[type="radio"]').click(function(){
 		if(this.checked){
 			var formID = '#'+this.id+'Form';
-			$(formID).slideDown().siblings('form').trigger('reset').slideUp();
+			$(formID).slideDown().siblings('form').trigger('reset').hide();
 		}
 	});
 });
