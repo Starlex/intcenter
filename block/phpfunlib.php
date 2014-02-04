@@ -1,22 +1,9 @@
 <?php
-/* show errors MAYBE I'LL RETURN TO IT AND CREATE SOME USEFUL FUNCTIONAL */
-function showErr($string, $link='', $text='Назад'){
-	if('' === $link){
-		$text = '';
+function arrayCheck($value, $key){
+	if('' === $value){
+		echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
+		exit;
 	}
-	?>
-	<form name='errData' action="/error/" method="post">
-		<input type="hidden" name="msg" value='<?=$string?>'>
-		<input type="hidden" name="link" value='<?=$link?>'>
-		<input type="hidden" name="text" value='<?=$text?>'>
-	</form>
-	<script type="text/javascript">
-	// Чувствую себя извращенцем, пихая JavaScript в PHP-функцию
-		$(document).ready(function(){
-			document.forms.errData.submit();
-		});
-	</script>
-	<?php
 }
 
 /* Change cyrillic symbols to latin */
