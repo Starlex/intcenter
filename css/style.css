@@ -531,6 +531,11 @@ label{
 	font-size: 17px;
 	font-style: italic;
 }
+.green{
+	color: #0f0;
+	font-size: 17px;
+	font-style: italic;
+}
 .center{
 	text-align: center;
 }

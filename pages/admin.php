@@ -2,6 +2,7 @@
 <?php
 drawVerticalMenu($db, 1);
 
+$result = '';
 if(isset($_POST['sendNews'])){
 	$error = array();
 	array_pop($_POST);
@@ -17,8 +18,9 @@ if(isset($_POST['sendNews'])){
 	$img = array(
 				'name' => cyrillic2latin($_FILES['image']['name']),
 				'tmp_name' => $_FILES['image']['tmp_name'],
+				'ext' => end(explode('.',$_FILES['image']['name'])),
 				'mime' => strtolower($_FILES['image']['type']),
-				'path' => 'img/news'.cyrillic2latin($_FILES['image']['name'])
+				'path' => '../img/news'
 			);
 	$allowed_mime = array('', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
 
@@ -26,19 +28,30 @@ if(isset($_POST['sendNews'])){
 		$error[] = "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
 	}
 	else{
-		if(!move_uploaded_file($img['tmp_name'], $img['patn'])){
+		if(!file_exists($img['path'])){
 			$error[] = "<h3 class='req'>Загрузка файла не удалась<h3>";
 		}
 		else{
-			try{
-				/*$sql = "INSERT INTO intcenter_news(img, date, name, annotation, news_content)
-						VALUES $img[path], $date, $_POST[name], $_POST[annotation], $_POST[news_content]";
-				$query = $db->prepare($sql);*/
+			$path_to_img = $img['path'].'/'.$date.'-'.cyrillic2latin($_FILES['image']['name']);
+			if( !move_uploaded_file($img['tmp_name'], $path_to_img) ){
+				$error[] = "<h3 class='req'>Загрузка файла не удалась<h3>";
 			}
-			catch(PDOExpression $e){
-				echo $e-getMessage();
+			else{
+				try{
+					$sql = "INSERT INTO intcenter_news(img, date, name, annotation, news_content)
+							VALUES ('$path_to_img', '$date', '$_POST[name]', '$_POST[annotation]', '$_POST[news_content]')";
+					$query = $db->prepare($sql);
+					$query->execute();
+				}
+				catch(PDOException $e){
+					$error[] = "<h3 class='req'>Не удалось добавить новость<h3>";
+					if('' !== $path_to_img){
+						unlink($path_to_img);
+					}
+				}
 			}
 		}
+		$result = "<h3>Новость успешно добавлена</h3>";
 	}
 }
 

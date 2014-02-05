@@ -7,7 +7,10 @@
 				echo $err;
 			}
 			exit;
-		} 
+		}
+		else{
+			echo $result;
+		}
 		?>
 		<div class='radio'>
 			<label>

@@ -169,7 +169,7 @@ function showNews($db){
 		exit;
 	}
 	try{
-		$query = $db->prepare("SELECT * FROM intcenter_news");
+		$query = $db->prepare("SELECT * FROM intcenter_news ORDER BY date DESC");
 		$query->execute();
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -178,9 +178,11 @@ function showNews($db){
 	}
 	$page = !isset($_GET['page']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
 	$firstNews = $page*4+1;
+	$news_counter = 0;
 	echo '<h3>Новости</h3>';
 	foreach ($row as $news) {
-		if($news['id'] >= $firstNews and $news['id'] <= $firstNews+3){
+		++$news_counter;
+		if($news_counter >= $firstNews and $news_counter <= $firstNews+3){
 			echo "<div class='news'>
 				<img src='$news[img]' alt='Изображение'>
 				<div>
