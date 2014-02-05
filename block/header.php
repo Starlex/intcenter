@@ -13,6 +13,6 @@
 	<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.scrollTo-1.4.3.1-min.js"></script>
 	<script type="text/javascript" src="/js/jsfunlib.js"></script>
-	<!-- <script type="text/javascript" src="/ckeditor/ckeditor.js"></script> -->
+	<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 </head>
 <body>

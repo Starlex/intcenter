@@ -445,7 +445,7 @@ table{
 	background-color: #E6F9FF;
 	font-family: 'tahoma';
 	font-size: 13px;
-	margin: 270px 15px 60px 15px;
+	margin: 0 15px 60px 15px;
 }
 	table tr:nth-of-type(2n){
 		background-color: #fff;
@@ -547,4 +547,8 @@ label{
 	margin: 0;
 	position: fixed;
 	width: 54px;
+}
+.cke_dialog table tr td{
+	background: #fff;
+	vertical-align: baseline;
 }

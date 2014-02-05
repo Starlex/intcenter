@@ -3,101 +3,44 @@
 drawVerticalMenu($db, 1);
 
 if(isset($_POST['sendNews'])){
+	$error = array();
 	array_pop($_POST);
 	array_pop($_FILES['image']);
 	array_pop($_FILES['image']);
-	array_walk($_FILES, 'arrayCheck');
-	array_walk($_POST, 'arrayCheck');
-	$news = array(
-				'name' => $_POST['name'],
-				'annotation' => $_POST['annotation'],
-				'content' => $_POST['news_content'],
-				'date' => time()
-			);
+	foreach(array_merge($_POST, $_FILES) as $item){
+		if('' === $item){
+			$error[] = "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
+			break;
+		}
+	}
+	$date = time();
 	$img = array(
-				'name' => $_FILES['image']['name'],
+				'name' => cyrillic2latin($_FILES['image']['name']),
 				'tmp_name' => $_FILES['image']['tmp_name'],
-				'mime' => $_FILES['image']['type'],
-				'path' => 'img/news'
+				'mime' => strtolower($_FILES['image']['type']),
+				'path' => 'img/news'.cyrillic2latin($_FILES['image']['name'])
 			);
-	$allowed_mime = array('image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
-	print_r($_POST);
-	print_r($_FILES);
+	$allowed_mime = array('', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
 
 	if(!in_array($img['mime'], $allowed_mime)){
-		// echo "<h3 class='req'>$error<h3>";
-		exit;
+		$error[] = "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
 	}
-	try{
-		// $query = $db->prepare("INSERT INTO ");
-	}
-	catch(PDOExpression $e){
-		echo $e-getMessage();
+	else{
+		if(!move_uploaded_file($img['tmp_name'], $img['patn'])){
+			$error[] = "<h3 class='req'>Загрузка файла не удалась<h3>";
+		}
+		else{
+			try{
+				/*$sql = "INSERT INTO intcenter_news(img, date, name, annotation, news_content)
+						VALUES $img[path], $date, $_POST[name], $_POST[annotation], $_POST[news_content]";
+				$query = $db->prepare($sql);*/
+			}
+			catch(PDOExpression $e){
+				echo $e-getMessage();
+			}
+		}
 	}
 }
 
-// echo getPageContent($db, $_GET['page']);
+require_once 'pages/adminAdd.php';
 ?>
-
-<div class='container'>
-	<fieldset>
-		<legend>Форма добавления контента</legend>
-		<div class='radio'>
-			<label>
-				<input type='radio' name='add' id='addNews'> Добавить новость
-			</label>
-			<label>
-				<input type='radio' name='add' id='addPartner'> Добавить партнера
-			</label>
-			<label>
-				<input type='radio' name='add' id='addService'> Добавить услугу
-			</label>
-			<label>
-				<input type='radio' name='add' id='addEmployee'> Редактировать сотрудника
-			</label>
-		</div>
-
-		<form class='hide' method='post' id='addNewsForm' enctype='multipart/form-data'>
-			<label>
-				<span><b class="req">*</b>Картинка:</span>
-				<input type='file' name='image'>
-			</label>
-			<label>
-				<span><b class="req">*</b>Название:</span>
-				<textarea name='name'></textarea>
-			</label>
-			<label>
-				<span><b class="req">*</b>Аннотация:</span>
-				<textarea name='annotation' rows='5'></textarea>
-			</label>
-			<label>
-				<span><b class="req">*</b>Основной текст новости:</span>
-				<textarea class='ckeditor' name='news_content' rows='20'></textarea>
-			</label>
-			<div class='button_panel'>
-				<input name='sendNews' type='submit' value='Добавить' class='button'>
-			</div>
-		</form>
-
-		<form class='hide' action='' method='post' id='addPartnerForm'>
-			<input type='text' name=' id='>
-			<div class='button_panel'>
-				<input name='sendPartner' type='submit' value='Добавить' class='button'>
-			</div>
-		</form>
-
-		<form class='hide' action='' method='post' id='addServiceForm'>
-			<input type='text' name=' id='>
-			<div class='button_panel'>
-				<input name='sendService' type='submit' value='Добавить' class='button'>
-			</div>
-		</form>
-
-		<form class='hide' action=' method='post' id='addEmployeeForm'>
-			<input type='text' name=' id='>
-			<div class='button_panel'>
-				<input name='sendEmployee' type='submit' value='Добавить' class='button'>
-			</div>
-		</form>
-	</fieldset>
-</div>

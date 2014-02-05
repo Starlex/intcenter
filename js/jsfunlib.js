@@ -34,6 +34,23 @@ $(document).ready(function(){
 	$('table tr:nth-of-type(2n)').css('background-color', '#fff');
 });
 
+// function for showing add form
+$(document).ready(function(){
+	$('.radio input[type="radio"]').click(function(){
+		if(this.checked){
+			var formID = '#'+this.id+'Form';
+			$(formID).slideDown().siblings('form').hide();
+		}
+	});
+});
+
+
+
+
+
+
+
+
 function showDiv(chb1, div, chb2, form){
 	var cke = $('.ckeditor').attr('name');
 	if('checked' === $(chb1).attr('checked')){
@@ -48,15 +65,6 @@ function showDiv(chb1, div, chb2, form){
 	}
 }
 
-// function for showing add form
-$(document).ready(function(){
-	$('.radio input[type="radio"]').click(function(){
-		if(this.checked){
-			var formID = '#'+this.id+'Form';
-			$(formID).slideDown().siblings('form').trigger('reset').hide();
-		}
-	});
-});
 
 // this function used in updating pages.
 // It fills name of page and page content accourdingly to selected page.

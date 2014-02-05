@@ -1,11 +1,4 @@
 <?php
-function arrayCheck($value, $key){
-	if('' === $value){
-		echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
-		exit;
-	}
-}
-
 /* Change cyrillic symbols to latin */
 function cyrillic2latin($str){
 	$converter = array(
