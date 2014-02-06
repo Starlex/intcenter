@@ -1,5 +1,4 @@
 <?php
-/* Change cyrillic symbols to latin */
 function cyrillic2latin($str){
 	$converter = array(
 		'а' => 'a',   'б' => 'b',   'в' => 'v',
@@ -30,14 +29,13 @@ function cyrillic2latin($str){
 	return strtr($str, $converter);
 }
 
-
 function drawVerticalMenu($db, $isAdmin=0){
 	try{
-		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_pages WHERE isAdmin=?");
+		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_pages WHERE isAdmin=? AND inVerticalMenu=1");
 		$query->execute(array($isAdmin));
 		$num = $query->fetch(PDO::FETCH_COLUMN);   
 
-		$query = $db->prepare("SELECT link, name FROM intcenter_pages WHERE isAdmin=?");
+		$query = $db->prepare("SELECT link, name FROM intcenter_pages WHERE isAdmin=? AND inVerticalMenu=1");
 		$query->execute(array($isAdmin));
 		$pages = $query->fetchAll(PDO::FETCH_ASSOC);        
 	}
@@ -84,7 +82,6 @@ function drawHorizontalMenu(){
 	return true;
 }
 
-/* function for creating programs menu */
 function drawProgramsMenu($db, $drawProgMenu = true){
 	if(!$drawProgMenu){
 		return false;
@@ -328,7 +325,6 @@ function getPageName($db){
 	}
 }
 
-/* Get page content from DB*/
 function getPageContent($db, $link){
 	try{
 		$query = $db->prepare("SELECT content FROM intcenter_pages WHERE link=?");
@@ -341,11 +337,49 @@ function getPageContent($db, $link){
 	}
 }
 
+// creates <select> with the required content
+function select($db, $selected_type){
+	$types = array(
+				'page' => 'intcenter_pages',
+				'news' => 'intcenter_news',
+				'partner' => 'intcenter_partners',
+				'service' => 'intcenter_services',
+				'employee' => 'intcenter_employess'
+				);
+	foreach ($types as $key => $value) {
+		if ($selected_type === $key) {
+			$tbl = $value;
+			break;
+		}
+		else{
+			return "<h3 class='req'>Такого контента не существует</h3>";
+		}
+	}
+	if('intcenter_pages' === $tbl){
+		$sql = "SELECT id, name FROM $tbl WHERE isAdmin = 0 AND isEditable = 1";
+	}
+	else{
+		$sql = "SELECT id, name FROM $tbl";
+	}
+	try{
+		$query = $db->prepare($sql);
+		$query->execute();
+		$row = $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e){
+		return "<h3 class='req'>Не удалось подключится к базе данных</h3>";
+	}
+	echo"<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
+	foreach ($row as $option) {
+		echo"<option value='$option[id]'>$option[name]</option>";
+	}
+	return true;
+}
+
 /*##################################   BORROWED FUNCTIONS  ###############################*/
 
 // Source link http://forum.php.su/topic.php?forum=35&topic=12&postid=1176547253#1176547253
-function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
-{
+function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100){
   if (!file_exists($src)) return false;
  
   $size = getimagesize($src);
@@ -384,7 +418,6 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
 
 
 /*##################################   NOT USED FUNCTIONS  ###############################*/
-/* get list of pages */
 function getPagesList($db){
 	try{
 		$query = $db->prepare("SELECT page_id, name FROM tbl_pages WHERE admin=?");

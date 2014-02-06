@@ -29,12 +29,12 @@ $(document).ready(function(){
 	});
 });
 
-// function for zebra table style (IE8 штоб ты сдох!!)
+// function for zebra table style (IE8 чтоб ты сдох!!)
 $(document).ready(function(){
 	$('table tr:nth-of-type(2n)').css('background-color', '#fff');
 });
 
-// function for showing add form
+// function for showing add/update/delete form
 $(document).ready(function(){
 	$('.radio input[type="radio"]').click(function(){
 		if(this.checked){
@@ -44,27 +44,16 @@ $(document).ready(function(){
 	});
 });
 
-
-
-
-
-
-
-
-function showDiv(chb1, div, chb2, form){
-	var cke = $('.ckeditor').attr('name');
-	if('checked' === $(chb1).attr('checked')){
-		$(div).fadeIn();
-		$('#btn_div').fadeIn();		
-		$(chb2).attr('disabled', 'disable');
-	}
-	else{
-		$(div).fadeOut();
-		$('#btn_div').fadeOut();		
-		$(chb2).removeAttr('disabled');
-	}
-}
-
+// using ajax to get data from DB for updating... stuf
+$(document).ready(function(){
+	$('#selectContent').change(function(){
+		$.ajax({
+			type: "POST",
+			url: "/pages/ajax.php",
+		});
+	return false;
+	});
+});
 
 // this function used in updating pages.
 // It fills name of page and page content accourdingly to selected page.
@@ -91,6 +80,28 @@ $(document).ready(function(){
 	return false;
 	});
 });
+
+
+
+
+
+
+
+function showDiv(chb1, div, chb2, form){
+	var cke = $('.ckeditor').attr('name');
+	if('checked' === $(chb1).attr('checked')){
+		$(div).fadeIn();
+		$('#btn_div').fadeIn();		
+		$(chb2).attr('disabled', 'disable');
+	}
+	else{
+		$(div).fadeOut();
+		$('#btn_div').fadeOut();		
+		$(chb2).removeAttr('disabled');
+	}
+}
+
+
 
 // this function used in updating subpages.
 // It fills name of parrent page, subpage and subpage content accourdingly to selected page.

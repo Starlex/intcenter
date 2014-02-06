@@ -480,8 +480,11 @@ form abbr{
 }
 div.login{
 	margin: 250px auto 0;
-	width: 600px;
+	width: 530px;
 }
+	div.login label>span{
+		width: 150px;
+	}
 
 div.radio label{
 	display: inline-block;
@@ -495,11 +498,11 @@ label{
 		display: inline-block;
 		font-weight: bold;
 		margin: 5px 10px 5px 0;
-		width: 200px;
+		width: 230px;
 	}
 	label select, label input[type="text"], label input[type="password"]{
 		border: 1px solid;
-		display: inline-block;
+		display: block;
 		padding: 5px;
 		width: 300px;
 	}

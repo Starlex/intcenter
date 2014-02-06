@@ -14,16 +14,16 @@
 		?>
 		<div class='radio'>
 			<label>
-				<input type='radio' name='add' id='addNews'> Добавить новость
+				<input type='radio' name='rbtn' id='addNews'> Добавить новость
 			</label>
 			<label>
-				<input type='radio' name='add' id='addPartner'> Добавить партнера
+				<input type='radio' name='rbtn' id='addPartner'> Добавить партнера
 			</label>
 			<label>
-				<input type='radio' name='add' id='addService'> Добавить услугу
+				<input type='radio' name='rbtn' id='addService'> Добавить услугу
 			</label>
 			<label>
-				<input type='radio' name='add' id='addEmployee'> Редактировать сотрудника
+				<input type='radio' name='rbtn' id='addEmployee'> Добавить сотрудника
 			</label>
 		</div>
 
