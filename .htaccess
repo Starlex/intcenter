@@ -1,6 +1,7 @@
 #---Settings for Apache
 Options Indexes FollowSymLinks
 DirectoryIndex index.php
+AddDefaultCharset UTF-8
 
 RewriteEngine On
 RewriteBase /

@@ -20,7 +20,7 @@ if(isset($_POST['sendNews'])){
 				'tmp_name' => $_FILES['image']['tmp_name'],
 				'ext' => end(explode('.',$_FILES['image']['name'])),
 				'mime' => strtolower($_FILES['image']['type']),
-				'path' => '../img/news'
+				'path' => 'img/news'
 			);
 	$allowed_mime = array('', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
 
@@ -33,13 +33,13 @@ if(isset($_POST['sendNews'])){
 		}
 		else{
 			$path_to_img = $img['path'].'/'.$date.'-'.cyrillic2latin($_FILES['image']['name']);
-			if( !move_uploaded_file($img['tmp_name'], $path_to_img) ){
+			if( !img_resize($img['tmp_name'], $path_to_img, 120, 90) ){
 				$error[] = "<h3 class='req'>Загрузка файла не удалась<h3>";
 			}
 			else{
 				try{
 					$sql = "INSERT INTO intcenter_news(img, date, name, annotation, news_content)
-							VALUES ('$path_to_img', '$date', '$_POST[name]', '$_POST[annotation]', '$_POST[news_content]')";
+							VALUES ('../$path_to_img', $date, '$_POST[name]', '$_POST[annotation]', '$_POST[news_content]')";
 					$query = $db->prepare($sql);
 					$query->execute();
 				}

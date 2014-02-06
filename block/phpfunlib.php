@@ -341,7 +341,7 @@ function getPageContent($db, $link){
 	}
 }
 
-/*##################################   NOT MY FUNCTIONS  ###############################*/
+/*##################################   BORROWED FUNCTIONS  ###############################*/
 
 // Source link http://forum.php.su/topic.php?forum=35&topic=12&postid=1176547253#1176547253
 function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
@@ -372,7 +372,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
  
   imagefill($idest, 0, 0, $rgb);
   imagecopyresampled($idest, $isrc, $new_left, $new_top, 0, 0,
-    $new_width, $new_height, $size[0], $size[1]);
+	$new_width, $new_height, $size[0], $size[1]);
  
   imagejpeg($idest, $dest, $quality);
  
@@ -380,9 +380,10 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   imagedestroy($idest);
  
   return true;
- 
 }
 
+
+/*##################################   NOT USED FUNCTIONS  ###############################*/
 /* get list of pages */
 function getPagesList($db){
 	try{
