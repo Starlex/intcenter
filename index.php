@@ -4,7 +4,17 @@ error_reporting(E_ALL);
 require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
-$drawProgMenu = true;
+
+try{
+	$query = $db->prepare("SELECT drawProgMenu FROM intcenter_pages WHERE link=?");
+	$query->execute(array($_GET['page']));
+	$row = $query->fetch(PDO::FETCH_ASSOC);
+}
+catch(PDOException $e){
+	echo $e->getMessage();
+}
+
+$drawProgMenu = (bool)$row['drawProgMenu'];
 
 echo "<a href='/admin/'>Adminka</a>";
 if(isset($_GET['page'])){

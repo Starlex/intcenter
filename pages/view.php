@@ -4,11 +4,21 @@
 		?>
 		<div class="container">
 			<?php
-			echo '<h2>'.getPageName($db, $_GET['page']).'</h2>';
-			echo getPageContent($db, $_GET['page']);
-			drawProgramsMenu($db, $drawProgMenu);
+			if(true === $drawProgMenu){
+				drawProgramsMenu($db, $drawProgMenu);
+				?>
+				<div class="content">
+					<?php
+					echo '<h2>'.getPageName($db, $_GET['page']).'</h2>';
+					echo getPageContent($db, $_GET['page']);
+					?>
+				</div>
+				<?php
+			}
+			else{
+				echo '<h2>'.getPageName($db, $_GET['page']).'</h2>';
+				echo getPageContent($db, $_GET['page']);
+			}
 			?>
-			<div class="content">
-				
-			</div>
+			
 		</div>

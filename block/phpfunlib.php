@@ -159,9 +159,12 @@ function showNews($db){
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
-	if(0 === $num){
+	if(0 === (int)$num){
+		echo '<h3>Новости</h3>';
 		echo "	Новостей нет
-		</div>";
+		</div>
+		</div>
+		";
 		require_once 'block/bottom.php';
 		require_once 'block/footer.php';
 		exit;

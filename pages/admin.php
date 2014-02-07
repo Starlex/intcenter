@@ -19,7 +19,7 @@ if('/admin/' === $_GET['page']){
 		$img = array(
 					'name' => cyrillic2latin($_FILES['image']['name']),
 					'tmp_name' => $_FILES['image']['tmp_name'],
-					'ext' => strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION) ), //end(explode('.',$_FILES['image']['name'])),
+					'ext' => strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION) ),
 					'mime' => strtolower($_FILES['image']['type']),
 					'path' => 'img/news'
 				);
