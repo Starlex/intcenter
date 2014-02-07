@@ -27,7 +27,7 @@ if(isset($_GET['page'])){
 	}
 	else{
 		require_once 'block/top.php';
-		require_once 'pages/main.php';
+		require_once 'pages/view.php';
 		require_once 'block/bottom.php';
 	}
 }

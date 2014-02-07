@@ -208,6 +208,7 @@ fieldset{
 		/* MENU FOR PROGRAMS */
 		.prog-menu{
 			/*outline: 1px solid;*/
+			display: none;
 			float: left;
 			margin: 0 40px 0 0;
 			width: 210px;
