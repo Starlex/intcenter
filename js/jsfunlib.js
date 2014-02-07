@@ -44,13 +44,27 @@ $(document).ready(function(){
 	});
 });
 
-// using ajax to get data from DB for updating... stuf
+// using ajax to get data from DB for updating content
 $(document).ready(function(){
 	$('#selectContent').change(function(){
+		var id = $('#selectContent option:selected').val();
+		var type = $('#selectContent').data('type');
 		$.ajax({
-			type: "POST",
-			url: "/pages/ajax.php",
-		});
+			type: 'POST',
+			url: '/pages/ajax.php',
+			data: 'id='+id+'&type='+type,
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				$('input[name="'+data.btnName+'"]').removeAttr('disabled');
+				CKEDITOR.instances[data.tareaName].setData(data.content);
+			},
+			error: function(){
+				for(inst in CKEDITOR.instances){
+					CKEDITOR.instances[inst].setData("");
+				}
+			}
+		})
 	return false;
 	});
 });

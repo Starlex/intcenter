@@ -39,10 +39,10 @@ if('/admin/' === $_GET['page']){
 				}
 				else{
 					try{
-						$sql = "INSERT INTO intcenter_news(img, date, name, annotation, news_content)
-								VALUES ('../$path_to_img', $date, '$_POST[name]', '$_POST[annotation]', '$_POST[news_content]')";
+						$sql = "INSERT INTO intcenter_news(img, date, name, annotation, content)
+								VALUES (?, ?, ?, ?, ?)";
 						$query = $db->prepare($sql);
-						$query->execute();
+						$query->execute(array('../'.$path_to_img, $date, $_POST['name'], $_POST['annotation'], $_POST['news_content']));
 					}
 					catch(PDOException $e){
 						$error[] = "<h3 class='req'>Не удалось добавить новость<h3>";
@@ -52,12 +52,27 @@ if('/admin/' === $_GET['page']){
 					}
 				}
 			}
-			$result = "<h3>Новость успешно добавлена</h3>";
+			$result = "<h3>Добавление новости прошло успешно</h3>";
 		}
 	}
 	require_once 'pages/adminAdd.php';	
 }
 elseif('/admin-update/' === $_GET['page']){
+	if(isset($_POST['sendPage'])){
+		$page_id = $_POST['page_name'];
+		$content = $_POST['page_content'];
+
+		$sql = "UPDATE intcenter_pages SET content=? WHERE id=?";
+		try{
+			$query = $db->prepare($sql);
+			$query->execute(array($content, $page_id));
+		}
+		catch(PDOException $e){
+			$error[] = "<h3 class='req'>Не удалось отредактировать страницу<h3>";
+			echo $e->getMessage();
+		}
+		$result = "<h3>Редактирование страницы прошло успешно</h3>";
+	}
 	require_once 'pages/adminUpdate.php';	
 }
 ?>

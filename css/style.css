@@ -485,6 +485,9 @@ div.login{
 	div.login label>span{
 		width: 150px;
 	}
+	div.login label input[type="text"], div.login label input[type="password"]{
+		display: inline-block;
+	}
 
 div.radio label{
 	display: inline-block;

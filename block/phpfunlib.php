@@ -352,7 +352,7 @@ function select($db, $selected_type){
 			break;
 		}
 		else{
-			return "<h3 class='req'>Такого контента не существует</h3>";
+			return false;
 		}
 	}
 	if('intcenter_pages' === $tbl){
@@ -367,12 +367,14 @@ function select($db, $selected_type){
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 	catch(PDOException $e){
-		return "<h3 class='req'>Не удалось подключится к базе данных</h3>";
+		return false;
 	}
-	echo"<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
+	echo "<select name='".$selected_type."_name' id='selectContent'  data-type='$selected_type'>";
+	echo"\n\t\t\t\t\t<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
 	foreach ($row as $option) {
-		echo"<option value='$option[id]'>$option[name]</option>";
+		echo"\n\t\t\t\t\t<option value='$option[id]'>$option[name]</option>";
 	}
+	echo "\n\t\t\t\t</select>\n";
 	return true;
 }
 

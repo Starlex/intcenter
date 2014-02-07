@@ -19,7 +19,7 @@ breadcrumbs($db, $url);
 		<span class="date"><?=date("d.m.Y", $data['date']);?></span>
 		<span class="annotation"><?=$data['annotation'];?></span>
 		<div class="news-content">
-			<?=$data['news_content'];?>
+			<?=$data['content'];?>
 		</div>
 	</div>
 </div>
