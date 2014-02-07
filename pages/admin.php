@@ -62,16 +62,21 @@ elseif('/admin-update/' === $_GET['page']){
 		$page_id = $_POST['page_name'];
 		$content = $_POST['page_content'];
 
-		$sql = "UPDATE intcenter_pages SET content=? WHERE id=?";
-		try{
-			$query = $db->prepare($sql);
-			$query->execute(array($content, $page_id));
+		if('' === $page_id){
+			$error[] = "<h3 class='req'>Вы не выбрали страницу для редактирования<h3>";
 		}
-		catch(PDOException $e){
-			$error[] = "<h3 class='req'>Не удалось отредактировать страницу<h3>";
-			echo $e->getMessage();
+		else{
+			$sql = "UPDATE intcenter_pages SET content=? WHERE id=?";
+			try{
+				$query = $db->prepare($sql);
+				$query->execute(array($content, $page_id));
+			}
+			catch(PDOException $e){
+				$error[] = "<h3 class='req'>Не удалось отредактировать страницу<h3>";
+				echo $e->getMessage();
+			}			
+			$result = "<h3>Редактирование страницы прошло успешно</h3>";
 		}
-		$result = "<h3>Редактирование страницы прошло успешно</h3>";
 	}
 	require_once 'pages/adminUpdate.php';	
 }

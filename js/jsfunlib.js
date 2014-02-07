@@ -55,9 +55,10 @@ $(document).ready(function(){
 			data: 'id='+id+'&type='+type,
 			dataType: 'json',
 			success: function(data){
-				console.log(data);
-				$('input[name="'+data.btnName+'"]').removeAttr('disabled');
-				CKEDITOR.instances[data.tareaName].setData(data.content);
+				if('page' === type){
+					$('input[name="'+data.btnName+'"]').removeAttr('disabled');
+					CKEDITOR.instances[data.tareaName].setData(data.content);
+				}
 			},
 			error: function(){
 				for(inst in CKEDITOR.instances){
