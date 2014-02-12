@@ -48,6 +48,9 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('.selectContent').change(function(){
 		var id = $(this).children('option:selected').val();
+		if('' === id){
+			$(this).parent('label').siblings().children('textarea').html('');
+		}
 		var type = $(this).data('type');
 		$.ajax({
 			type: 'POST',

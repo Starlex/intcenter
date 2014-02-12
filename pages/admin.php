@@ -6,7 +6,25 @@ $result = '';
 $error = array();
 $allowed_mime = array('', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
 $allowed_ext = array('', 'png', 'jpg', 'jpeg', 'gif');
-if(isset($_POST['sendNews'])){
+if(isset($_POST['sendPage'])){
+	if('' === $_POST['page_id']){
+		echo "<h3 class='req'>Вы не выбрали страницу для редактирования<h3>";
+		exit;
+	}
+
+	$page_id = $_POST['page_id'];
+	$content = $_POST['page_content'];
+	try{
+		$query = $db->prepare("UPDATE intcenter_pages SET content=? WHERE id=?");
+		$query->execute(array($content, $page_id));
+	}
+	catch(PDOException $e){
+		echo "<h3 class='req'>Редактирование страницы не удалось<h3>";
+		exit;
+	}			
+	$result = "<h3>Редактирование страницы прошло успешно</h3>";
+}
+elseif(isset($_POST['sendNews'])){
 	if('/admin/' === $_GET['page']){
 		array_pop($_POST);
 		if(!empty($_FILES)){
@@ -53,57 +71,58 @@ if(isset($_POST['sendNews'])){
 			}
 			exit;
 		}
-		$result = "<h3>Добавление новости прошло успешно</h3>";
+		$action = "Добавление";
 	}
 	elseif('/admin-update/' === $_GET['page']){
 		array_pop($_POST);
-		if(!empty($_FILES)){
-			array_pop($_FILES['image']);
-			array_pop($_FILES['image']);
-		}
-		foreach(array_merge($_POST, $_FILES) as $item){
+		foreach($_POST as $item){
 			if('' === $item){
 				echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
 				exit;
 			}
 		}
-		$img = array(
-					'name' => cyrillic2latin($_FILES['image']['name']),
-					'tmp_name' => $_FILES['image']['tmp_name'],
-					'ext' => strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION) ),
-					'mime' => strtolower($_FILES['image']['type']),
-					'path' => 'img/news'
-				);
-		$path_to_img = $img['path'].'/'.time().'-'.$img['name'];
+		try{
+			$sql =  "SELECT img FROM intcenter_news WHERE id=?";
+			$query = $db->prepare($sql);
+			$query->execute(array($_POST['news_id']));
+			$row = $query->fetch(PDO::FETCH_ASSOC);
+			$old_path_to_img = str_replace('../', '', $row['img']);
+		}
+		catch(PDOException $e){
+			echo "<h3 class='req'>Редактирование новости не удалось<h3>";
+			exit;
+		}
+		if('' !== $_FILES['image']['name']){
+			print_r($_FILES);
+			$img = array(
+						'name' => cyrillic2latin($_FILES['image']['name']),
+						'tmp_name' => $_FILES['image']['tmp_name'],
+						'ext' => strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION) ),
+						'mime' => strtolower($_FILES['image']['type']),
+						'path' => 'img/news'
+					);
+			$path_to_img = $img['path'].'/'.time().'-'.$img['name'];
 
-		if( !in_array($img['mime'], $allowed_mime) or !in_array($img['ext'], $allowed_ext) ){
-			echo "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
-			exit;
-		}
-		if(!file_exists($img['path'])){
-			echo "<h3 class='req'>Загрузка файла не удалась<h3>";
-			exit;
-		}
-		if( !img_resize($img['tmp_name'], $path_to_img, 120, 90) ){
-			echo "<h3 class='req'>Загрузка файла не удалась<h3>";
-			exit;
-		}
-		else{
-			try{
-				$sql =  "SELECT img FROM intcenter_news WHERE id=?";
-				$query = $db->prepare($sql);
-				$query->execute(array($_POST['news_id']));
-				$row = $query->fetch(PDO::FETCH_ASSOC);
-				$old_path_to_img = str_replace('../', '', $row['img']);
-			}
-			catch(PDOException $e){
-				echo $e->getMessage();
-				echo "<h3 class='req'>Редактирование новости не удалось<h3>";
+			if( !in_array($img['mime'], $allowed_mime) or !in_array($img['ext'], $allowed_ext) ){
+				echo "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
 				exit;
 			}
-			if(file_exists($old_path_to_img)){
-				unlink($old_path_to_img);
+			if(!file_exists($img['path'])){
+				echo "<h3 class='req'>Загрузка файла не удалась<h3>";
+				exit;
 			}
+			if( !img_resize($img['tmp_name'], $path_to_img, 120, 90) ){
+				echo "<h3 class='req'>Загрузка файла не удалась<h3>";
+				exit;
+			}
+			else{
+				if(file_exists($old_path_to_img)){
+					unlink($old_path_to_img);
+				}
+			}
+		}
+		else{
+			$path_to_img = $old_path_to_img;
 		}
 		try{
 			$sql =  "UPDATE intcenter_news SET img=?, name=?, annotation=?, content=? WHERE id=?";
@@ -118,9 +137,43 @@ if(isset($_POST['sendNews'])){
 			}
 			exit;
 		}
-		$result = "<h3>Редактирование новости прошло успешно</h3>";
+		$action = "Редактирование";
 	}
+	elseif('/admin-delete/' === $_GET['page']){
+		try{
+			$sql =  "SELECT img FROM intcenter_news WHERE id=?";
+			$query = $db->prepare($sql);
+			$query->execute(array($_POST['news_id']));
+			$row = $query->fetch(PDO::FETCH_ASSOC);
+			$old_path_to_img = str_replace('../', '', $row['img']);
+		}
+		catch(PDOException $e){
+			echo "<h3 class='req'>Удаление новости не удалось<h3>";
+			exit;
+		}
+		if(file_exists($old_path_to_img)){
+			unlink($old_path_to_img);
+		}
+		try{
+			$sql =  "DELETE FROM intcenter_news WHERE id=?";
+			$params = array($_POST['news_id']);
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo "<h3 class='req'>Удаление новости не удалось<h3>";
+			exit;
+		}
+		$action = "Удаление";
+	}
+	else{
+		echo 'Что-то пошло не так';
+		exit;
+	}
+	$result = "<h3>$action новости прошло успешно</h3>";
 }
+elseif(isset($_POST['sendProgram'])){
+
 
 switch($_GET['page']):
 	case '/admin/':
@@ -133,34 +186,6 @@ switch($_GET['page']):
 		require_once 'pages/adminDelete.php';
 		break;
 endswitch;
-
-
-
-
-/*switch($_GET['page']):
-	case '/admin/':
-		$sql =  "INSERT INTO intcenter_news(img, date, name, annotation, content)
-		VALUES (?, ?, ?, ?, ?)";
-		$params = array('../'.$path_to_img, time(), $_POST['title'], $_POST['annotation'], $_POST['news_content']);
-		$action = 'Добавление';
-		break;
-	case '/admin-update/':
-		$sql =  "UPDATE intcenter_news SET img=?, name=?, annotation=?, content=? WHERE id=?";
-		$params = array('../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['news_content'], $_POST['news_id']);
-		$action = 'Редактирование';
-		break;
-	case '/admin-delete/':
-		$sql = "DELETE FROM intcenter_news WHERE id=?";
-		$params = array($_POST['news_id']);
-		$action = 'Удаление';
-		break;
-	default:
-		header('Location: /error/');
-endswitch;*/
-
-
-
-
 
 
 /*elseif('/admin-update/' === $_GET['page']){

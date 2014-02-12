@@ -145,7 +145,7 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 						<li>
 							<a href='$prog[link]'>
 								<span>$i</span>
-								<small>$prog[category]</small>
+								<small>$prog[target_audience]</small>
 								<b>$prog[name]</b>
 							</a>
 						</li>";
@@ -357,6 +357,7 @@ function select($db, $selected_type){
 	$types = array(
 				'page' => 'intcenter_pages',
 				'news' => 'intcenter_news',
+				'program' => 'intcenter_programs',
 				'partner' => 'intcenter_partners',
 				'service' => 'intcenter_services',
 				'employee' => 'intcenter_employees'

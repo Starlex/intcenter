@@ -25,12 +25,25 @@
 			<label>
 				<input type='radio' name='rbtn' id='deleteEmployee'> Удалить сотрудника
 			</label>
+			<label>
+				<input type='radio' name='rbtn' id='deleteProgram'> Удалить программу обучения
+			</label>
 		</div>
 
 		<form class='hide' method='post' id='deleteNewsForm' enctype='multipart/form-data'>
 			<label>
 				<span>Выберите новость:</span>
 				<?php select($db, 'news'); ?>
+			</label>
+			<div class='button_panel'>
+				<input name='sendNews' type='submit' value='Удалить' class='button'>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='deleteProgramForm' enctype='multipart/form-data'>
+			<label>
+				<span>Выберите новость:</span>
+				<?php select($db, 'program'); ?>
 			</label>
 			<div class='button_panel'>
 				<input name='sendNews' type='submit' value='Удалить' class='button'>

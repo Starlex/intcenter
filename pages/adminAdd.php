@@ -25,6 +25,9 @@
 			<label>
 				<input type='radio' name='rbtn' id='addEmployee'> Добавить сотрудника
 			</label>
+			<label>
+				<input type='radio' name='rbtn' id='addProgram'> Добавить программу обучения
+			</label>
 		</div>
 
 		<form class='hide' method='post' id='addNewsForm' enctype='multipart/form-data'>
@@ -46,6 +49,43 @@
 			</label>
 			<div class='button_panel'>
 				<input name='sendNews' type='submit' value='Добавить' class='button'>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='addProgramForm'>
+			<label>
+				<span><b class="req">*</b>Выберите язык и категорию:</span>
+				<?php
+				try{
+					$query = $db->prepare("SELECT * FROM intcenter_prog_categories");
+					$query->execute();
+					$row = $query->fetchAll(PDO::FETCH_ASSOC);
+				}
+				catch(PDOException $e){
+					header('Location: /error/');
+				}
+				echo "<select name='program_id'>";
+				echo"\n\t\t\t\t\t<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
+				foreach ($row as $option) {
+					echo"\n\t\t\t\t\t<option value='$option[id]'>$option[language] - - > $option[category]</option>";
+				}
+				echo "\n\t\t\t\t</select>\n";
+				?>
+			</label>
+			<label>
+				<span><b class="req">*</b>Целевая аудитория:</span>
+				<textarea name='audience' rows='1'></textarea>
+			</label>
+			<label>
+				<span><b class="req">*</b>Название:</span>
+				<textarea name='title'></textarea>
+			</label>
+			<label>
+				<span><b class="req">*</b>Содержание прораммы:</span>
+				<textarea class='ckeditor' name='program_content' rows='20'></textarea>
+			</label>
+			<div class='button_panel'>
+				<input name='sendProgram' type='submit' value='Добавить' class='button'>
 			</div>
 		</form>
 

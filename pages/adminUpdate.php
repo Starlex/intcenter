@@ -28,6 +28,9 @@
 			<label>
 				<input type='radio' name='rbtn' id='updateEmployee'> Редактировать сотрудника
 			</label>
+			<label>
+				<input type='radio' name='rbtn' id='updateProgram'> Редактировать программу обучения
+			</label>
 		</div>
 		
 		<form class='hide' method='post' id='updatePageForm'>
@@ -67,6 +70,28 @@
 			</label>
 			<div class='button_panel'>
 				<input name='sendNews' type='submit' value='Редактировать' class='button' disabled>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='updateProgramForm'>
+			<label>
+				<span><b class="req">*</b>Выберите программу:</span>
+				<?php select($db, 'program'); ?>
+			</label>
+			<label>
+				<span><b class="req">*</b>Целевая аудитория:</span>
+				<textarea name='audience' rows='1'></textarea>
+			</label>
+			<label>
+				<span><b class="req">*</b>Название:</span>
+				<textarea name='title'></textarea>
+			</label>
+			<label>
+				<span><b class="req">*</b>Содержание прораммы:</span>
+				<textarea class='ckeditor' name='program_content' rows='20'></textarea>
+			</label>
+			<div class='button_panel'>
+				<input name='sendProgram' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 
