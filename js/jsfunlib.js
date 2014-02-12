@@ -46,29 +46,46 @@ $(document).ready(function(){
 
 // using ajax to get data from DB for updating content
 $(document).ready(function(){
-	$('#selectContent').change(function(){
-		var id = $('#selectContent option:selected').val();
-		var type = $('#selectContent').data('type');
+	$('.selectContent').change(function(){
+		var id = $(this).children('option:selected').val();
+		var type = $(this).data('type');
 		$.ajax({
 			type: 'POST',
 			url: '/pages/ajax.php',
 			data: 'id='+id+'&type='+type,
 			dataType: 'json',
 			success: function(data){
-				if('page' === type){
-					$('input[name="'+data.btnName+'"]').removeAttr('disabled');
-					CKEDITOR.instances[data.tareaName].setData(data.content);
+				switch(data.formID){
+					case '#updatePageForm':
+						CKEDITOR.instances[data.tareaName].setData(data.content);
+						$(data.formID+' input[type="submit"]').removeAttr('disabled');
+						break
+					case '#updateNewsForm':
+						$(data.formID+' textarea[name="title"]').html(data.name);
+						$(data.formID+' textarea[name="annotation"]').html(data.annotation);
+						CKEDITOR.instances[data.tareaName].setData(data.content);
+						$(data.formID+' input[type="submit"]').removeAttr('disabled');
+						break
+					default:
+						console.log('error');
+						break
 				}
 			},
-			error: function(){
-				for(inst in CKEDITOR.instances){
-					CKEDITOR.instances[inst].setData("");
-				}
+			error: function(obj, err){
+				console.log(obj.status+' '+err);
 			}
 		})
 	return false;
 	});
 });
+
+
+
+
+
+
+
+
 
 // this function used in updating pages.
 // It fills name of page and page content accourdingly to selected page.
@@ -89,56 +106,6 @@ $(document).ready(function(){
 					$("#pagedata").fadeIn();
 					$("#pName").val(data.name);
 					CKEDITOR.instances.pContent.setData(data.page_content);                        
-				}
-			}
-		});
-	return false;
-	});
-});
-
-
-
-
-
-
-
-function showDiv(chb1, div, chb2, form){
-	var cke = $('.ckeditor').attr('name');
-	if('checked' === $(chb1).attr('checked')){
-		$(div).fadeIn();
-		$('#btn_div').fadeIn();		
-		$(chb2).attr('disabled', 'disable');
-	}
-	else{
-		$(div).fadeOut();
-		$('#btn_div').fadeOut();		
-		$(chb2).removeAttr('disabled');
-	}
-}
-
-
-
-// this function used in updating subpages.
-// It fills name of parrent page, subpage and subpage content accourdingly to selected page.
-$(document).ready(function(){
-	$('#updSubpageId').change(function(){
-		$.ajax({
-			type: "POST",
-			url: "/pages/ajax.php",
-			data: "subpage_id="+$("#updSubpageId").val(),
-			dataType: "json",
-			success: function(data){
-				if(false === data){
-					$("#subpagedata").fadeOut();
-					$("#parrentId").val("");
-					$("#spName").val("");
-					CKEDITOR.instances.spContent.setData("");
-				}
-				else{
-					$("#subpagedata").fadeIn();
-					$("#parrentId").val(data.page_id);
-					$("#spName").val(data.name);
-					CKEDITOR.instances.spContent.setData(data.page_content);
 				}
 			}
 		});

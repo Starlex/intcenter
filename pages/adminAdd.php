@@ -34,7 +34,7 @@
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
-				<textarea name='name'></textarea>
+				<textarea name='title'></textarea>
 			</label>
 			<label>
 				<span><b class="req">*</b>Аннотация:</span>

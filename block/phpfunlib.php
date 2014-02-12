@@ -24,7 +24,8 @@ function cyrillic2latin($str){
 		'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
 		'Ь' => '',    'Ы' => 'Y',   'Ъ' => '',
 		'Э' => 'E',   'Ю' => 'Yu',  'Я' => 'Ya',
-		'№' => '',    ' ' => '-',
+		'№' => '',    '—' => '-', 	'–' => '-',
+		' ' => '-',
 	);
 	return strtr($str, $converter);
 }
@@ -84,6 +85,17 @@ function drawHorizontalMenu(){
 
 function drawProgramsMenu($db, $drawProgMenu = true){
 	if(!$drawProgMenu){
+		return false;
+	}
+	try{
+		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_programs");
+		$query->execute();
+		$num = $query->fetchColumn();
+	}
+	catch(PDOException $e){
+		header('Location: /error/');
+	}
+	if($num <= 0){
 		return false;
 	}
 	try{
@@ -347,15 +359,12 @@ function select($db, $selected_type){
 				'news' => 'intcenter_news',
 				'partner' => 'intcenter_partners',
 				'service' => 'intcenter_services',
-				'employee' => 'intcenter_employess'
+				'employee' => 'intcenter_employees'
 				);
 	foreach ($types as $key => $value) {
 		if ($selected_type === $key) {
 			$tbl = $value;
 			break;
-		}
-		else{
-			return false;
 		}
 	}
 	if('intcenter_pages' === $tbl){
@@ -372,7 +381,7 @@ function select($db, $selected_type){
 	catch(PDOException $e){
 		return false;
 	}
-	echo "<select name='".$selected_type."_name' id='selectContent'  data-type='$selected_type'>";
+	echo "<select name='".$selected_type."_id' class='selectContent'  data-type='$selected_type'>";
 	echo"\n\t\t\t\t\t<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
 	foreach ($row as $option) {
 		echo"\n\t\t\t\t\t<option value='$option[id]'>$option[name]</option>";
@@ -421,44 +430,4 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100){
   return true;
 }
 
-
-/*##################################   NOT USED FUNCTIONS  ###############################*/
-function getPagesList($db){
-	try{
-		$query = $db->prepare("SELECT page_id, name FROM tbl_pages WHERE admin=?");
-		$query->execute(array(0));
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$row_pages = $query->fetchAll();
-	}
-	catch(PDOException $e){
-		header('Location: /error/');
-	}
-	echo '<option value="" selected> - - - - - - - Не выбрано - - - - - - - </option>';
-	foreach($row_pages as $page){
-		echo "\n\t\t\t\t","<option value='$page[page_id]'>$page[name]</option>";
-	}
-	echo "\n";
-}
-
-function getSubpagesList($db){
-	$sql = "SELECT sub_page_id, sp.name spn, p.name pn
-			FROM tbl_sub_pages sp
-			LEFT JOIN tbl_pages p
-			ON sp.page_id=p.page_id
-			WHERE sp.admin=?";
-	try{
-		$query = $db->prepare($sql);
-		$query->execute(array(0));
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$row_sub_pages = $query->fetchAll();
-	}
-	catch(PDOException $e){
-		header('Location: /error/');
-	}
-	echo '<option value="" selected> - - - - - - - Не выбрано - - - - - - - </option>';
-	foreach($row_sub_pages as $sub_page){
-		echo "\n\t\t\t\t","<option value='$sub_page[sub_page_id]'>{$sub_page['pn']} --> {$sub_page['spn']}</option>";
-	}
-	echo "\n";
-}
 ?>

@@ -113,11 +113,11 @@ fieldset{
 	}
 	/* VERTICAL AND HORIZONTAL MENU'S */
 	.v-menu, .h-menu{
-	font-family: 'Arial';
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: relative;
+		font-family: 'Arial';
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
 	}
 	/* VERTICAL MENU */
 	.v-menu{
@@ -158,7 +158,6 @@ fieldset{
 		font-size: 13px;
 		left: 40px;
 		margin-bottom: 30px;
-
 	}
 		.h-menu ul li{
 			display: inline-block;
@@ -188,7 +187,6 @@ fieldset{
 				}
 
 	.breadcrumbs{
-		/*outline: 1px solid;*/
 		display: block;
 		color: #aeaeae;
 		font-size: 11px;
@@ -200,15 +198,12 @@ fieldset{
 		}
 
 	.container{
-		/*outline: 1px solid;*/
 		display: block;
 		overflow: hidden;
 		margin: 0 20px 20px;
 	}
 		/* MENU FOR PROGRAMS */
 		.prog-menu{
-			/*outline: 1px solid;*/
-			/*display: none;*/
 			float: left;
 			margin: 0 40px 0 0;
 			width: 210px;
@@ -312,7 +307,6 @@ fieldset{
 						padding-bottom: 10px;
 					}
 		.content{
-			/*outline: 1px solid;*/
 			float: left;
 			margin: 0;
 			width: 710px;
@@ -364,9 +358,7 @@ fieldset{
 .news{
 	display: block;
 	font-family: 'tahoma';
-	/*margin-bottom: 20px;*/
 	overflow: hidden;
-	/*width: 690px;*/
 }
 	.news img{
 		border: 2px solid #A2A2A2;
@@ -402,11 +394,7 @@ div.news+hr{
 	border: 1px solid #C9D1D6;
 	margin: 20px 0;
 }
-/*DIV FOR LOGIN ELEMENTS*/
-.login{
-	margin: 0 auto;
-	position: relative;
-}
+
 /* PAGINATION */
 .pagination{
 	font-size: 14px;
@@ -414,7 +402,6 @@ div.news+hr{
 	text-align: center;
 }
 	.pagination li{
-		/*outline:1px solid;*/
 		cursor: pointer;
 		display: inline-block;
 		margin-left: -2px;
@@ -430,15 +417,14 @@ div.news+hr{
 			display: block;
 			padding: 5px 8px;
 		}
-
-.pagination a.active{
-	background: linear-gradient(to bottom, #0070F4, #3B5FE1);
-	color: #fff;
-	text-decoration: none;
-}
-* .pagination a.active{
-	background-color: #0070F4;
-}
+		.pagination a.active{
+			background: linear-gradient(to bottom, #0070F4, #3B5FE1);
+			color: #fff;
+			text-decoration: none;
+		}
+		* .pagination a.active{
+			background-color: #0070F4;
+		}
 
 /* Default style for tables*/
 table{
@@ -479,11 +465,14 @@ form abbr{
 	color: #20B2AA;
 	font-weight: bold;
 }
+/*DIV FOR LOGIN ELEMENTS*/
 div.login{
 	margin: 250px auto 0;
 	width: 530px;
+	position: relative;
 }
 	div.login label>span{
+		display: inline-block;
 		width: 150px;
 	}
 	div.login label input[type="text"], div.login label input[type="password"]{
@@ -496,10 +485,10 @@ div.radio label{
 }
 label{
 	display: block;
-	margin: 0 5px 20px 0;
+	margin: 0 0 20px 0;
 }
 	label>span{
-		display: inline-block;
+		display: block;
 		font-weight: bold;
 		margin: 5px 10px 5px 0;
 		width: 230px;
@@ -509,9 +498,6 @@ label{
 		display: block;
 		padding: 5px;
 		width: 300px;
-	}
-	label input[type='file']{
-		display: block;
 	}
 	label select{
 		width: 310px;

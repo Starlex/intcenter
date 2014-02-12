@@ -30,9 +30,9 @@
 			</label>
 		</div>
 		
-		<form class='hide' method='post' id='updatePageForm' enctype='multipart/form-data'>
+		<form class='hide' method='post' id='updatePageForm'>
 			<label>
-				<span>Cтраница:</span>
+				<span>Выберите страницу:</span>
 				<?php select($db, 'page'); ?>
 			</label>
 			<label>
@@ -46,12 +46,16 @@
 
 		<form class='hide' method='post' id='updateNewsForm' enctype='multipart/form-data'>
 			<label>
+				<span>Выберите новость:</span>
+				<?php select($db, 'news'); ?>
+			</label>
+			<label>
 				<span>Картинка:</span>
 				<input type='file' name='image'>
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
-				<textarea name='name'></textarea>
+				<textarea name='title'></textarea>
 			</label>
 			<label>
 				<span><b class="req">*</b>Аннотация:</span>
@@ -62,28 +66,37 @@
 				<textarea class='ckeditor' name='news_content' rows='20'></textarea>
 			</label>
 			<div class='button_panel'>
-				<input name='sendNews' type='submit' value='Добавить' class='button'>
+				<input name='sendNews' type='submit' value='Редактировать' class='button' disabled>
 			</div>
 		</form>
 
 		<form class='hide' method='post' id='updatePartnerForm'>
-			<input type='text' name=' id='>
+			<label>
+				<span>Выберите партнера:</span>
+				<?php select($db, 'partner'); ?>
+			</label>
 			<div class='button_panel'>
-				<input name='sendPartner' type='submit' value='Добавить' class='button'>
+				<input name='sendPartner' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 
 		<form class='hide' method='post' id='updateServiceForm'>
-			<input type='text' name=' id='>
+			<label>
+				<span>Выберите услугу:</span>
+				<?php select($db, 'service'); ?>
+			</label>
 			<div class='button_panel'>
-				<input name='sendService' type='submit' value='Добавить' class='button'>
+				<input name='sendService' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 
 		<form class='hide' method='post' id='updateEmployeeForm'>
-			<input type='text' name=' id='>
+			<label>
+				<span>Выберите работника:</span>
+				<?php select($db, 'employee'); ?>
+			</label>
 			<div class='button_panel'>
-				<input name='sendEmployee' type='submit' value='Добавить' class='button'>
+				<input name='sendEmployee' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 	</fieldset>

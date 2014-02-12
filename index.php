@@ -5,16 +5,21 @@ require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
 
-try{
-	$query = $db->prepare("SELECT drawProgMenu FROM intcenter_pages WHERE link=?");
-	$query->execute(array($_GET['page']));
-	$row = $query->fetch(PDO::FETCH_ASSOC);
+if(isset($_GET['page'])){
+	try{
+		$query = $db->prepare("SELECT drawProgMenu FROM intcenter_pages WHERE link=?");
+		$query->execute(array($_GET['page']));
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e){
+		echo '<h2 class="req">Ошибка подключения к базе данных</h2>';
+	}
+	$drawProgMenu = (bool)$row['drawProgMenu'];
 }
-catch(PDOException $e){
-	echo $e->getMessage();
+else{
+	$drawProgMenu = true;
 }
 
-$drawProgMenu = (bool)$row['drawProgMenu'];
 
 echo "<a href='/admin/'>Adminka</a>";
 if(isset($_GET['page'])){
