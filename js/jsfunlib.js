@@ -50,6 +50,8 @@ $(document).ready(function(){
 		var id = $(this).children('option:selected').val();
 		if('' === id){
 			$(this).parent('label').siblings().children('textarea').html('');
+			$(this).parent('label').siblings().children('select').prop('selectedIndex', 0);
+			$(this).parent('label').siblings().children('input[type="checkbox"]').removeAttr('checked');
 		}
 		var type = $(this).data('type');
 		$.ajax({
@@ -61,17 +63,28 @@ $(document).ready(function(){
 				switch(data.formID){
 					case '#updatePageForm':
 						CKEDITOR.instances[data.tareaName].setData(data.content);
-						$(data.formID+' input[type="submit"]').removeAttr('disabled');
-						break
+						break;
 					case '#updateNewsForm':
 						$(data.formID+' textarea[name="title"]').html(data.name);
+						if(1 === parseInt(data.isSummer)){
+							$(data.formID+' input[name="isSummer"]').attr('checked', 'checked');
+						}
 						$(data.formID+' textarea[name="annotation"]').html(data.annotation);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
-						$(data.formID+' input[type="submit"]').removeAttr('disabled');
-						break
+						break;
+					case '#updateProgramForm':
+						$(data.formID+' select[name="prog_cat_id"] option').each(function(){
+							if( this.value === data.cat_id ){
+								$(this).attr('selected', 'selected');
+							}
+						});
+						$(data.formID+' textarea[name="target_audience"]').html(data.target_audience);
+						$(data.formID+' textarea[name="title"]').html(data.name);
+						CKEDITOR.instances[data.tareaName].setData(data.content);
+						break;
 					default:
 						console.log('error');
-						break
+						break;
 				}
 			},
 			error: function(obj, err){
@@ -92,7 +105,7 @@ $(document).ready(function(){
 
 // this function used in updating pages.
 // It fills name of page and page content accourdingly to selected page.
-$(document).ready(function(){
+/*$(document).ready(function(){
 	$('#updPageId').change(function(){
 		$.ajax({
 			type: "POST",
@@ -114,4 +127,4 @@ $(document).ready(function(){
 		});
 	return false;
 	});
-});
+});*/

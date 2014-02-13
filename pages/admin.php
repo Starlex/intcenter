@@ -26,6 +26,11 @@ if(isset($_POST['sendPage'])){
 }
 elseif(isset($_POST['sendNews'])){
 	if('/admin/' === $_GET['page']){
+		$isSummer = 0;
+		if(isset($_POST['isSummer'])){
+			$isSummer = 1;
+			unset($_POST['isSummer']);
+		}
 		array_pop($_POST);
 		if(!empty($_FILES)){
 			array_pop($_FILES['image']);
@@ -59,8 +64,8 @@ elseif(isset($_POST['sendNews'])){
 			exit;
 		}
 		try{
-			$sql =  "INSERT INTO intcenter_news(img, date, name, annotation, content) VALUES (?, ?, ?, ?, ?)";
-			$params = array('../'.$path_to_img, time(), $_POST['title'], $_POST['annotation'], $_POST['news_content']);
+			$sql =  "INSERT INTO intcenter_news(img, date, name, annotation, content, isSummer) VALUES (?, ?, ?, ?, ?, ?)";
+			$params = array('../'.$path_to_img, time(), $_POST['title'], $_POST['annotation'], $_POST['news_content'], $isSummer);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -74,12 +79,14 @@ elseif(isset($_POST['sendNews'])){
 		$action = "Добавление";
 	}
 	elseif('/admin-update/' === $_GET['page']){
-		array_pop($_POST);
-		foreach($_POST as $item){
-			if('' === $item){
-				echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
-				exit;
-			}
+		if('' === $_POST['news_id']){
+			echo "<h3 class='req'>Вы не выбрали новость для редактирования</h3>";
+			exit;
+		}
+		$isSummer = 0;
+		if(isset($_POST['isSummer'])){
+			$isSummer = 1;
+			unset($_POST['isSummer']);
 		}
 		try{
 			$sql =  "SELECT img FROM intcenter_news WHERE id=?";
@@ -125,21 +132,23 @@ elseif(isset($_POST['sendNews'])){
 			$path_to_img = $old_path_to_img;
 		}
 		try{
-			$sql =  "UPDATE intcenter_news SET img=?, name=?, annotation=?, content=? WHERE id=?";
-			$params = array('../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['news_content'], $_POST['news_id']);
+			$sql =  "UPDATE intcenter_news SET img=?, name=?, annotation=?, content=?, isSummer=? WHERE id=?";
+			$params = array('../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['news_content'], $isSummer, $_POST['news_id']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
 		catch(PDOException $e){
+			echo $e->getMessage();
 			echo "<h3 class='req'>Редактирование новости не удалось<h3>";
-			if('' !== $path_to_img){
-				unlink($path_to_img);
-			}
 			exit;
 		}
 		$action = "Редактирование";
 	}
 	elseif('/admin-delete/' === $_GET['page']){
+		if('' === $_POST['news_id']){
+			echo "<h3 class='req'>Вы не выбрали новость для удаления</h3>";
+			exit;
+		}
 		try{
 			$sql =  "SELECT img FROM intcenter_news WHERE id=?";
 			$query = $db->prepare($sql);
@@ -173,6 +182,66 @@ elseif(isset($_POST['sendNews'])){
 	$result = "<h3>$action новости прошло успешно</h3>";
 }
 elseif(isset($_POST['sendProgram'])){
+	if('/admin/' === $_GET['page']){
+		array_pop($_POST);
+		foreach ($_POST as $item) {
+			if('' === $item){
+				echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
+				exit;
+			}
+		}
+		try{
+			$sql = "INSERT INTO intcenter_programs(cat_id, name, target_audience, content, link) VALUES (?, ?, ?, ?, ?)";
+			$params = array($_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], '/learn-language/#'.time());
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo $e->getMessage();
+			echo "<h3 class='req'>Добввление программы обучения не удалось<h3>";
+			exit;
+		}
+		$action = 'Добавление';
+	}
+	elseif('/admin-update/' === $_GET['page']){
+		if('' === $_POST['program_id'] or '' === $_POST['prog_cat_id']){
+			echo '<h3 class="req">Вы не заполнили один или несколько обязательных пунктов</h3>';
+			exit;
+		}
+		try{
+			$sql = "UPDATE intcenter_programs SET cat_id=?, name=?, target_audience=?, content=? WHERE id=?";
+			$params = array($_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], $_POST['program_id']);
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo '<h3 class="req">Редактирование программы обучения не удалось</h3>';
+			exit;
+		}
+		$action = 'Редактирование';
+	}
+	elseif('/admin-delete/' === $_GET['page']){
+		if('' === $_POST['program_id']){
+			echo '<h3 class="req">Вы не выбрали программу обучения для удаления</h3>';
+			exit;
+		}
+		try{
+			$sql = "DELETE FROM intcenter_programs WHERE id=?";
+			$query = $db->prepare($sql);
+			$query->execute(array($_POST['program_id']));
+		}
+		catch(PDOException $e){
+			echo '<h3 class="req">Удаление программы обучения не удалось</h3>';
+			exit;
+		}
+		$action = 'Удаление';
+	}
+	else{
+		echo '<h3 class="req">Что-то пошло не так</h3>';
+		exit;
+	}
+	$result = "<h3>$action программы обучения прошло успешно</h3>";
+}
 
 
 switch($_GET['page']):

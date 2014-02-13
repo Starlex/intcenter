@@ -491,7 +491,6 @@ label{
 		display: block;
 		font-weight: bold;
 		margin: 5px 10px 5px 0;
-		width: 230px;
 	}
 	label select, label input[type="text"], label input[type="password"]{
 		border: 1px solid;
@@ -517,7 +516,6 @@ label{
 	}
 
 /*##################################   OTHER ELEMENTS   ###############################*/
-/* required fields asdf */
 .req{
 	color:red;
 	font-size: 17px;
@@ -533,6 +531,9 @@ label{
 }
 .hide{
 	display: none;
+}
+.iblock{
+	display: inline-block;
 }
 .up-btn{
 	background: url(../../../../img/up-btn.png);

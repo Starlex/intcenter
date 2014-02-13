@@ -9,7 +9,10 @@
 			exit;
 		}
 		else{
-			echo $result;
+			if(isset($action)){
+				echo $result;
+				exit;
+			}
 		}
 		?>
 		<div class='radio'>
@@ -34,6 +37,9 @@
 			<label>
 				<span><b class="req">*</b>Картинка:</span>
 				<input type='file' name='image'>
+			</label>
+			<label class="iblock">
+				<input type="checkbox" name="isSummer"> Новость для летних и зимних языковых школ
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
@@ -64,7 +70,7 @@
 				catch(PDOException $e){
 					header('Location: /error/');
 				}
-				echo "<select name='program_id'>";
+				echo "<select name='prog_cat_id'>";
 				echo"\n\t\t\t\t\t<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
 				foreach ($row as $option) {
 					echo"\n\t\t\t\t\t<option value='$option[id]'>$option[language] - - > $option[category]</option>";
@@ -74,7 +80,7 @@
 			</label>
 			<label>
 				<span><b class="req">*</b>Целевая аудитория:</span>
-				<textarea name='audience' rows='1'></textarea>
+				<textarea name='target_audience' rows='1'></textarea>
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>

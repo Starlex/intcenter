@@ -162,7 +162,7 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 	return true;
 }
 
-function showNews($db){
+function showNews($db, $isSummer=0){
 	try{
 		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_news");
 		$query->execute();
@@ -182,8 +182,8 @@ function showNews($db){
 		exit;
 	}
 	try{
-		$query = $db->prepare("SELECT * FROM intcenter_news ORDER BY date DESC");
-		$query->execute();
+		$query = $db->prepare("SELECT * FROM intcenter_news WHERE isSummer=? ORDER BY date DESC");
+		$query->execute(array($isSummer));
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 	catch(PDOException $e){

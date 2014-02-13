@@ -9,7 +9,10 @@
 			exit;
 		}
 		else{
-			echo $result;
+			if(isset($action)){
+				echo $result;
+				exit;
+			}
 		}
 		?>
 		<div class='radio'>
@@ -42,11 +45,11 @@
 
 		<form class='hide' method='post' id='deleteProgramForm' enctype='multipart/form-data'>
 			<label>
-				<span>Выберите новость:</span>
+				<span>Выберите программу обучения:</span>
 				<?php select($db, 'program'); ?>
 			</label>
 			<div class='button_panel'>
-				<input name='sendNews' type='submit' value='Удалить' class='button'>
+				<input name='sendProgram' type='submit' value='Удалить' class='button'>
 			</div>
 		</form>
 

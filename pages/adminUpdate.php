@@ -9,7 +9,10 @@
 			exit;
 		}
 		else{
-			echo $result;
+			if(isset($action)){
+				echo $result;
+				exit;
+			}
 		}
 		?>
 		<div class='radio'>
@@ -35,41 +38,44 @@
 		
 		<form class='hide' method='post' id='updatePageForm'>
 			<label>
-				<span>Выберите страницу:</span>
+				<span><b class="req">*</b>Выберите страницу:</span>
 				<?php select($db, 'page'); ?>
 			</label>
 			<label>
-				<span><b class="req">*</b>Основной текст страницы:</span>
+				<span>Основной текст страницы:</span>
 				<textarea class='ckeditor' name='page_content' rows='20'></textarea>
 			</label>
 			<div class='button_panel'>
-				<input name='sendPage' type='submit' value='Редактировать' class='button' disabled>
+				<input name='sendPage' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 
 		<form class='hide' method='post' id='updateNewsForm' enctype='multipart/form-data'>
 			<label>
-				<span>Выберите новость:</span>
+				<span><b class="req">*</b>Выберите новость:</span>
 				<?php select($db, 'news'); ?>
 			</label>
 			<label>
 				<span>Картинка:</span>
 				<input type='file' name='image'>
 			</label>
+			<label class="iblock">
+				<input type="checkbox" name="isSummer"> Новость для летних и зимних языковых школ
+			</label>
 			<label>
-				<span><b class="req">*</b>Название:</span>
+				<span>Название:</span>
 				<textarea name='title'></textarea>
 			</label>
 			<label>
-				<span><b class="req">*</b>Аннотация:</span>
+				<span>Аннотация:</span>
 				<textarea name='annotation' rows='5'></textarea>
 			</label>
 			<label>
-				<span><b class="req">*</b>Основной текст новости:</span>
+				<span>Основной текст новости:</span>
 				<textarea class='ckeditor' name='news_content' rows='20'></textarea>
 			</label>
 			<div class='button_panel'>
-				<input name='sendNews' type='submit' value='Редактировать' class='button' disabled>
+				<input name='sendNews' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 
@@ -79,15 +85,34 @@
 				<?php select($db, 'program'); ?>
 			</label>
 			<label>
-				<span><b class="req">*</b>Целевая аудитория:</span>
-				<textarea name='audience' rows='1'></textarea>
+				<span><b class="req">*</b>Язык и категория:</span>
+				<?php
+				try{
+					$query = $db->prepare("SELECT * FROM intcenter_prog_categories");
+					$query->execute();
+					$row = $query->fetchAll(PDO::FETCH_ASSOC);
+				}
+				catch(PDOException $e){
+					header('Location: /error/');
+				}
+				echo "<select name='prog_cat_id'>";
+				echo"\n\t\t\t\t\t<option value=''> - - - - - - - не выбрано - - - - - - - </option>";
+				foreach ($row as $option) {
+					echo"\n\t\t\t\t\t<option value='$option[id]'>$option[language] - - > $option[category]</option>";
+				}
+				echo "\n\t\t\t\t</select>\n";
+				?>
 			</label>
 			<label>
-				<span><b class="req">*</b>Название:</span>
+				<span>Целевая аудитория:</span>
+				<textarea name='target_audience' rows='1'></textarea>
+			</label>
+			<label>
+				<span>Название:</span>
 				<textarea name='title'></textarea>
 			</label>
 			<label>
-				<span><b class="req">*</b>Содержание прораммы:</span>
+				<span>Содержание прораммы:</span>
 				<textarea class='ckeditor' name='program_content' rows='20'></textarea>
 			</label>
 			<div class='button_panel'>
