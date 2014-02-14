@@ -96,7 +96,22 @@
 		</form>
 
 		<form class='hide' method='post' id='addPartnerForm'>
-			<input type='text' name=' id='>
+			<label>
+				<span><b class="req">*</b>Выберите картинку с логотипом партнера:</span>
+				<input type="file" name="image">
+			</label>
+			<label>
+				<span><b class="req">*</b>Название партнера:</span>
+				<input type="text" name="site">
+			</label>
+			<label>
+				<span><b class="req">*</b>Расположение:</span>
+				<input type="text" name="site">
+			</label>
+			<label>
+				<span><b class="req">*</b>Адрес сайта:</span>
+				<input type="text" name="site">
+			</label>
 			<div class='button_panel'>
 				<input name='sendPartner' type='submit' value='Добавить' class='button'>
 			</div>

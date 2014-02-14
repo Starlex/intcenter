@@ -21,7 +21,8 @@ if(isset($_POST['sendPage'])){
 	catch(PDOException $e){
 		echo "<h3 class='req'>Редактирование страницы не удалось<h3>";
 		exit;
-	}			
+	}
+	$action = '';
 	$result = "<h3>Редактирование страницы прошло успешно</h3>";
 }
 elseif(isset($_POST['sendNews'])){
@@ -242,58 +243,17 @@ elseif(isset($_POST['sendProgram'])){
 	}
 	$result = "<h3>$action программы обучения прошло успешно</h3>";
 }
-
-
-switch($_GET['page']):
-	case '/admin/':
-		require_once 'pages/adminAdd.php';
-		break;
-	case '/admin-update/':
-		require_once 'pages/adminUpdate.php';
-		break;
-	case '/admin-delete/':
-		require_once 'pages/adminDelete.php';
-		break;
-endswitch;
-
-
-/*elseif('/admin-update/' === $_GET['page']){
-	if(isset($_POST['sendPage'])){
-		$page_id = $_POST['page_id'];
-		$content = $_POST['page_content'];
-
-		if('' === $page_id){
-			$error[] = "<h3 class='req'>Вы не выбрали страницу для редактирования<h3>";
-		}
-		else{
-			$sql = "UPDATE intcenter_pages SET content=? WHERE id=?";
-			try{
-				$query = $db->prepare($sql);
-				$query->execute(array($content, $page_id));
-			}
-			catch(PDOException $e){
-				$error[] = "<h3 class='req'>Не удалось отредактировать страницу<h3>";
-				echo $e->getMessage();
-			}			
-			$result = "<h3>Редактирование страницы прошло успешно</h3>";
-		}
-	}
-	elseif(isset($_POST['sendNews'])){
-		$news_id = $_POST['news_id'];
-		$title = $_POST['title'];
-		$annotation = $_POST['annotation'];
-		$news_content = $_POST['news_content'];
-		$img = array(
-					'name' => $_FILES['image']['name'],
-					'tmp_name' => $_FILES['image']['tmp_name'],
-					'ext' => pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION),
-					'mime' => $_FILES['image']['type'],
-					'path' => 'img/news'
-				);
-		$name = $_FILES['image']['name'];
-		$tmp_name = $_FILES['image']['tmp_name'];
-		$type = $_FILES['image']['type'];
-	}
-	require_once 'pages/adminUpdate.php';	
-}*/
+else{
+}
+	switch($_GET['page']):
+		case '/admin/':
+			require_once 'pages/adminAdd.php';
+			break;
+		case '/admin-update/':
+			require_once 'pages/adminUpdate.php';
+			break;
+		case '/admin-delete/':
+			require_once 'pages/adminDelete.php';
+			break;
+	endswitch;
 ?>

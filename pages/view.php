@@ -9,8 +9,12 @@
 				?>
 				<div class="content">
 					<?php
-					echo '<h2>'.getPageName($db, $_GET['page']).'</h2>';
-					echo getPageContent($db, $_GET['page']);
+					echo '<h2>'.getPageName($db).'</h2>';
+					echo getPageContent($db);
+					if('/summer-schools/' === $_GET['page']){
+						$num = showNews($db, 1);
+						pagination($num, 4);
+					}
 					?>
 				</div>
 				<?php

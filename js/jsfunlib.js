@@ -49,7 +49,7 @@ $(document).ready(function(){
 	$('.selectContent').change(function(){
 		var id = $(this).children('option:selected').val();
 		if('' === id){
-			$(this).parent('label').siblings().children('textarea').html('');
+			$(this).parent('label').siblings().children('textarea').val('');
 			$(this).parent('label').siblings().children('select').prop('selectedIndex', 0);
 			$(this).parent('label').siblings().children('input[type="checkbox"]').removeAttr('checked');
 		}
@@ -65,11 +65,11 @@ $(document).ready(function(){
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 						break;
 					case '#updateNewsForm':
-						$(data.formID+' textarea[name="title"]').html(data.name);
+						$(data.formID+' textarea[name="title"]').val(data.name);
 						if(1 === parseInt(data.isSummer)){
 							$(data.formID+' input[name="isSummer"]').attr('checked', 'checked');
 						}
-						$(data.formID+' textarea[name="annotation"]').html(data.annotation);
+						$(data.formID+' textarea[name="annotation"]').val(data.annotation);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 						break;
 					case '#updateProgramForm':
@@ -78,8 +78,8 @@ $(document).ready(function(){
 								$(this).attr('selected', 'selected');
 							}
 						});
-						$(data.formID+' textarea[name="target_audience"]').html(data.target_audience);
-						$(data.formID+' textarea[name="title"]').html(data.name);
+						$(data.formID+' textarea[name="target_audience"]').val(data.target_audience);
+						$(data.formID+' textarea[name="title"]').val(data.name);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 						break;
 					default:

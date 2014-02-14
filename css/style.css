@@ -406,7 +406,10 @@ div.news+hr{
 		display: inline-block;
 		margin-left: -2px;
 	}
-	.pagination li:first-child a, .pagination li:last-child a{
+	.pagination li:nth-child(1) a,
+	.pagination li:nth-child(2) a,
+	.pagination li:nth-last-child(1) a,
+	.pagination li:nth-last-child(2) a{
 		text-decoration: none;
 	}
 		.pagination a{
@@ -415,7 +418,8 @@ div.news+hr{
 			-webkit-border-radius: 3px;
 			color: #4C4C4C;
 			display: block;
-			padding: 5px 8px;
+			padding: 5px 0;
+			width: 35px;
 		}
 		.pagination a.active{
 			background: linear-gradient(to bottom, #0070F4, #3B5FE1);
@@ -496,7 +500,7 @@ label{
 		border: 1px solid;
 		display: block;
 		padding: 5px;
-		width: 300px;
+		width: 98%;
 	}
 	label select{
 		width: 310px;

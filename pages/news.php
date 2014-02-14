@@ -8,8 +8,7 @@ try{
 catch(PDOException $e){
 	header('Location: /error/');
 }
-$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-breadcrumbs($db, $url);
+breadcrumbs($db);
 ?>
 
 <div class="container">

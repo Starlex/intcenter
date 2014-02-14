@@ -4,7 +4,7 @@
 			<div class="content">
 				<?php
 				$num = showNews($db);
-				pagination($num, 4);
+				pagination(100, 4);
 				?>
-			</div>
 		</div>
+	</div>

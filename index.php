@@ -31,7 +31,7 @@ if(isset($_GET['page'])){
 	elseif('/login/' === $_GET['page'] or '/logout/' === $_GET['page']){
 		require_once 'pages/loginout.php';
 	}
-	elseif('/news/' === $_GET['page']){
+	elseif( '/news/' === $_GET['page'] or ('/summer-schools/' === $_GET['page']) and isset($_GET['var1']) ){
 		require_once 'block/top.php';
 		require_once 'pages/news.php';
 		require_once 'block/bottom.php';
@@ -41,7 +41,7 @@ if(isset($_GET['page'])){
 	}
 	else{
 		require_once 'block/top.php';
-		require_once 'pages/view.php';
+		require_once 'pages/main.php';
 		require_once 'block/bottom.php';
 	}
 }
@@ -50,7 +50,6 @@ elseif(empty($_GET)){
 	require_once 'pages/main.php';
 	require_once 'block/bottom.php';
 }
-
 
 require_once 'block/footer.php';
 ?>
