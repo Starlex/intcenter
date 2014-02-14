@@ -191,14 +191,13 @@ function showNews($db, $isSummer=0){
 		header('Location: /error/');
 	}
 	if(isset($_GET['page']) and '/summer-schools/' === $_GET['page'] ){
-		$page = !isset($_GET['var1']) ? 0 : (int)str_replace('/page', '', $_GET['page'])-1;
+		$page = !isset($_GET['var1']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
 		$pre_url = '/summer-schools';
 	}
 	else{
-		$page = !isset($_GET['page']) ? 0 : (int)str_replace('/page', '', $_GET['page'])-1;
+		$page = !isset($_GET['page']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
 		$pre_url = '/news';
 	}
-	$page;
 	$startNewsNum = $page*4+1;
 	$news_counter = 0;
 	echo '<h3>Новости</h3>';
@@ -216,6 +215,7 @@ function showNews($db, $isSummer=0){
 			<hr>";
 		}
 	}
+	pagination($num, 4);
 	return $num;
 }
 
