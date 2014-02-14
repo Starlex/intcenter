@@ -220,7 +220,7 @@ function showNews($db, $isSummer=0){
 }
 
 function pagination($resultCount, $contentNum){
-	$maxShownPages = 7;
+	$maxShownPages = 5;
 	$countPages = ($resultCount/$contentNum);
 	if(is_float($countPages))
 		$countPages = (int)$countPages+1;
@@ -233,11 +233,10 @@ function pagination($resultCount, $contentNum){
 		echo "
 		<div class='pagination'>
 			<ul>";
-		if(1 !== $active){
-			echo"
-				<li><a title='Первая страница' href='../'> << </a></li>\t\t\t\t
-				<li><a title='Предыдущая страница' href='$prev'>&larr;</a></li>\n\t\t\t\t";
-		}
+		$invisible = (1 !== $active) ? '' : ' class="invisible"';
+		echo"
+			<li$invisible><a title='Первая страница' href='../'> << </a></li>\t\t\t\t
+			<li$invisible><a title='Предыдущая страница' href='$prev'>&larr;</a></li>\n\t\t\t\t";
 		$style = '';
 		if($countPages <= $maxShownPages){
 			for ($i=1; $i <= $countPages; $i++, $style = '') {
@@ -251,11 +250,11 @@ function pagination($resultCount, $contentNum){
 		else{
 			if($active <= 4){
 				$counter_from = 1;
-				$counter_to = 7;
+				$counter_to = 5;
 			}
 			elseif($active > 4 and $active < $countPages-$maxShownPages){
-				$counter_from = $active-3;
-				$counter_to = $active+3;
+				$counter_from = $active-2;
+				$counter_to = $active+2;
 			}
 			else{
 				$counter_from = $countPages-$maxShownPages;
@@ -269,10 +268,9 @@ function pagination($resultCount, $contentNum){
 				echo "<li><a$style href='$page_url'>$i</a></li>\n\t\t\t\t";
 			}
 		}
-		if($active !== $countPages){
-			echo "<li><a title='Следующая страница' href='$next'>&rarr;</a></li>
-				<li><a title='Последняя страница' href='../$countPages/'> >> </a></li>";
-		}
+		$invisible = ($active !== $countPages) ? '' : ' class="invisible"';
+		echo "<li$invisible><a title='Следующая страница' href='$next'>&rarr;</a></li>
+			<li$invisible><a title='Последняя страница' href='../$countPages/'> >> </a></li>";
 		echo"
 			</ul>
 		</div>\n";

@@ -536,6 +536,9 @@ label{
 .hide{
 	display: none;
 }
+.invisible{
+	visibility: hidden;
+}
 .iblock{
 	display: inline-block;
 }
