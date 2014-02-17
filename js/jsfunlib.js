@@ -1,3 +1,8 @@
+// focus on login input in authorization form
+$(document).ready(function(){
+	$('#login').focus();
+});
+
 // Show prog-submenu on click
 $(document).ready(function(){
 	$('.prog-menu>ul>li').click(function(){
@@ -50,6 +55,7 @@ $(document).ready(function(){
 		var id = $(this).children('option:selected').val();
 		if('' === id){
 			$(this).parent('label').siblings().children('textarea').val('');
+			$(this).parent('label').siblings().children('input[type="text"]').val('');
 			$(this).parent('label').siblings().children('select').prop('selectedIndex', 0);
 			$(this).parent('label').siblings().children('input[type="checkbox"]').removeAttr('checked');
 		}
@@ -78,12 +84,12 @@ $(document).ready(function(){
 								$(this).attr('selected', 'selected');
 							}
 						});
-						$(data.formID+' textarea[name="target_audience"]').val(data.target_audience);
+						$(data.formID+' input[name="target_audience"]').val(data.target_audience);
 						$(data.formID+' textarea[name="title"]').val(data.name);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 						break;
 					default:
-						console.log('error');
+						console.log('Ух-ох. Что-то пошло не так.');
 						break;
 				}
 			},

@@ -1,20 +1,3 @@
-<div class='container'>
-	<fieldset>
-		<legend>Форма редактирования контента</legend>
-		<?php
-		if(!empty($error)){
-			foreach ($error as $err) {
-				echo $err;
-			}
-			exit;
-		}
-		else{
-			if(isset($action)){
-				echo $result;
-				exit;
-			}
-		}
-		?>
 		<div class='radio'>
 			<label>
 				<input type='radio' name='rbtn' id='updatePage'> Редактировать страницу
@@ -35,7 +18,7 @@
 				<input type='radio' name='rbtn' id='updateProgram'> Редактировать программу обучения
 			</label>
 		</div>
-		
+		<div class="note">Поля, обозначенные <b class="req">*</b>, обязательны к заполнению.</div>
 		<form class='hide' method='post' id='updatePageForm'>
 			<label>
 				<span><b class="req">*</b>Выберите страницу:</span>
@@ -105,7 +88,7 @@
 			</label>
 			<label>
 				<span>Целевая аудитория:</span>
-				<textarea name='target_audience' rows='1'></textarea>
+				<input type="text" name="target_audience">
 			</label>
 			<label>
 				<span>Название:</span>
@@ -124,6 +107,22 @@
 			<label>
 				<span>Выберите партнера:</span>
 				<?php select($db, 'partner'); ?>
+			</label>
+			<label>
+				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
+				<input type="file" name="image">
+			</label>
+			<label>
+				<span><b class="req">*</b>Название:</span>
+				<input type="text" name="site">
+			</label>
+			<label>
+				<span><b class="req">*</b>Расположение:</span>
+				<input type="text" name="site">
+			</label>
+			<label>
+				<span><b class="req">*</b>Адрес сайта:</span>
+				<input type="text" name="site">
 			</label>
 			<div class='button_panel'>
 				<input name='sendPartner' type='submit' value='Редактировать' class='button'>
@@ -149,5 +148,3 @@
 				<input name='sendEmployee' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
-	</fieldset>
-</div>

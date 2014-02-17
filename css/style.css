@@ -8,17 +8,6 @@ body{
 	margin: 0 auto;
 	width: 1021px;
 }
-fieldset{
-		background-color: #fff;
-		border-radius: 20px;
-		-moz-border-radius: 20px;
-		-webkit-border-radius: 20px;
-		border: 0px;
-		padding: 20px;
-	}
-		legend{
-			font-size: 20px;
-		}
 
 /*############################   STRUCTURE OF SITE   ############################*/
 .head{
@@ -464,6 +453,22 @@ table{
 			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
+fieldset{
+		background-color: #fff;
+		border-radius: 20px;
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		border: 0px;
+		padding: 10px 20px;
+	}
+		legend{
+			font-size: 20px;
+		}
+.note{
+	background-color: #F0FFFF;
+	padding: 10px 20px;
+	margin-bottom: 30px;
+}
 form abbr{
 	border-bottom: 0;
 	color: #20B2AA;
@@ -481,11 +486,12 @@ div.login{
 	}
 	div.login label input[type="text"], div.login label input[type="password"]{
 		display: inline-block;
+		width: 300px;
 	}
 
 div.radio label{
 	display: inline-block;
-	margin-right: 30px;
+	width: 270px;
 }
 label{
 	display: block;
@@ -500,7 +506,7 @@ label{
 		border: 1px solid;
 		display: block;
 		padding: 5px;
-		width: 98%;
+		width: 930px;
 	}
 	label select{
 		width: 310px;

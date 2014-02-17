@@ -1,20 +1,3 @@
-<div class='container'>
-	<fieldset>
-		<legend>Форма добавления контента</legend>
-		<?php
-		if(!empty($error)){
-			foreach ($error as $err) {
-				echo $err;
-			}
-			exit;
-		}
-		else{
-			if(isset($action)){
-				echo $result;
-				exit;
-			}
-		}
-		?>
 		<div class='radio'>
 			<label>
 				<input type='radio' name='rbtn' id='addNews'> Добавить новость
@@ -32,6 +15,8 @@
 				<input type='radio' name='rbtn' id='addProgram'> Добавить программу обучения
 			</label>
 		</div>
+		<div class="note">Поля, обозначенные <b class="req">*</b>, обязательны к заполнению.</div>
+
 
 		<form class='hide' method='post' id='addNewsForm' enctype='multipart/form-data'>
 			<label>
@@ -80,7 +65,8 @@
 			</label>
 			<label>
 				<span><b class="req">*</b>Целевая аудитория:</span>
-				<textarea name='target_audience' rows='1'></textarea>
+				<input type="text" name="target_audience">
+				<!-- <textarea name='target_audience' rows='1'></textarea> -->
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
@@ -95,18 +81,18 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='addPartnerForm'>
+		<form class='hide' method='post' id='addPartnerForm' enctype='multipart/form-data'>
 			<label>
-				<span><b class="req">*</b>Выберите картинку с логотипом партнера:</span>
+				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
 				<input type="file" name="image">
 			</label>
 			<label>
-				<span><b class="req">*</b>Название партнера:</span>
-				<input type="text" name="site">
+				<span><b class="req">*</b>Название:</span>
+				<input type="text" name="title">
 			</label>
 			<label>
 				<span><b class="req">*</b>Расположение:</span>
-				<input type="text" name="site">
+				<input type="text" name="location">
 			</label>
 			<label>
 				<span><b class="req">*</b>Адрес сайта:</span>
@@ -124,11 +110,9 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='addEmployeeForm'>
+		<form class='hide' method='post' id='addEmployeeForm' enctype='multipart/form-data'>
 			<input type='text' name=' id='>
 			<div class='button_panel'>
 				<input name='sendEmployee' type='submit' value='Добавить' class='button'>
 			</div>
 		</form>
-	</fieldset>
-</div>

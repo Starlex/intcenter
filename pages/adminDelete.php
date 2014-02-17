@@ -1,20 +1,3 @@
-<div class='container'>
-	<fieldset>
-		<legend>Форма удаления контента</legend>
-		<?php
-		if(!empty($error)){
-			foreach ($error as $err) {
-				echo $err;
-			}
-			exit;
-		}
-		else{
-			if(isset($action)){
-				echo $result;
-				exit;
-			}
-		}
-		?>
 		<div class='radio'>
 			<label>
 				<input type='radio' name='rbtn' id='deleteNews'> Удалить новость
@@ -82,5 +65,3 @@
 				<input name='sendEmployee' type='submit' value='Удалить' class='button'>
 			</div>
 		</form>
-	</fieldset>
-</div>

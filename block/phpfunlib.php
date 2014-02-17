@@ -426,6 +426,33 @@ function select($db, $selected_type){
 	return true;
 }
 
+function fileUpload($file, $dest, $f_width, $f_height){
+	$allowed_mime = array('', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
+	$allowed_ext = array('', 'png', 'jpg', 'jpeg', 'gif');
+	$img = array(
+			'name' => cyrillic2latin($file['name']),
+			'tmp_name' => $file['tmp_name'],
+			'ext' => strtolower(pathinfo($file['name'], PATHINFO_EXTENSION) ),
+			'mime' => strtolower($file['type']),
+			'path' => "img/$dest"
+		);
+	$path_to_img = $img['path'].'/'.time().'-'.$img['name'];
+
+	if( !in_array($img['mime'], $allowed_mime) or !in_array($img['ext'], $allowed_ext) ){
+		echo "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
+		return false;
+	}
+	if(!file_exists($img['path'])){
+		echo "<h3 class='req'>Загрузка файла не удалась<h3>";
+		return false;
+	}
+	if( !img_resize($img['tmp_name'], $path_to_img, $f_width, $f_height) ){
+		echo "<h3 class='req'>Загрузка файла не удалась<h3>";
+		return false;
+	}
+	return $path_to_img;
+}
+
 /*##################################   BORROWED FUNCTIONS  ###############################*/
 
 // Source link http://forum.php.su/topic.php?forum=35&topic=12&postid=1176547253#1176547253

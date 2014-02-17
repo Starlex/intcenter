@@ -25,25 +25,24 @@ if(isset($_POST['send'])){
 if('/login/' === $_GET['page']){
 ?>
 	<div class="login">
-		<fieldset>
-			<?=$error?>
-			<legend>Авторизация пользователя</legend>
-			<form name="flogin" method='post' action="">
-				<label for="">
-					<span>Введите логин:</span>
-					<input type="text" name="login" id="">
-				</label>
-				<label for="">
-					<span>Введите пароль:</span>
-					<input type="password" name="password" id="pass">
-				</label>
-				<div class="button_panel">
-					<input class="button" name='send' type="submit" value="Войти">
-					<input class="button" type="reset" value="Очистить поля">
-				</div>
-			</form>
-		</fieldset>
-	</div>
+	<fieldset>
+		<?=$error?>
+		<legend>Авторизация пользователя</legend>
+		<form name="flogin" method='post'>
+			<label>
+				<span>Введите логин:</span>
+				<input type="text" name="login" id="login">
+			</label>
+			<label>
+				<span>Введите пароль:</span>
+				<input type="password" name="password">
+			</label>
+			<div class="button_panel">
+				<input class="button" name='send' type="submit" value="Войти">
+				<input class="button" type="reset" value="Очистить поля">
+			</div>
+		</form>
+	</fieldset>
 <?php
 }
 elseif('/logout/' === $_GET['page']){

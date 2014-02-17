@@ -2,8 +2,6 @@
 <?php
 drawVerticalMenu($db, 1);
 
-$result = '';
-$error = array();
 $allowed_mime = array('', 'image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg', 'image/gif');
 $allowed_ext = array('', 'png', 'jpg', 'jpeg', 'gif');
 if(isset($_POST['sendPage'])){
@@ -22,8 +20,8 @@ if(isset($_POST['sendPage'])){
 		echo "<h3 class='req'>Редактирование страницы не удалось<h3>";
 		exit;
 	}
-	$action = '';
-	$result = "<h3>Редактирование страницы прошло успешно</h3>";
+	$action = 'Редактирование';
+	$result = 'страницы';
 }
 elseif(isset($_POST['sendNews'])){
 	if('/admin/' === $_GET['page']){
@@ -43,25 +41,8 @@ elseif(isset($_POST['sendNews'])){
 				exit;
 			}
 		}
-		$img = array(
-					'name' => cyrillic2latin($_FILES['image']['name']),
-					'tmp_name' => $_FILES['image']['tmp_name'],
-					'ext' => strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION) ),
-					'mime' => strtolower($_FILES['image']['type']),
-					'path' => 'img/news'
-				);
-		$path_to_img = $img['path'].'/'.time().'-'.$img['name'];
-
-		if( !in_array($img['mime'], $allowed_mime) or !in_array($img['ext'], $allowed_ext) ){
-			echo "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
-			exit;
-		}
-		if(!file_exists($img['path'])){
-			echo "<h3 class='req'>Загрузка файла не удалась<h3>";
-			exit;
-		}
-		if( !img_resize($img['tmp_name'], $path_to_img, 120, 90) ){
-			echo "<h3 class='req'>Загрузка файла не удалась<h3>";
+		$path_to_img = fileUpload($_FILES['image'], 'news', 120, 90);
+		if(!$path_to_img){
 			exit;
 		}
 		try{
@@ -101,26 +82,8 @@ elseif(isset($_POST['sendNews'])){
 			exit;
 		}
 		if('' !== $_FILES['image']['name']){
-			print_r($_FILES);
-			$img = array(
-						'name' => cyrillic2latin($_FILES['image']['name']),
-						'tmp_name' => $_FILES['image']['tmp_name'],
-						'ext' => strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION) ),
-						'mime' => strtolower($_FILES['image']['type']),
-						'path' => 'img/news'
-					);
-			$path_to_img = $img['path'].'/'.time().'-'.$img['name'];
-
-			if( !in_array($img['mime'], $allowed_mime) or !in_array($img['ext'], $allowed_ext) ){
-				echo "<h3 class='req'>Данный тип файла запрещен к загрузке<h3>";
-				exit;
-			}
-			if(!file_exists($img['path'])){
-				echo "<h3 class='req'>Загрузка файла не удалась<h3>";
-				exit;
-			}
-			if( !img_resize($img['tmp_name'], $path_to_img, 120, 90) ){
-				echo "<h3 class='req'>Загрузка файла не удалась<h3>";
+			$path_to_img = fileUpload($_FILES['image'], 'news', 120, 90);
+			if(!$path_to_img){
 				exit;
 			}
 			else{
@@ -180,7 +143,7 @@ elseif(isset($_POST['sendNews'])){
 		echo 'Что-то пошло не так';
 		exit;
 	}
-	$result = "<h3>$action новости прошло успешно</h3>";
+	$result = 'новости';
 }
 elseif(isset($_POST['sendProgram'])){
 	if('/admin/' === $_GET['page']){
@@ -198,8 +161,7 @@ elseif(isset($_POST['sendProgram'])){
 			$query->execute($params);
 		}
 		catch(PDOException $e){
-			echo $e->getMessage();
-			echo "<h3 class='req'>Добввление программы обучения не удалось<h3>";
+			echo "<h3 class='req'>Добавление программы обучения не удалось<h3>";
 			exit;
 		}
 		$action = 'Добавление';
@@ -241,19 +203,61 @@ elseif(isset($_POST['sendProgram'])){
 		echo '<h3 class="req">Что-то пошло не так</h3>';
 		exit;
 	}
-	$result = "<h3>$action программы обучения прошло успешно</h3>";
+	$result = 'программы обучения';
 }
-else{
+elseif(isset($_POST['sendPartner'])){
+	if('/admin/' === $_GET['page']){
+		array_pop($_POST);
+		if(!empty($_FILES)){
+			array_pop($_FILES['image']);
+			array_pop($_FILES['image']);
+		}
+		foreach(array_merge($_POST, $_FILES) as $item){
+			if('' === $item){
+				echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
+				exit;
+			}
+		}
+		$path_to_img = fileUpload($_FILES['image'], 'partners', 200, 130);
+		if(!$path_to_img){
+			exit;
+		}
+		try{
+			$sql = "INSERT INTO intcenter_partners(img, name, location, site) VALUES (?,?,?,?)";
+			$params = array('../'.$path_to_img, $_POST['title'], $_POST['location'], $_POST['site']);
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo $e->getMessage();
+			echo "<h3 class='req'>Добавление партнера не удалось</h3>";
+			exit;
+		}
+		$action = 'Добавление';
+	}
+	$type = 'партнера';
 }
-	switch($_GET['page']):
-		case '/admin/':
-			require_once 'pages/adminAdd.php';
-			break;
-		case '/admin-update/':
-			require_once 'pages/adminUpdate.php';
-			break;
-		case '/admin-delete/':
-			require_once 'pages/adminDelete.php';
-			break;
-	endswitch;
 ?>
+
+<div class='container'>
+	<fieldset>
+		<legend><?=getPageName($db);?> контент</legend>
+		<?php
+		if( isset($action) and isset($type) ){
+			echo "<h3>$action $type прошло успешно</h3>";
+			exit;
+		}
+		switch($_GET['page']):
+			case '/admin/':
+				require_once 'pages/adminAdd.php';
+				break;
+			case '/admin-update/':
+				require_once 'pages/adminUpdate.php';
+				break;
+			case '/admin-delete/':
+				require_once 'pages/adminDelete.php';
+				break;
+		endswitch;
+?>
+	</fieldset>
+</div>

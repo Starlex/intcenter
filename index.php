@@ -36,6 +36,11 @@ if(isset($_GET['page'])){
 		require_once 'pages/news.php';
 		require_once 'block/bottom.php';
 	}
+	elseif('/partners/' === $_GET['page']){
+		require_once 'block/top.php';
+		require_once 'pages/partners.php';
+		require_once 'block/bottom.php';
+	}
 	elseif('/error/' === $_GET['page']){
 		require_once 'pages/error.php';
 	}
