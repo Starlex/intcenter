@@ -171,9 +171,19 @@ function showNews($db, $isSummer=0){
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
+	if(isset($_GET['page']) and '/summer-schools/' === $_GET['page'] ){
+		$page = !isset($_GET['var1']) ? 0 : (int)str_replace('/', '', $_GET['var1'])-1;
+		$pre_url = '/summer-schools';
+		$title = 'Актуальные новости';
+	}
+	else{
+		$page = !isset($_GET['page']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
+		$pre_url = '/news';
+		$title = 'НОВОСТИ';
+	}
 
 	if(0 === (int)$num){
-		echo '<h3>Новости</h3>';
+		echo '<h3>'.$title.'</h3>';
 		echo "	Новостей нет
 		</div>
 		</div>
@@ -190,20 +200,12 @@ function showNews($db, $isSummer=0){
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
-	if(isset($_GET['page']) and '/summer-schools/' === $_GET['page'] ){
-		$page = !isset($_GET['var1']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
-		$pre_url = '/summer-schools';
-	}
-	else{
-		$page = !isset($_GET['page']) ? 0 : (int)str_replace('/', '', $_GET['page'])-1;
-		$pre_url = '/news';
-	}
 	$startNewsNum = $page*4+1;
 	$news_counter = 0;
-	echo '<h3>Новости</h3>';
+	echo '<h3>'.$title.'</h3>';
 	foreach ($row as $news) {
 		++$news_counter;
-		if($news_counter >= $startNewsNum and $news_counter <= $startNewsNum+3){
+		if($news_counter >= $startNewsNum and $news_counter < $startNewsNum+4){
 			echo "<div class='news'>
 				<img src='$news[img]' alt='Изображение'>
 				<div>
@@ -222,19 +224,21 @@ function showNews($db, $isSummer=0){
 function pagination($resultCount, $contentNum){
 	$maxShownPages = 5;
 	$countPages = ($resultCount/$contentNum);
-	if(is_float($countPages))
+	if(is_float($countPages)){
 		$countPages = (int)$countPages+1;
+	}
+
 	$pages_with_pagination = array('/summer-schools/', '/partners/', '/services/');
 	if( isset($_GET['page']) and in_array($_GET['page'], $pages_with_pagination) ){
 		$active = !isset($_GET['var1']) ? 1 : (int)str_replace('/', '', $_GET['var1']);
-		$type = '../'.str_replace('/', '', $_GET['page']);
+		$type = '../'.substr($_GET['page'], 1);
 	}
 	else{
 		$active = !isset($_GET['page']) ? 1 : (int)str_replace('/', '', $_GET['page']);
 		$type = '../';
 	}
-	$prev = ($active <= 2) ? '../' : '../'.($active-1).'/';
-	$next = ($active >= $countPages) ? "../$type/$countPages/" : '../'.$type.'/'.($active+1).'/';
+	$prev = ($active <= 2) ? '../'.$type : '../'.($active-1).'/';
+	$next = ($active >= $countPages) ? '../'.$type.$countPages.'/' : '../'.$type.($active+1).'/';
 	$shownPages = $countPages/2;
 
 	if($countPages > 1){
@@ -243,7 +247,7 @@ function pagination($resultCount, $contentNum){
 			<ul>";
 		$invisible = (1 !== $active) ? '' : ' class="invisible"';
 		echo"
-			<li$invisible><a title='Первая страница' href='../'> &lt;&lt; </a></li>\t\t\t\t
+			<li$invisible><a title='Первая страница' href='../$type'> &lt;&lt; </a></li>\t\t\t\t
 			<li$invisible><a title='Предыдущая страница' href='$prev'>&larr;</a></li>\n\t\t\t\t";
 		$style = '';
 		if($countPages <= $maxShownPages){
@@ -251,7 +255,7 @@ function pagination($resultCount, $contentNum){
 				if($active === $i){
 					$style = " class='active'";
 				}
-				$page_url = (1 === $i) ? '../' : "../$i/";
+				$page_url = (1 === $i) ? '../'.$type : "../$type$i/";
 				echo "<li><a$style href='$page_url'>$i</a></li>\n\t\t\t\t";
 			}
 		}
@@ -270,15 +274,15 @@ function pagination($resultCount, $contentNum){
 			}
 			for ($i=$counter_from; $i <= $counter_to; $i++, $style = '') {
 				if($active === $i){
-					$style = " class='active'";
+					$style = ' class="active"';
 				}
-				$page_url = (1 === $i) ? '../'.$type.'/' : "../$type/$i/";
+				$page_url = (1 === $i) ? '../'.$type : '../'.$type.$i.'/';
 				echo "<li><a$style href='$page_url'>$i</a></li>\n\t\t\t\t";
 			}
 		}
 		$invisible = ($active !== $countPages) ? '' : ' class="invisible"';
-		echo "<li$invisible><a title='Следующая страница' href='$next'>&rarr;</a></li>
-			<li$invisible><a title='Последняя страница' href='../$type/$countPages/'> &gt;&gt; </a></li>";
+		echo '<li'.$invisible.'><a title="Следующая страница"" href="'.$next.'">&rarr;</a></li>
+			<li'.$invisible.'><a title="Последняя страница" href="../'.$type.$countPages.'/"> &gt;&gt; </a></li>';
 		echo"
 			</ul>
 		</div>\n";

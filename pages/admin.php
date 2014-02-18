@@ -47,7 +47,7 @@ elseif(isset($_POST['sendNews'])){
 		}
 		try{
 			$sql =  "INSERT INTO intcenter_news(img, date, name, annotation, content, isSummer) VALUES (?, ?, ?, ?, ?, ?)";
-			$params = array('../'.$path_to_img, time(), $_POST['title'], $_POST['annotation'], $_POST['news_content'], $isSummer);
+			$params = array('../../'.$path_to_img, time(), $_POST['title'], $_POST['annotation'], $_POST['news_content'], $isSummer);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -75,7 +75,7 @@ elseif(isset($_POST['sendNews'])){
 			$query = $db->prepare($sql);
 			$query->execute(array($_POST['news_id']));
 			$row = $query->fetch(PDO::FETCH_ASSOC);
-			$old_path_to_img = str_replace('../', '', $row['img']);
+			$old_path_to_img = str_replace('../../', '', $row['img']);
 		}
 		catch(PDOException $e){
 			echo "<h3 class='req'>Редактирование новости не удалось<h3>";
@@ -97,7 +97,7 @@ elseif(isset($_POST['sendNews'])){
 		}
 		try{
 			$sql =  "UPDATE intcenter_news SET img=?, name=?, annotation=?, content=?, isSummer=? WHERE id=?";
-			$params = array('../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['news_content'], $isSummer, $_POST['news_id']);
+			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['news_content'], $isSummer, $_POST['news_id']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -118,7 +118,7 @@ elseif(isset($_POST['sendNews'])){
 			$query = $db->prepare($sql);
 			$query->execute(array($_POST['news_id']));
 			$row = $query->fetch(PDO::FETCH_ASSOC);
-			$old_path_to_img = str_replace('../', '', $row['img']);
+			$old_path_to_img = str_replace('../../', '', $row['img']);
 		}
 		catch(PDOException $e){
 			echo "<h3 class='req'>Удаление новости не удалось<h3>";
@@ -225,7 +225,7 @@ elseif(isset($_POST['sendPartner'])){
 		$site = preg_replace('/((http|https)\:\/\/)/', '', $_POST['site']);
 		try{
 			$sql = "INSERT INTO intcenter_partners(img, name, location, site) VALUES (?,?,?,?)";
-			$params = array('../'.$path_to_img, $_POST['title'], $_POST['location'], $site);
+			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['location'], $site);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -235,6 +235,35 @@ elseif(isset($_POST['sendPartner'])){
 			exit;
 		}
 		$action = 'Добавление';
+	}
+	elseif('/admin-update/' === $_GET['page']){
+		if( '' === $_POST['partner_id'] ){
+			echo '<h3 class="req">Вы не выбрали партнера для редактирования</h2>';
+			exit;
+		}
+		try{
+			$sql =  "SELECT img FROM intcenter_partners WHERE id=?";
+			$query = $db->prepare($sql);
+			$query->execute(array($_POST['partner_id']));
+			$row = $query->fetch(PDO::FETCH_ASSOC);
+			$old_path_to_img = str_replace('../../', '', $row['img']);
+		}
+		catch(PDOException $e){
+			echo "<h3 class='req'>Редактирование партнера не удалось<h3>";
+			exit;
+		}
+		if('' !== $_FILES['image']['name']){
+			$path_to_img = fileUpload($_FILES['image'], 'news', 200, 130);
+			if(!$path_to_img){
+				exit;
+			}
+			else{
+				if(file_exists($old_path_to_img)){
+					unlink($old_path_to_img);
+				}
+			}
+		}
+
 	}
 	$type = 'партнера';
 }
@@ -261,4 +290,3 @@ elseif(isset($_POST['sendPartner'])){
 		endswitch;
 ?>
 	</fieldset>
-</div>

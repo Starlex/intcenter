@@ -69,7 +69,7 @@ $(document).ready(function(){
 				switch(data.formID){
 					case '#updatePageForm':
 						CKEDITOR.instances[data.tareaName].setData(data.content);
-						break;
+					break;
 					case '#updateNewsForm':
 						$(data.formID+' textarea[name="title"]').val(data.name);
 						if(1 === parseInt(data.isSummer)){
@@ -77,7 +77,7 @@ $(document).ready(function(){
 						}
 						$(data.formID+' textarea[name="annotation"]').val(data.annotation);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
-						break;
+					break;
 					case '#updateProgramForm':
 						$(data.formID+' select[name="prog_cat_id"] option').each(function(){
 							if( this.value === data.cat_id ){
@@ -87,10 +87,16 @@ $(document).ready(function(){
 						$(data.formID+' input[name="target_audience"]').val(data.target_audience);
 						$(data.formID+' textarea[name="title"]').val(data.name);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
+					break;
+						case '#updatePartnerForm':
+							console.log(data);
+							$(data.formID+' input[name="title"]').val(data.name);
+							$(data.formID+' input[name="location"]').val(data.location);
+							$(data.formID+' input[name="site"]').val(data.site);
 						break;
 					default:
 						console.log('Ух-ох. Что-то пошло не так.');
-						break;
+					break;
 				}
 			},
 			error: function(obj, err){

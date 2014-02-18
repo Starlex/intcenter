@@ -300,9 +300,6 @@ body{
 			margin: 0;
 			width: 710px;
 		}
-			.content h3{
-				text-transform: uppercase;
-			}
 			/* view news page */
 			.content h2{
 				margin: 15px 0 10px;

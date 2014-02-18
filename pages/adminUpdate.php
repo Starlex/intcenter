@@ -114,11 +114,11 @@
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
-				<input type="text" name="site">
+				<input type="text" name="title">
 			</label>
 			<label>
 				<span><b class="req">*</b>Расположение:</span>
-				<input type="text" name="site">
+				<input type="text" name="location">
 			</label>
 			<label>
 				<span><b class="req">*</b>Адрес сайта:</span>

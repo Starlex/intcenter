@@ -16,21 +16,22 @@ breadcrumbs($db);
 ?>
 <div class="container">
 	<?php
-	$pageNum = !isset($_GET['vari']) ? 0 : str_replace('/', '', $_GET['var1']);
+	$pageNum = !isset($_GET['var1']) ? 0 : str_replace('/', '', $_GET['var1'])-1;
 	$startNumPartner = $pageNum*6+1;
 	$partnerCounter = 0;
 	echo '<h2>'.getPageName($db).'</h2>';
 	foreach ($row as $partner) {
 		++$partnerCounter;
-		if($partnerCounter){}
-		echo "<div class='partner'>
-			<img src='../$partner[img]' alt='pic'>
-			<div>
-				$partner[name]
-				<p>$partner[location]</p>
-				<a href='http://$partner[site]' target='_blank'>$partner[site]</a>
-			</div>
-		</div>";
+		if($partnerCounter >= $startNumPartner and $partnerCounter < $startNumPartner+6){
+			echo "<div class='partner'>
+				<img src='$partner[img]' alt='pic'>
+				<div>
+					$partner[name]
+					<p>$partner[location]</p>
+					<a href='http://$partner[site]' target='_blank'>$partner[site]</a>
+				</div>
+			</div>";
+		}
 	}
 	// echo $partnerCounter;
 	pagination($num, 6);
