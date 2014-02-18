@@ -216,7 +216,7 @@ function showNews($db, $isSummer=0){
 		}
 	}
 	pagination($num, 4);
-	return $num;
+	return true;
 }
 
 function pagination($resultCount, $contentNum){
@@ -224,9 +224,17 @@ function pagination($resultCount, $contentNum){
 	$countPages = ($resultCount/$contentNum);
 	if(is_float($countPages))
 		$countPages = (int)$countPages+1;
-	$active = !isset($_GET['page']) ? 1 : (int)str_replace('/', '', $_GET['page']);
+	$pages_with_pagination = array('/summer-schools/', '/partners/', '/services/');
+	if( isset($_GET['page']) and in_array($_GET['page'], $pages_with_pagination) ){
+		$active = !isset($_GET['var1']) ? 1 : (int)str_replace('/', '', $_GET['var1']);
+		$type = '../'.str_replace('/', '', $_GET['page']);
+	}
+	else{
+		$active = !isset($_GET['page']) ? 1 : (int)str_replace('/', '', $_GET['page']);
+		$type = '../';
+	}
 	$prev = ($active <= 2) ? '../' : '../'.($active-1).'/';
-	$next = ($active >= $countPages) ? "../$countPages/" : '../'.($active+1).'/';
+	$next = ($active >= $countPages) ? "../$type/$countPages/" : '../'.$type.'/'.($active+1).'/';
 	$shownPages = $countPages/2;
 
 	if($countPages > 1){
@@ -235,7 +243,7 @@ function pagination($resultCount, $contentNum){
 			<ul>";
 		$invisible = (1 !== $active) ? '' : ' class="invisible"';
 		echo"
-			<li$invisible><a title='Первая страница' href='../'> << </a></li>\t\t\t\t
+			<li$invisible><a title='Первая страница' href='../'> &lt;&lt; </a></li>\t\t\t\t
 			<li$invisible><a title='Предыдущая страница' href='$prev'>&larr;</a></li>\n\t\t\t\t";
 		$style = '';
 		if($countPages <= $maxShownPages){
@@ -264,13 +272,13 @@ function pagination($resultCount, $contentNum){
 				if($active === $i){
 					$style = " class='active'";
 				}
-				$page_url = (1 === $i) ? '../' : "../$i/";
+				$page_url = (1 === $i) ? '../'.$type.'/' : "../$type/$i/";
 				echo "<li><a$style href='$page_url'>$i</a></li>\n\t\t\t\t";
 			}
 		}
 		$invisible = ($active !== $countPages) ? '' : ' class="invisible"';
 		echo "<li$invisible><a title='Следующая страница' href='$next'>&rarr;</a></li>
-			<li$invisible><a title='Последняя страница' href='../$countPages/'> >> </a></li>";
+			<li$invisible><a title='Последняя страница' href='../$type/$countPages/'> &gt;&gt; </a></li>";
 		echo"
 			</ul>
 		</div>\n";
@@ -293,6 +301,16 @@ function breadcrumbs($db){
 	$crumbs = explode('/', $url);
 	$count = count($crumbs)-1;
 
+	try{
+		$query = $db->prepare("SELECT name FROM intcenter_pages WHERE link=?");
+		$query->execute(array($page));
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+		$page_name = $row['name'];
+	}
+	catch(PDOException $e){
+		header('Location: /error/');
+	}
+
 	echo '<div class="breadcrumbs">';
 	if('/news/' === $page){
 		try{
@@ -313,18 +331,14 @@ function breadcrumbs($db){
 			$query->execute(array($var1));
 			$row = $query->fetch(PDO::FETCH_ASSOC);
 			$date = date('d.m.Y', $row['date']);
-
-			$query = $db->prepare("SELECT name FROM intcenter_pages WHERE link=?");
-			$query->execute(array($page));
-			$row = $query->fetch(PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $e){
 			header('Location: /error/');
 		}
 
-		echo '<a href="/">Главная</a> ';
+		echo '<a href="../../../">Главная</a> ';
 		echo ' <span>&gt;</span> ';
-		echo '<a href="'.$page.'">'.$row['name'].'</a> ';
+		echo '<a href="'.$page.'">'.$page_name.'</a> ';
 		echo ' <span>&gt;</span> ';
 		echo $date;
 	}
@@ -337,19 +351,7 @@ function breadcrumbs($db){
 		catch(PDOException $e){
 			header('Location: /error/');
 		}
-		for ($i=0; $i < $count; $i++) { 
-			if(0 === $i){
-				echo '<a href="/">Главная</a> ';
-				echo ' <span>&gt;</span> ';
-			}
-			elseif($count-1 === $i){
-				echo $row['name'];
-			}
-			else{
-				echo "<a href='/$crumbs[$i]/'>$crumbs[$i]</a>";
-				echo ' <span>&gt;</span> ';
-			}
-		}
+		echo '<a href="/">Главная</a> <span>&gt;</span> '.$page_name;
 	}
 	echo '</div>';
 }

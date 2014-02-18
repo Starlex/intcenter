@@ -14,7 +14,7 @@ if(isset($_GET['page'])){
 	catch(PDOException $e){
 		echo '<h2 class="req">Ошибка подключения к базе данных</h2>';
 	}
-	$drawProgMenu = (bool)$row['drawProgMenu'];
+	$drawProgMenu = $row ? (bool)$row['drawProgMenu'] : true;
 }
 else{
 	$drawProgMenu = true;

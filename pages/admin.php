@@ -222,9 +222,10 @@ elseif(isset($_POST['sendPartner'])){
 		if(!$path_to_img){
 			exit;
 		}
+		$site = preg_replace('/((http|https)\:\/\/)/', '', $_POST['site']);
 		try{
 			$sql = "INSERT INTO intcenter_partners(img, name, location, site) VALUES (?,?,?,?)";
-			$params = array('../'.$path_to_img, $_POST['title'], $_POST['location'], $_POST['site']);
+			$params = array('../'.$path_to_img, $_POST['title'], $_POST['location'], $site);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}

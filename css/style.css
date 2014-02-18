@@ -421,7 +421,6 @@ div.news+hr{
 
 /* style for partners page */
 .partner{
-	/*outline: 1px solid;*/
 	display: inline-block;
 	font-size: 12px;
 	margin-bottom: 30px;
@@ -431,7 +430,6 @@ div.news+hr{
 		border: 1px solid #C9DEEA;
 	}
 	.partner div{
-		/*outline: 1px solid;*/
 		display: inline-block;
 		height: 130px;
 		margin: 0 0 0 40px;
