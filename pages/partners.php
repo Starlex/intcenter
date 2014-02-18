@@ -8,18 +8,21 @@ catch(PDOException $e){
 	header('Location: /error/');
 }
 
+breadcrumbs($db);
 ?>
 <div class="container">
 	<?php
 	echo '<h2>'.getPageName($db).'</h2>';
 	foreach ($row as $partner) {
-		echo '<div class="partner">';
-		echo '<img src="'.$partner['img'].'" alt="pic">';
-		echo $partner['name'];
-		echo $partner['location'];
-		echo '<a href="http://'.$partner['site'].'">'.$partner['site'].'</a>';
-		echo '</div>';
+		echo "<div class='partner'>
+			<img src='$partner[img]' alt='pic'>
+			<div>
+				$partner[name]
+				<p>$partner[location]</p>
+				<a href='http://$partner[site]'>$partner[site]</a>
+			</div>
+		</div>";
 	}
-	// print_r($row);
+	// pagination($num, 6);
 	?>
 </div>

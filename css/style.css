@@ -419,6 +419,35 @@ div.news+hr{
 			background-color: #0070F4;
 		}
 
+/* style for partners page */
+.partner{
+	/*outline: 1px solid;*/
+	display: inline-block;
+	font-size: 12px;
+	margin-bottom: 30px;
+	width: 480px;
+}
+	.partner img{
+		border: 1px solid #C9DEEA;
+	}
+	.partner div{
+		/*outline: 1px solid;*/
+		display: inline-block;
+		height: 130px;
+		margin: 0 0 0 40px;
+		position: relative;
+		vertical-align: top;
+		width: 220px;
+	}
+		.partner div p:first-child{
+			color: #959595;
+		}
+		.partner div a{
+			bottom: 15px;
+			color: #036FF3;
+			position: absolute;
+		}
+
 /* Default style for tables*/
 table{
 	background-color: #E6F9FF;
