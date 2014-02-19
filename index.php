@@ -44,7 +44,7 @@ if(isset($_GET['page'])){
 	elseif('/login/' === $_GET['page'] or '/logout/' === $_GET['page']){
 		require_once 'pages/loginout.php';
 	}
-	elseif( '/news/' === $_GET['page'] or ('/summer-schools/' === $_GET['page']) and isset($_GET['var1']) ){
+	elseif( '/news/' === $_GET['page'] or '/news-of-summer-schools/' === $_GET['page'] ){
 		require_once 'block/top.php';
 		require_once 'pages/news.php';
 		require_once 'block/bottom.php';
@@ -52,6 +52,11 @@ if(isset($_GET['page'])){
 	elseif('/partners/' === $_GET['page']){
 		require_once 'block/top.php';
 		require_once 'pages/partners.php';
+		require_once 'block/bottom.php';
+	}
+	elseif('/services/' === $_GET['page']){
+		require_once 'block/top.php';
+		require_once 'pages/services.php';
 		require_once 'block/bottom.php';
 	}
 	elseif( in_array($_GET['page'], $editablePages) ){

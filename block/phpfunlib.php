@@ -173,7 +173,7 @@ function showNews($db, $isSummer=0){
 	}
 	if(isset($_GET['page']) and '/summer-schools/' === $_GET['page'] ){
 		$page = !isset($_GET['var1']) ? 0 : (int)str_replace('/', '', $_GET['var1'])-1;
-		$pre_url = '/summer-schools';
+		$pre_url = '/news-of-summer-schools/';
 		$title = 'Актуальные новости';
 	}
 	else{
@@ -297,6 +297,9 @@ function breadcrumbs($db){
 	$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	if(!isset($_GET['page'])){
 		return false;
+	}
+	elseif('/news-of-summer-schools/' === $_GET['page']){
+		$page = str_replace('news-of-', '', $_GET['page']);
 	}
 	else{
 		$page = $_GET['page'];

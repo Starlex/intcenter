@@ -135,7 +135,7 @@ elseif(isset($_POST['sendNews'])){
 		echo 'Что-то пошло не так';
 		exit;
 	}
-	$result = 'новости';
+	$type = 'новости';
 }
 elseif(isset($_POST['sendProgram'])){
 	if('/admin/' === $_GET['page']){

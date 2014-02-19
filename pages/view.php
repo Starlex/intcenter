@@ -12,8 +12,7 @@
 					echo getPageContent($db);
 					echo '<div style="height:20px"></div>';
 					if('/summer-schools/' === $_GET['page']){
-						$num = showNews($db, 1);
-						pagination($num, 4);
+						showNews($db, 1);
 					}
 					?>
 				</div>
