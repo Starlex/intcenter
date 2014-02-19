@@ -1,6 +1,5 @@
 		<?php
-		$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-		breadcrumbs($db, $url);
+		breadcrumbs($db);
 		?>
 		<div class="container">
 			<?php
@@ -11,6 +10,7 @@
 					<?php
 					echo '<h2>'.getPageName($db).'</h2>';
 					echo getPageContent($db);
+					echo '<div style="height:20px"></div>';
 					if('/summer-schools/' === $_GET['page']){
 						$num = showNews($db, 1);
 						pagination($num, 4);

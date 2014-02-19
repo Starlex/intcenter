@@ -279,6 +279,7 @@ elseif(isset($_POST['sendPartner'])){
 		if( file_exists($path_to_img) ){
 			unlink($path_to_img);
 		}
+		$action = 'Удаление';
 	}
 	$type = 'партнера';
 }

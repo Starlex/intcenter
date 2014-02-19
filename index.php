@@ -5,6 +5,19 @@ require_once 'block/db.php';
 require_once 'block/phpfunlib.php';
 require_once 'block/header.php';
 
+try{
+	$query = $db->prepare("SELECT link FROM intcenter_pages WHERE isEditable=1");
+	$query->execute();
+	$row = $query->fetchAll(PDO::FETCH_ASSOC);
+}
+catch(PDOException $e){
+	header('Location: /error/');
+}
+$editablePages = array();
+foreach ($row as $page) {
+	$editablePages[] = $page['link'];
+}
+
 if(isset($_GET['page'])){
 	try{
 		$query = $db->prepare("SELECT drawProgMenu FROM intcenter_pages WHERE link=?");
@@ -39,6 +52,11 @@ if(isset($_GET['page'])){
 	elseif('/partners/' === $_GET['page']){
 		require_once 'block/top.php';
 		require_once 'pages/partners.php';
+		require_once 'block/bottom.php';
+	}
+	elseif( in_array($_GET['page'], $editablePages) ){
+		require_once 'block/top.php';
+		require_once 'pages/view.php';
 		require_once 'block/bottom.php';
 	}
 	elseif('/error/' === $_GET['page']){
