@@ -65,22 +65,14 @@ elseif(isset($_POST['sendNews'])){
 			echo "<h3 class='req'>Вы не выбрали новость для редактирования</h3>";
 			exit;
 		}
+		$path_to_img = '';
+		$old_path_to_img = '';
 		$isSummer = 0;
 		if(isset($_POST['isSummer'])){
 			$isSummer = 1;
 			unset($_POST['isSummer']);
 		}
-		try{
-			$sql =  "SELECT img FROM intcenter_news WHERE id=?";
-			$query = $db->prepare($sql);
-			$query->execute(array($_POST['news_id']));
-			$row = $query->fetch(PDO::FETCH_ASSOC);
-			$old_path_to_img = str_replace('../../', '', $row['img']);
-		}
-		catch(PDOException $e){
-			echo "<h3 class='req'>Редактирование новости не удалось<h3>";
-			exit;
-		}
+		$old_path_to_img = str_replace('../../', '', $_POST['img']);
 		if('' !== $_FILES['image']['name']){
 			$path_to_img = fileUpload($_FILES['image'], 'news', 120, 90);
 			if(!$path_to_img){
@@ -241,19 +233,9 @@ elseif(isset($_POST['sendPartner'])){
 			echo '<h3 class="req">Вы не выбрали партнера для редактирования</h2>';
 			exit;
 		}
-		try{
-			$sql =  "SELECT img FROM intcenter_partners WHERE id=?";
-			$query = $db->prepare($sql);
-			$query->execute(array($_POST['partner_id']));
-			$row = $query->fetch(PDO::FETCH_ASSOC);
-			$old_path_to_img = str_replace('../../', '', $row['img']);
-		}
-		catch(PDOException $e){
-			echo "<h3 class='req'>Редактирование партнера не удалось<h3>";
-			exit;
-		}
+		$old_path_to_img = str_replace('../../', '', $_POST['img']);
 		if('' !== $_FILES['image']['name']){
-			$path_to_img = fileUpload($_FILES['image'], 'news', 200, 130);
+			$path_to_img = fileUpload($_FILES['image'], 'partners', 200, 130);
 			if(!$path_to_img){
 				exit;
 			}
@@ -263,7 +245,40 @@ elseif(isset($_POST['sendPartner'])){
 				}
 			}
 		}
+		try{
+			$sql = "UPDATE intcenter_partners SET img=?, name=?, location=?, site=? WHERE id=?";
+			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['location'], $_POST['site'], $_POST['partner_id']);
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo '<h3 class="req">Редактирование партнера не удалось</h3>';
+			exit;
+		}
+		$action = 'Редактирование';
+	}
+	elseif('/admin-delete/' === $_GET['page']){
+		if('' === $_POST['partner_id']){
+			echo '<h3 class="req">Вы не выбрали партнера для удаления</h3>';
+			exit;
+		}
+		try{
+			$query = $db->prepare("SELECT img FROM intcenter_partners WHERE id=?");
+			$query->execute(array($_POST['partner_id']));
+			$row = $query->fetch(PDO::FETCH_ASSOC);
+			$path_to_img = str_replace('../../', '', $row['img']);
 
+			$query = $db->prepare("DELETE FROM intcenter_partners WHERE id=?");
+			$query->execute(array($_POST['partner_id']));
+
+		}
+		catch(PDOException $e){
+			echo '<h3 class="req">Удаление партнера не удалось</h3>';
+			exit;
+		}
+		if( file_exists($path_to_img) ){
+			unlink($path_to_img);
+		}
 	}
 	$type = 'партнера';
 }

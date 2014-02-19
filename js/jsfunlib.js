@@ -71,6 +71,7 @@ $(document).ready(function(){
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 					break;
 					case '#updateNewsForm':
+						$(data.formID+' input[name="img"]').val(data.img);
 						$(data.formID+' textarea[name="title"]').val(data.name);
 						if(1 === parseInt(data.isSummer)){
 							$(data.formID+' input[name="isSummer"]').attr('checked', 'checked');
@@ -89,7 +90,7 @@ $(document).ready(function(){
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 					break;
 						case '#updatePartnerForm':
-							console.log(data);
+							$(data.formID+' input[name="img"]').val(data.img);
 							$(data.formID+' input[name="title"]').val(data.name);
 							$(data.formID+' input[name="location"]').val(data.location);
 							$(data.formID+' input[name="site"]').val(data.site);

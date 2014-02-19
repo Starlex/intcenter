@@ -16,7 +16,7 @@
 			</label>
 		</div>
 
-		<form class='hide' method='post' id='deleteNewsForm' enctype='multipart/form-data'>
+		<form class='hide' method='post' id='deleteNewsForm'>
 			<label>
 				<span>Выберите новость:</span>
 				<?php select($db, 'news'); ?>
@@ -26,7 +26,7 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='deleteProgramForm' enctype='multipart/form-data'>
+		<form class='hide' method='post' id='deleteProgramForm'>
 			<label>
 				<span>Выберите программу обучения:</span>
 				<?php select($db, 'program'); ?>

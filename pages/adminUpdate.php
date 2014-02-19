@@ -41,7 +41,9 @@
 			<label>
 				<span>Картинка:</span>
 				<input type='file' name='image'>
+				<input type="hidden" name="img">
 			</label>
+
 			<label class="iblock">
 				<input type="checkbox" name="isSummer"> Новость для летних и зимних языковых школ
 			</label>
@@ -103,7 +105,7 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='updatePartnerForm'>
+		<form class='hide' method='post' id='updatePartnerForm' enctype='multipart/form-data'>
 			<label>
 				<span>Выберите партнера:</span>
 				<?php select($db, 'partner'); ?>
@@ -111,6 +113,7 @@
 			<label>
 				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
 				<input type="file" name="image">
+				<input type="hidden" name="img">
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
@@ -129,7 +132,7 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='updateServiceForm'>
+		<form class='hide' method='post' id='updateServiceForm' enctype='multipart/form-data'>
 			<label>
 				<span>Выберите услугу:</span>
 				<?php select($db, 'service'); ?>
@@ -139,7 +142,7 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='updateEmployeeForm'>
+		<form class='hide' method='post' id='updateEmployeeForm' enctype='multipart/form-data'>
 			<label>
 				<span>Выберите работника:</span>
 				<?php select($db, 'employee'); ?>
