@@ -25,7 +25,7 @@ if(isset($_GET['page'])){
 		$row = $query->fetch(PDO::FETCH_ASSOC);
 	}
 	catch(PDOException $e){
-		echo '<h2 class="req">Ошибка подключения к базе данных</h2>';
+		header('Location: /error/');
 	}
 	$drawProgMenu = $row ? (bool)$row['drawProgMenu'] : true;
 }
@@ -52,6 +52,16 @@ if(isset($_GET['page'])){
 	elseif('/partners/' === $_GET['page']){
 		require_once 'block/top.php';
 		require_once 'pages/partners.php';
+		require_once 'block/bottom.php';
+	}
+	elseif('/learn-language/' === $_GET['page']){
+		require_once 'block/top.php';
+		require_once 'pages/programs.php';
+		require_once 'block/bottom.php';
+	}
+	elseif('/our-team/' === $_GET['page']){
+		require_once 'block/top.php';
+		require_once 'pages/employees.php';
 		require_once 'block/bottom.php';
 	}
 	elseif('/services/' === $_GET['page']){

@@ -1,6 +1,3 @@
-		<?php
-		breadcrumbs($db);
-		?>
 		<div class="container">
 			<?php
 			if(true === $drawProgMenu){

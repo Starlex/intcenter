@@ -12,7 +12,6 @@ catch(PDOException $e){
 	header('Location: /error/');
 }
 
-breadcrumbs($db);
 ?>
 <div class="container">
 	<?php
