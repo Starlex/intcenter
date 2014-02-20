@@ -140,20 +140,32 @@ elseif(isset($_POST['sendNews'])){
 elseif(isset($_POST['sendProgram'])){
 	if('/admin/' === $_GET['page']){
 		array_pop($_POST);
-		foreach ($_POST as $item) {
+		if(!empty($_FILES)){
+			array_pop($_FILES['image']);
+			array_pop($_FILES['image']);
+		}
+		foreach(array_merge($_POST, $_FILES) as $item){
 			if('' === $item){
 				echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
 				exit;
 			}
 		}
+		$path_to_img = fileUpload($_FILES['image'], 'programs', 200, 150);
+		if(!$path_to_img){
+			exit;
+		}
 		try{
-			$sql = "INSERT INTO intcenter_programs(cat_id, name, target_audience, content, link) VALUES (?, ?, ?, ?, ?)";
-			$params = array($_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], '/learn-language/#'.time());
+			$sql = "INSERT INTO intcenter_programs(img, cat_id, name, target_audience, content, link) VALUES (?, ?, ?, ?, ?, ?)";
+			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], '/learn-language/#'.time());
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
 		catch(PDOException $e){
+			echo $e->getMessage();
 			echo "<h3 class='req'>Добавление программы обучения не удалось<h3>";
+			if('' !== $path_to_img){
+				unlink($path_to_img);
+			}
 			exit;
 		}
 		$action = 'Добавление';
@@ -163,9 +175,26 @@ elseif(isset($_POST['sendProgram'])){
 			echo '<h3 class="req">Вы не заполнили один или несколько обязательных пунктов</h3>';
 			exit;
 		}
+		$path_to_img = '';
+		$old_path_to_img = '';
+		$old_path_to_img = str_replace('../../', '', $_POST['img']);
+		if('' !== $_FILES['image']['name']){
+			$path_to_img = fileUpload($_FILES['image'], 'programs', 120, 90);
+			if(!$path_to_img){
+				exit;
+			}
+			else{
+				if(file_exists($old_path_to_img)){
+					unlink($old_path_to_img);
+				}
+			}
+		}
+		else{
+			$path_to_img = $old_path_to_img;
+		}
 		try{
-			$sql = "UPDATE intcenter_programs SET cat_id=?, name=?, target_audience=?, content=? WHERE id=?";
-			$params = array($_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], $_POST['program_id']);
+			$sql = "UPDATE intcenter_programs SET img=?, cat_id=?, name=?, target_audience=?, content=? WHERE id=?";
+			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], $_POST['program_id']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -179,6 +208,20 @@ elseif(isset($_POST['sendProgram'])){
 		if('' === $_POST['program_id']){
 			echo '<h3 class="req">Вы не выбрали программу обучения для удаления</h3>';
 			exit;
+		}
+		try{
+			$sql =  "SELECT img FROM intcenter_programs WHERE id=?";
+			$query = $db->prepare($sql);
+			$query->execute(array($_POST['program_id']));
+			$row = $query->fetch(PDO::FETCH_ASSOC);
+			$old_path_to_img = str_replace('../../', '', $row['img']);
+		}
+		catch(PDOException $e){
+			echo "<h3 class='req'>Удаление программы не удалось<h3>";
+			exit;
+		}
+		if(file_exists($old_path_to_img)){
+			unlink($old_path_to_img);
 		}
 		try{
 			$sql = "DELETE FROM intcenter_programs WHERE id=?";
@@ -195,7 +238,7 @@ elseif(isset($_POST['sendProgram'])){
 		echo '<h3 class="req">Что-то пошло не так</h3>';
 		exit;
 	}
-	$result = 'программы обучения';
+	$type = 'программы обучения';
 }
 elseif(isset($_POST['sendPartner'])){
 	if('/admin/' === $_GET['page']){

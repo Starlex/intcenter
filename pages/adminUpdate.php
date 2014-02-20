@@ -64,7 +64,7 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='updateProgramForm'>
+		<form class='hide' method='post' id='updateProgramForm' enctype='multipart/form-data'>
 			<label>
 				<span><b class="req">*</b>Выберите программу:</span>
 				<?php select($db, 'program'); ?>
@@ -87,6 +87,11 @@
 				}
 				echo "\n\t\t\t\t</select>\n";
 				?>
+			</label>
+			<label>
+				<span>Картинка отображаемая в описании программы:</span>
+				<input type="file" name="image">
+				<input type="hidden" name="img">
 			</label>
 			<label>
 				<span>Целевая аудитория:</span>

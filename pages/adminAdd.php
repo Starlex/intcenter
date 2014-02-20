@@ -43,7 +43,7 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='addProgramForm'>
+		<form class='hide' method='post' id='addProgramForm' enctype='multipart/form-data'>
 			<label>
 				<span><b class="req">*</b>Выберите язык и категорию:</span>
 				<?php
@@ -64,9 +64,12 @@
 				?>
 			</label>
 			<label>
+				<span><b class="req">*</b>Картинка отображаемая в описании программы:</span>
+				<input type="file" name="image">
+			</label>
+			<label>
 				<span><b class="req">*</b>Целевая аудитория:</span>
 				<input type="text" name="target_audience">
-				<!-- <textarea name='target_audience' rows='1'></textarea> -->
 			</label>
 			<label>
 				<span><b class="req">*</b>Название:</span>
