@@ -8,9 +8,9 @@
 			<label>
 				<input type='radio' name='rbtn' id='addService'> Добавить услугу
 			</label>
-			<label>
+			<!-- <label>
 				<input type='radio' name='rbtn' id='addEmployee'> Добавить сотрудника
-			</label>
+			</label> -->
 			<label>
 				<input type='radio' name='rbtn' id='addProgram'> Добавить программу обучения
 			</label>
@@ -110,9 +110,9 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='addEmployeeForm' enctype='multipart/form-data'>
+		<!-- <form class='hide' method='post' id='addEmployeeForm' enctype='multipart/form-data'>
 			<input type='text' name=' id='>
 			<div class='button_panel'>
 				<input name='sendEmployee' type='submit' value='Добавить' class='button'>
 			</div>
-		</form>
+		</form> -->

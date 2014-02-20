@@ -21,7 +21,7 @@ if(isset($_POST['sendPage'])){
 		exit;
 	}
 	$action = 'Редактирование';
-	$result = 'страницы';
+	$type = 'страницы';
 }
 elseif(isset($_POST['sendNews'])){
 	if('/admin/' === $_GET['page']){

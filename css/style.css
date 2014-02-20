@@ -160,13 +160,18 @@ body{
 			margin-right: 0;
 		}
 			.h-menu a{
-				color: #2281F4;
+				color: #A2A2A2;
 				display: block;
 				font-weight: bold;
-				width: 170px;
 				height: 150px;
 				padding: 5px 0;
 				text-align: center;
+				text-decoration: none;
+				width: 170px;
+			}
+			.h-menu a:hover{
+				color: #2281F4;
+				text-decoration: underline;
 			}
 				.h-menu ul li img{
 					border-radius: 5px;
@@ -347,7 +352,6 @@ body{
 	overflow: hidden;
 }
 	.news img{
-		border: 2px solid #A2A2A2;
 		margin-right: 20px;
 		float: left;
 	}
@@ -377,7 +381,8 @@ body{
 			font-size: 13px;
 		}
 div.news+hr{
-	border: 1px solid #C9D1D6;
+	border-top: 1px solid #C9D1D6;
+	border-bottom: 1px solid #ffffff;
 	margin: 20px 0;
 }
 
@@ -423,9 +428,6 @@ div.news+hr{
 	margin-bottom: 30px;
 	width: 480px;
 }
-	.partner img{
-		border: 1px solid #C9DEEA;
-	}
 	.partner div{
 		display: inline-block;
 		height: 130px;
@@ -471,10 +473,6 @@ table{
 			padding: 15px 15px;
 			vertical-align: top;
 		}
-			table img{
-				border: 10px solid #dedede;
-				margin: 0;
-			}
 
 /*##################################   FORM ELEMENTS   ###############################*/
 fieldset{

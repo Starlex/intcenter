@@ -11,9 +11,9 @@
 			<label>
 				<input type='radio' name='rbtn' id='updateService'> Редактировать услугу
 			</label>
-			<label>
+			<!-- <label>
 				<input type='radio' name='rbtn' id='updateEmployee'> Редактировать сотрудника
-			</label>
+			</label> -->
 			<label>
 				<input type='radio' name='rbtn' id='updateProgram'> Редактировать программу обучения
 			</label>
@@ -142,12 +142,12 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='updateEmployeeForm' enctype='multipart/form-data'>
+		<!-- <form class='hide' method='post' id='updateEmployeeForm' enctype='multipart/form-data'>
 			<label>
 				<span>Выберите работника:</span>
-				<?php select($db, 'employee'); ?>
+				<?php //select($db, 'employee'); ?>
 			</label>
 			<div class='button_panel'>
 				<input name='sendEmployee' type='submit' value='Редактировать' class='button'>
 			</div>
-		</form>
+		</form> -->

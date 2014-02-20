@@ -8,9 +8,9 @@
 			<label>
 				<input type='radio' name='rbtn' id='deleteService'> Удалить услугу
 			</label>
-			<label>
+			<!-- <label>
 				<input type='radio' name='rbtn' id='deleteEmployee'> Удалить сотрудника
-			</label>
+			</label> -->
 			<label>
 				<input type='radio' name='rbtn' id='deleteProgram'> Удалить программу обучения
 			</label>
@@ -56,12 +56,12 @@
 			</div>
 		</form>
 
-		<form class='hide' method='post' id='deleteEmployeeForm'>
+		<!-- <form class='hide' method='post' id='deleteEmployeeForm'>
 			<label>
 				<span>Выберите работника:</span>
-				<?php select($db, 'employee'); ?>
+				<?php //select($db, 'employee'); ?>
 			</label>
 			<div class='button_panel'>
 				<input name='sendEmployee' type='submit' value='Удалить' class='button'>
 			</div>
-		</form>
+		</form> -->

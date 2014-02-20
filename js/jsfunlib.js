@@ -3,6 +3,14 @@ $(document).ready(function(){
 	$('#login').focus();
 });
 
+// styles for hr (because hr added by ckeditor don't implement styles)
+$(document).ready(function(){
+	$('hr').each(function(){
+		$(this).css('border-top', '1px solid #C9D1D6');
+		$(this).css('border-bottom', '1px solid #ffffff');
+	});
+});
+
 // Show prog-submenu on click
 $(document).ready(function(){
 	$('.prog-menu>ul>li').click(function(){

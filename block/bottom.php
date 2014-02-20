@@ -10,7 +10,7 @@ catch(PDOException $e){
 ?>
 	<div class="bottom">
 		<div class="leftpart">
-			Центр международного обучения и туризма &copy; <?=date('Y', time())?>
+			Центр международного образования и туризма &copy; <?=date('Y', time())?>
 			<p>Все права защищены.</p>
 		</div>
 		<div class="rightpart">

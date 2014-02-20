@@ -162,9 +162,10 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 	return true;
 }
 
-function showNews($db, $isSummer=0){
+function showNews($db, $isSummer=''){
+	$condition = '' === $isSummer ? '' : " WHERE isSummer=?";
 	try{
-		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_news WHERE isSummer=?");
+		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_news".$condition);
 		$query->execute(array($isSummer));
 		$num = $query->fetchColumn();
 	}
@@ -173,7 +174,7 @@ function showNews($db, $isSummer=0){
 	}
 	if(isset($_GET['page']) and '/summer-schools/' === $_GET['page'] ){
 		$page = !isset($_GET['var1']) ? 0 : (int)str_replace('/', '', $_GET['var1'])-1;
-		$pre_url = '/news-of-summer-schools/';
+		$pre_url = '/news-of-summer-schools';
 		$title = 'Актуальные новости';
 	}
 	else{
@@ -193,7 +194,7 @@ function showNews($db, $isSummer=0){
 		exit;
 	}
 	try{
-		$query = $db->prepare("SELECT * FROM intcenter_news WHERE isSummer=? ORDER BY date DESC");
+		$query = $db->prepare("SELECT * FROM intcenter_news".$condition." ORDER BY date DESC");
 		$query->execute(array($isSummer));
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -295,7 +296,21 @@ function pagination($resultCount, $contentNum){
 
 function breadcrumbs($db){
 	$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-	if(!isset($_GET['page'])){
+	$pages_with_breadcrumbs = array();
+	try{
+		$query = $db->prepare("SELECT link FROM intcenter_pages");
+		@$query->execute(array($_GET['page']));
+		$pages = $query->fetchAll(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e){
+		header('Location: /error/');
+	}
+	foreach ($pages as $page) {
+		$pages_with_breadcrumbs[] = $page['link'];
+	}
+	$pages_with_breadcrumbs[] = '/news-of-summer-schools/';
+	$pages_with_breadcrumbs[] = '/news/';
+	if( !isset($_GET['page']) or !in_array($_GET['page'], $pages_with_breadcrumbs) ){
 		return false;
 	}
 	elseif('/news-of-summer-schools/' === $_GET['page']){
@@ -337,7 +352,6 @@ function breadcrumbs($db){
 			$query = $db->prepare("SELECT date FROM intcenter_news WHERE date=?");
 			$query->execute(array($var1));
 			$row = $query->fetch(PDO::FETCH_ASSOC);
-			$date = date('d.m.Y', $row['date']);
 		}
 		catch(PDOException $e){
 			header('Location: /error/');
@@ -345,9 +359,13 @@ function breadcrumbs($db){
 
 		echo '<a href="../../../">Главная</a> ';
 		echo ' <span>&gt;</span> ';
-		echo '<a href="'.$page.'">'.$page_name.'</a> ';
-		echo ' <span>&gt;</span> ';
-		echo $date;
+		if(NULL !== $row['date']){
+			echo '<a href="'.$page.'">'.$page_name.'</a> ';
+			echo ' <span>&gt;</span> '.date('d.m.Y', $row['date']);
+		}
+		else{
+			echo $page_name;
+		}
 	}
 	else{
 		try{
@@ -358,7 +376,7 @@ function breadcrumbs($db){
 		catch(PDOException $e){
 			header('Location: /error/');
 		}
-		echo '<a href="/">Главная</a> <span>&gt;</span> '.$page_name;
+		echo '<a href="../../../">Главная</a> <span>&gt;</span> '.$page_name;
 	}
 	echo '</div>';
 }
