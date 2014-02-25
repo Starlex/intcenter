@@ -8,6 +8,11 @@ body{
 	margin: 0 auto;
 	width: 1021px;
 }
+hr{
+	border-top: 1px solid #C9D1D6;
+	border-bottom: 1px solid #ffffff;
+	border-width: 1px 0 1px 0; 
+}
 
 /*############################   STRUCTURE OF SITE   ############################*/
 .head{
@@ -381,9 +386,25 @@ body{
 			font-size: 13px;
 		}
 div.news+hr{
-	border-top: 1px solid #C9D1D6;
-	border-bottom: 1px solid #ffffff;
 	margin: 20px 0;
+}
+
+.program{
+	overflow: hidden;
+}
+	.program span{
+		display: block;
+		font-weight: bold;
+		margin-bottom: 30px;
+	}
+	.program img{
+		float: left;
+		margin-right: 25px;
+	}
+div.program+hr{
+	border-color: #BEC6CA;
+	border-width: 1px 0 0 0;
+	border-style: dashed;
 }
 
 /* PAGINATION */

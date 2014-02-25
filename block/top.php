@@ -30,5 +30,4 @@ catch(PDOException $e){
 		drawVerticalMenu($db);
 		drawHorizontalMenu();
 		breadcrumbs($db);
-		
 		?>

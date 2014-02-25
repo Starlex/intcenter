@@ -150,13 +150,14 @@ elseif(isset($_POST['sendProgram'])){
 				exit;
 			}
 		}
+		$target_audience = mb_strtolower($_POST['target_audience'], "UTF-8");
 		$path_to_img = fileUpload($_FILES['image'], 'programs', 200, 150);
 		if(!$path_to_img){
 			exit;
 		}
 		try{
 			$sql = "INSERT INTO intcenter_programs(img, cat_id, name, target_audience, content, link) VALUES (?, ?, ?, ?, ?, ?)";
-			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], '/learn-language/#'.time());
+			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $target_audience, $_POST['program_content'], '/learn-language/#'.time());
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -175,11 +176,12 @@ elseif(isset($_POST['sendProgram'])){
 			echo '<h3 class="req">Вы не заполнили один или несколько обязательных пунктов</h3>';
 			exit;
 		}
+		$target_audience = mb_strtolower($_POST['target_audience'], "UTF-8");
 		$path_to_img = '';
 		$old_path_to_img = '';
 		$old_path_to_img = str_replace('../../', '', $_POST['img']);
 		if('' !== $_FILES['image']['name']){
-			$path_to_img = fileUpload($_FILES['image'], 'programs', 120, 90);
+			$path_to_img = fileUpload($_FILES['image'], 'programs', 200, 150);
 			if(!$path_to_img){
 				exit;
 			}
@@ -194,7 +196,7 @@ elseif(isset($_POST['sendProgram'])){
 		}
 		try{
 			$sql = "UPDATE intcenter_programs SET img=?, cat_id=?, name=?, target_audience=?, content=? WHERE id=?";
-			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $_POST['target_audience'], $_POST['program_content'], $_POST['program_id']);
+			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $target_audience, $_POST['program_content'], $_POST['program_id']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
