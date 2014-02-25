@@ -16,7 +16,7 @@
 			</label>
 		</div>
 		<div class="note">Поля, обозначенные <b class="req">*</b>, обязательны к заполнению.</div>
-		
+
 		<form class='hide' method='post' id='updatePageForm'>
 			<label>
 				<span><b class="req">*</b>Выберите страницу:</span>
@@ -148,6 +148,10 @@
 			<label>
 				<span>Целевая аудитория:</span>
 				<input type="text" name="target_audience">
+			</label>
+			<label>
+				<span>Короткое название:</span>
+				<input type="text" name="short_name">
 			</label>
 			<label>
 				<span>Название:</span>

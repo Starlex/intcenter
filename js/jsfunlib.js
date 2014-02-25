@@ -87,6 +87,7 @@ $(document).ready(function(){
 						});
 						$(data.formID+' input[name="img"]').val(data.img);
 						$(data.formID+' input[name="target_audience"]').val(data.target_audience);
+						$(data.formID+' input[name="short_name"]').val(data.short_name);
 						$(data.formID+' textarea[name="title"]').val(data.name);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
 					break;

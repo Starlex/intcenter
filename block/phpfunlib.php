@@ -146,7 +146,7 @@ function drawProgramsMenu($db, $drawProgMenu = true){
 							<a href='$prog[link]'>
 								<span>$i</span>
 								<small>$prog[target_audience]</small>
-								<b>$prog[name]</b>
+								<b>$prog[short_name]</b>
 							</a>
 						</li>";
 				}

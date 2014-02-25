@@ -112,6 +112,10 @@
 				<input type="text" name="target_audience">
 			</label>
 			<label>
+				<span><b class="req">*</b>Короткое название:</span>
+				<input type="text" name="short_name">
+			</label>
+			<label>
 				<span><b class="req">*</b>Название:</span>
 				<textarea name='title'></textarea>
 			</label>

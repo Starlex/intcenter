@@ -156,8 +156,8 @@ elseif(isset($_POST['sendProgram'])){
 			exit;
 		}
 		try{
-			$sql = "INSERT INTO intcenter_programs(img, cat_id, name, target_audience, content, link) VALUES (?, ?, ?, ?, ?, ?)";
-			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $target_audience, $_POST['program_content'], '/learn-language/#'.time());
+			$sql = "INSERT INTO intcenter_programs(img, cat_id, short_name, name, target_audience, content, link) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['short_name'], $_POST['title'], $target_audience, $_POST['program_content'], '/learn-language/#'.time());
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -195,8 +195,8 @@ elseif(isset($_POST['sendProgram'])){
 			$path_to_img = $old_path_to_img;
 		}
 		try{
-			$sql = "UPDATE intcenter_programs SET img=?, cat_id=?, name=?, target_audience=?, content=? WHERE id=?";
-			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['title'], $target_audience, $_POST['program_content'], $_POST['program_id']);
+			$sql = "UPDATE intcenter_programs SET img=?, cat_id=?, short_name=?, name=?, target_audience=?, content=? WHERE id=?";
+			$params = array('../../'.$path_to_img, $_POST['prog_cat_id'], $_POST['short_name'], $_POST['title'], $target_audience, $_POST['program_content'], $_POST['program_id']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
