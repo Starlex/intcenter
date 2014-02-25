@@ -407,6 +407,34 @@ div.program+hr{
 	border-style: dashed;
 }
 
+.service{
+	overflow: hidden;
+}
+	.service span{
+		display: block;
+		margin-bottom: 30px;
+	}
+		.service a{
+			color: #737EE7;
+			display: inline-block;
+			font-size: 16px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		.service a:hover{
+			text-decoration: underline;
+		}
+	.service img{
+		float: left;
+		margin: 0 20px 20px 0;
+	}
+div.service+hr{
+	border-color: #BEC6CA;
+	border-width: 1px 0 0 0;
+	border-style: dashed;
+	/*margin: 20px 0;*/
+}
+
 /* PAGINATION */
 .pagination{
 	font-size: 14px;

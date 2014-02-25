@@ -346,8 +346,8 @@ elseif(isset($_POST['sendService'])){
 			exit;
 		}
 		try{
-			$sql = "INSERT INTO intcenter_services(img, name, annotation, content) VALUES (?,?,?,?)";
-			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['service_content']);
+			$sql = "INSERT INTO intcenter_services(img, link, name, annotation, content) VALUES (?,?,?,?)";
+			$params = array('../../'.$path_to_img, time().'/', $_POST['title'], $_POST['annotation'], $_POST['service_content']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
