@@ -11,14 +11,12 @@
 			<label>
 				<input type='radio' name='rbtn' id='updateService'> Редактировать услугу
 			</label>
-			<!-- <label>
-				<input type='radio' name='rbtn' id='updateEmployee'> Редактировать сотрудника
-			</label> -->
 			<label>
 				<input type='radio' name='rbtn' id='updateProgram'> Редактировать программу обучения
 			</label>
 		</div>
 		<div class="note">Поля, обозначенные <b class="req">*</b>, обязательны к заполнению.</div>
+		
 		<form class='hide' method='post' id='updatePageForm'>
 			<label>
 				<span><b class="req">*</b>Выберите страницу:</span>
@@ -61,6 +59,60 @@
 			</label>
 			<div class='button_panel'>
 				<input name='sendNews' type='submit' value='Редактировать' class='button'>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='updatePartnerForm' enctype='multipart/form-data'>
+			<label>
+				<span>Выберите партнера:</span>
+				<?php select($db, 'partner'); ?>
+			</label>
+			<label>
+				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
+				<input type="file" name="image">
+				<input type="hidden" name="img">
+			</label>
+			<label>
+				<span><b class="req">*</b>Название:</span>
+				<input type="text" name="title">
+			</label>
+			<label>
+				<span><b class="req">*</b>Расположение:</span>
+				<input type="text" name="location">
+			</label>
+			<label>
+				<span><b class="req">*</b>Адрес сайта:</span>
+				<input type="text" name="site">
+			</label>
+			<div class='button_panel'>
+				<input name='sendPartner' type='submit' value='Редактировать' class='button'>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='updateServiceForm' enctype='multipart/form-data'>
+			<label>
+				<span>Выберите услугу:</span>
+				<?php select($db, 'service'); ?>
+			</label>
+			<label>
+				<span>Название услуги:</span>
+				<input type="text" name="title">
+			</label>
+			<label>
+				<span>Картинка:</span>
+				<input type="file" name="image">
+				<input type="hidden" name="img">
+			</label>
+			<label>
+				<span>Аннотация:</span>
+				<textarea name="annotation" rows="5"></textarea>
+			</label>
+			<label>
+				<span>Основной контент услуги:</span>
+				<textarea class="ckeditor" name="service_content" rows="20"></textarea>
+			</label>
+			<div class='button_panel'>
+				<input name='sendService' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
 
@@ -109,50 +161,3 @@
 				<input name='sendProgram' type='submit' value='Редактировать' class='button'>
 			</div>
 		</form>
-
-		<form class='hide' method='post' id='updatePartnerForm' enctype='multipart/form-data'>
-			<label>
-				<span>Выберите партнера:</span>
-				<?php select($db, 'partner'); ?>
-			</label>
-			<label>
-				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
-				<input type="file" name="image">
-				<input type="hidden" name="img">
-			</label>
-			<label>
-				<span><b class="req">*</b>Название:</span>
-				<input type="text" name="title">
-			</label>
-			<label>
-				<span><b class="req">*</b>Расположение:</span>
-				<input type="text" name="location">
-			</label>
-			<label>
-				<span><b class="req">*</b>Адрес сайта:</span>
-				<input type="text" name="site">
-			</label>
-			<div class='button_panel'>
-				<input name='sendPartner' type='submit' value='Редактировать' class='button'>
-			</div>
-		</form>
-
-		<form class='hide' method='post' id='updateServiceForm' enctype='multipart/form-data'>
-			<label>
-				<span>Выберите услугу:</span>
-				<?php select($db, 'service'); ?>
-			</label>
-			<div class='button_panel'>
-				<input name='sendService' type='submit' value='Редактировать' class='button'>
-			</div>
-		</form>
-
-		<!-- <form class='hide' method='post' id='updateEmployeeForm' enctype='multipart/form-data'>
-			<label>
-				<span>Выберите работника:</span>
-				<?php //select($db, 'employee'); ?>
-			</label>
-			<div class='button_panel'>
-				<input name='sendEmployee' type='submit' value='Редактировать' class='button'>
-			</div>
-		</form> -->

@@ -328,6 +328,91 @@ elseif(isset($_POST['sendPartner'])){
 	}
 	$type = 'партнера';
 }
+elseif(isset($_POST['sendService'])){
+	if('/admin/' === $_GET['page']){
+		array_pop($_POST);
+		if(!empty($_FILES)){
+			array_pop($_FILES['image']);
+			array_pop($_FILES['image']);
+		}
+		foreach(array_merge($_POST, $_FILES) as $item){
+			if('' === $item){
+				echo "<h3 class='req'>Вы не заполнили один или несколько пунктов</h3>";
+				exit;
+			}
+		}
+		$path_to_img = fileUpload($_FILES['image'], 'services', 200, 150);
+		if(!$path_to_img){
+			exit;
+		}
+		try{
+			$sql = "INSERT INTO intcenter_services(img, name, annotation, content) VALUES (?,?,?,?)";
+			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['service_content']);
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo $e->getMessage();
+			echo "<h3 class='req'>Добавление услуги не удалось</h3>";
+			exit;
+		}
+		$action = 'Добавление';
+	}
+	elseif('/admin-update/' === $_GET['page']){
+		if( '' === $_POST['service_id'] ){
+			echo '<h3 class="req">Вы не выбрали услугу для редактирования</h2>';
+			exit;
+		}
+		$old_path_to_img = str_replace('../../', '', $_POST['img']);
+		if('' !== $_FILES['image']['name']){
+			$path_to_img = fileUpload($_FILES['image'], 'services', 200, 150);
+			if(!$path_to_img){
+				exit;
+			}
+			else{
+				if(file_exists($old_path_to_img)){
+					unlink($old_path_to_img);
+				}
+			}
+		}
+		try{
+			$sql = "UPDATE intcenter_services SET img=?, name=?, annotation=?, content=? WHERE id=?";
+			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['service_content'], $_POST['service_id']);
+			$query = $db->prepare($sql);
+			$query->execute($params);
+		}
+		catch(PDOException $e){
+			echo '<h3 class="req">Редактирование услуги не удалось</h3>';
+			exit;
+		}
+		$action = 'Редактирование';
+	}
+	elseif('/admin-delete/' === $_GET['page']){
+		if( '' === $_POST['service_id'] ){
+			echo '<h3 class="req">Вы не выбрали услугу для удаления</h2>';
+			exit;
+		}
+		try{
+			$query = $db->prepare("SELECT img FROM intcenter_services WHERE id=?");
+			$query->execute(array($_POST['service_id']));
+			$row = $query->fetch(PDO::FETCH_ASSOC);
+			$path_to_img = str_replace('../../', '', $row['img']);
+
+			$query = $db->prepare("DELETE FROM intcenter_services WHERE id=?");
+			$query->execute(array($_POST['service_id']));
+
+		}
+		catch(PDOException $e){
+			echo '<h3 class="req">Удаление услуги не удалось</h3>';
+			exit;
+		}
+		if( file_exists($path_to_img) ){
+			unlink($path_to_img);
+		}
+		$action = 'Удаление';
+	}
+	$type = 'услуги';
+}
 ?>
 
 <div class='container'>

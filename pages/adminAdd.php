@@ -8,15 +8,11 @@
 			<label>
 				<input type='radio' name='rbtn' id='addService'> Добавить услугу
 			</label>
-			<!-- <label>
-				<input type='radio' name='rbtn' id='addEmployee'> Добавить сотрудника
-			</label> -->
 			<label>
 				<input type='radio' name='rbtn' id='addProgram'> Добавить программу обучения
 			</label>
 		</div>
 		<div class="note">Поля, обозначенные <b class="req">*</b>, обязательны к заполнению.</div>
-
 
 		<form class='hide' method='post' id='addNewsForm' enctype='multipart/form-data'>
 			<label>
@@ -40,6 +36,50 @@
 			</label>
 			<div class='button_panel'>
 				<input name='sendNews' type='submit' value='Добавить' class='button'>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='addPartnerForm' enctype='multipart/form-data'>
+			<label>
+				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
+				<input type="file" name="image">
+			</label>
+			<label>
+				<span><b class="req">*</b>Название:</span>
+				<input type="text" name="title">
+			</label>
+			<label>
+				<span><b class="req">*</b>Расположение:</span>
+				<input type="text" name="location">
+			</label>
+			<label>
+				<span><b class="req">*</b>Адрес сайта:</span>
+				<input type="text" name="site">
+			</label>
+			<div class='button_panel'>
+				<input name='sendPartner' type='submit' value='Добавить' class='button'>
+			</div>
+		</form>
+
+		<form class='hide' method='post' id='addServiceForm' enctype='multipart/form-data'>
+			<label>
+				<span><b class="req">*</b>Название услуги:</span>
+				<input type="text" name="title">
+			</label>
+			<label>
+				<span><b class="req">*</b>Картинка:</span>
+				<input type="file" name="image">
+			</label>
+			<label>
+				<span><b class="req">*</b>Аннотация:</span>
+				<textarea name="annotation" rows="5"></textarea>
+			</label>
+			<label>
+				<span><b class="req">*</b>Основной контент услуги:</span>
+				<textarea class="ckeditor" name="service_content" rows="20"></textarea>
+			</label>
+			<div class='button_panel'>
+				<input name='sendService' type='submit' value='Добавить' class='button'>
 			</div>
 		</form>
 
@@ -83,39 +123,3 @@
 				<input name='sendProgram' type='submit' value='Добавить' class='button'>
 			</div>
 		</form>
-
-		<form class='hide' method='post' id='addPartnerForm' enctype='multipart/form-data'>
-			<label>
-				<span><b class="req">*</b>Выберите картинку с логотипом:</span>
-				<input type="file" name="image">
-			</label>
-			<label>
-				<span><b class="req">*</b>Название:</span>
-				<input type="text" name="title">
-			</label>
-			<label>
-				<span><b class="req">*</b>Расположение:</span>
-				<input type="text" name="location">
-			</label>
-			<label>
-				<span><b class="req">*</b>Адрес сайта:</span>
-				<input type="text" name="site">
-			</label>
-			<div class='button_panel'>
-				<input name='sendPartner' type='submit' value='Добавить' class='button'>
-			</div>
-		</form>
-
-		<form class='hide' method='post' id='addServiceForm'>
-			<input type='text' name=' id='>
-			<div class='button_panel'>
-				<input name='sendService' type='submit' value='Добавить' class='button'>
-			</div>
-		</form>
-
-		<!-- <form class='hide' method='post' id='addEmployeeForm' enctype='multipart/form-data'>
-			<input type='text' name=' id='>
-			<div class='button_panel'>
-				<input name='sendEmployee' type='submit' value='Добавить' class='button'>
-			</div>
-		</form> -->
