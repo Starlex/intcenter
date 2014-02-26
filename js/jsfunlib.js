@@ -102,7 +102,6 @@ $(document).ready(function(){
 						$(data.formID+' input[name="img"]').val(data.img);
 						$(data.formID+' textarea[name="annotation"]').val(data.annotation);
 						CKEDITOR.instances[data.tareaName].setData(data.content);
-						console.log(data);
 					break;
 					default:
 						console.log('Ух-ох. Что-то пошло не так.');

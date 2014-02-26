@@ -287,6 +287,9 @@ elseif(isset($_POST['sendPartner'])){
 				}
 			}
 		}
+		else{
+			$path_to_img = $old_path_to_img;
+		}
 		try{
 			$sql = "UPDATE intcenter_partners SET img=?, name=?, location=?, site=? WHERE id=?";
 			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['location'], $_POST['site'], $_POST['partner_id']);
@@ -343,7 +346,7 @@ elseif(isset($_POST['sendService'])){
 			exit;
 		}
 		try{
-			$sql = "INSERT INTO intcenter_services(img, link, name, annotation, content) VALUES (?,?,?,?)";
+			$sql = "INSERT INTO intcenter_services(img, link, name, annotation, content) VALUES (?,?,?,?,?)";
 			$params = array('../../'.$path_to_img, time().'/', $_POST['title'], $_POST['annotation'], $_POST['service_content']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
@@ -370,6 +373,9 @@ elseif(isset($_POST['sendService'])){
 					unlink($old_path_to_img);
 				}
 			}
+		}
+		else{
+			$path_to_img = $old_path_to_img;
 		}
 		try{
 			$sql = "UPDATE intcenter_services SET img=?, name=?, annotation=?, content=? WHERE id=?";
