@@ -16,12 +16,13 @@ catch(PDOException $e){
 <div class="container">
 	<?php
 	$pageNum = !isset($_GET['var1']) ? 0 : str_replace('/', '', $_GET['var1'])-1;
-	$startNumPartner = $pageNum*6+1;
-	$partnerCounter = 0;
+	$numberShown = 6;
+	$firstShown = $pageNum*$numberShown+1;
+	$counter = 0;
 	echo '<h2>'.getPageName($db).'</h2>';
 	foreach ($row as $partner) {
-		++$partnerCounter;
-		if($partnerCounter >= $startNumPartner and $partnerCounter < $startNumPartner+6){
+		++$counter;
+		if($partnerCounter >= $firstShown and $partnerCounter < $firstShown+$numberShown){
 			echo "<div class='partner'>
 				<img src='$partner[img]' alt='pic'>
 				<div>
@@ -32,7 +33,6 @@ catch(PDOException $e){
 			</div>";
 		}
 	}
-	// echo $partnerCounter;
-	pagination($num, 6);
+	pagination($num, $numberShown);
 	?>
 </div>

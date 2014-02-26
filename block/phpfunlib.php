@@ -201,12 +201,13 @@ function showNews($db, $isSummer=''){
 	catch(PDOException $e){
 		header('Location: /error/');
 	}
-	$startNewsNum = $page*4+1;
+	$numberShown = 5;
+	$firstShown = $page*$numberShown+1;
 	$news_counter = 0;
 	echo '<h3>'.$title.'</h3>';
 	foreach ($row as $news) {
 		++$news_counter;
-		if($news_counter >= $startNewsNum and $news_counter < $startNewsNum+4){
+		if($news_counter >= $firstShown and $news_counter < $firstShown+$numberShown){
 			echo "<div class='news'>
 				<img src='$news[img]' alt='Изображение'>
 				<div>
@@ -218,7 +219,7 @@ function showNews($db, $isSummer=''){
 			<hr>";
 		}
 	}
-	pagination($num, 4);
+	pagination($num, $numberShown);
 	return true;
 }
 

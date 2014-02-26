@@ -1,4 +1,23 @@
 <div class="container">
+	<div></div>
+	<div class="serviceMenu">
+		<div>
+			<ul>
+				<li>sa;ldkh;fgh</li>
+				<li>sa;ldkh;fgh</li>
+				<li>sa;ldkh;fgh</li>
+				<li>sa;ldkh;fgh</li>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li>sa;ldkh;fgh</li>
+				<li>sa;ldkh;fgh</li>
+				<li>sa;ldkh;fgh</li>
+				<li>sa;ldkh;fgh</li>
+			</ul>
+		</div>
+	</div>
 	<?php
 	echo '<h2>Услуги центра</h2>';
 
@@ -17,11 +36,12 @@
 		header('Location: /error/');
 	}
 	$page = !isset($_GET['var1']) ? 0 : ( (int)$_GET['var1'] )-1;
-	$firstShown = $page*6+1;
+	$numberShown = 6;
+	$firstShown = $page*$numberShown+1;
 	$counter = 0;
 	foreach ($row as $service) {
 		++$counter;
-		if( $counter >= $firstShown and $counter < $firstShown+6 ){
+		if( $counter >= $firstShown and $counter < $firstShown+$numberShown ){
 			?>
 			<div class="service">
 				<span><a href="<?=$service['link'];?>"><?=$service['name'];?></a></span>
@@ -32,6 +52,6 @@
 			<?php
 		}
 	}
-	pagination($num, 6);
+	pagination($num, $numberShown);
 	?>
 </div>
