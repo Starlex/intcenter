@@ -94,7 +94,6 @@ elseif(isset($_POST['sendNews'])){
 			$query->execute($params);
 		}
 		catch(PDOException $e){
-			echo $e->getMessage();
 			echo "<h3 class='req'>Редактирование новости не удалось<h3>";
 			exit;
 		}
@@ -162,7 +161,6 @@ elseif(isset($_POST['sendProgram'])){
 			$query->execute($params);
 		}
 		catch(PDOException $e){
-			echo $e->getMessage();
 			echo "<h3 class='req'>Добавление программы обучения не удалось<h3>";
 			if('' !== $path_to_img){
 				unlink($path_to_img);
@@ -267,7 +265,6 @@ elseif(isset($_POST['sendPartner'])){
 			$query->execute($params);
 		}
 		catch(PDOException $e){
-			echo $e->getMessage();
 			echo "<h3 class='req'>Добавление партнера не удалось</h3>";
 			exit;
 		}
@@ -352,7 +349,6 @@ elseif(isset($_POST['sendService'])){
 			$query->execute($params);
 		}
 		catch(PDOException $e){
-			echo $e->getMessage();
 			echo "<h3 class='req'>Добавление услуги не удалось</h3>";
 			exit;
 		}

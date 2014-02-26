@@ -23,7 +23,7 @@
 		<div class="program">
 			<span id="<?=$date;?>"><?=$prog_name;?></span>
 			<img src="<?=$program['img'];?>" alt="pic">
-			<?=$program['content'];?>
+			<?= stripslashes( $program['content'] );?>
 		</div>
 		<hr>
 		<?php

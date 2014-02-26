@@ -18,7 +18,7 @@
 		<div class="service">
 			<span><a href="<?=$service['link'];?>"><?=$service['name'];?></a></span>
 			<img src="<?=$service['img'];?>" alt="pic">
-			<?=$service['content'];?>
+			<?=$service['annotation'];?>
 		</div>
 		<hr>
 		<?php

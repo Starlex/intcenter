@@ -407,7 +407,7 @@ function getPageContent($db){
 		$query = $db->prepare("SELECT content FROM intcenter_pages WHERE link=?");
 		$query->execute(array($link));
 		$row = $query->fetch(PDO::FETCH_ASSOC);
-		return $row['content'];
+		return stripslashes( $row['content'] );
 	}
 	catch(PDOException $e){
 		header('Location: /error/');
