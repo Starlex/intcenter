@@ -42,6 +42,16 @@ CKEDITOR.stylesSet.add( 'default', [
 			border: '1px solid #ccc'
 		}
 	},
+	{
+		name: 'Contacts',
+		element: 'div',
+		styles: {
+			display: 'inline-block',
+			float: 'left',
+			margin: '0 0 0 30px',
+			width: '200px'
+		}
+	},
 
 	/* Inline Styles */
 
