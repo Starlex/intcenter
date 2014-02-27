@@ -439,6 +439,54 @@
 		margin: 20px 0;
 	}
 
+/* style for service menu */
+.menuName{
+	color: #6288eb;
+	display: block;
+	font-family: 'Tahoma';
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+.serviceMenu{
+	background-color: #fff;
+	border: 2px solid #6288EB;
+	display: block;
+	margin-bottom: 30px;
+	overflow: hidden;
+	padding: 20px;
+}
+	.serviceMenu ul{
+		float: left;
+		margin-right: 5px;
+		width: 445px;
+	}
+		.serviceMenu ul{
+			list-style-image: url(../img/check.png);
+		}
+			.serviceMenu li{
+				margin: 10px 0 10px 25px;
+			}
+				.serviceMenu li a{
+					color: #313131;
+					display: block;
+					font-size: 12px;
+					font-weight: bold;
+					line-height: 1.5;
+					text-decoration: none;
+				}
+				.serviceMenu li a:hover{
+					color: #036ff3;
+					text-decoration: underline;
+				}
+				.serviceMenu li a:hover span{
+					color: #036ff3;
+				}
+					.serviceMenu li span{
+						color: #616060;
+						font-weight: normal;
+					}
+
 /* style for partners page */
 	.partner{
 		display: inline-block;

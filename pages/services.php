@@ -1,26 +1,40 @@
 <div class="container">
-	<div></div>
+	<h2>Услуги центра</h2>
+	<p class="menuName">Программы обучения по английскому языку</p>
 	<div class="serviceMenu">
-		<div>
-			<ul>
-				<li>sa;ldkh;fgh</li>
-				<li>sa;ldkh;fgh</li>
-				<li>sa;ldkh;fgh</li>
-				<li>sa;ldkh;fgh</li>
-			</ul>
-		</div>
-		<div>
-			<ul>
-				<li>sa;ldkh;fgh</li>
-				<li>sa;ldkh;fgh</li>
-				<li>sa;ldkh;fgh</li>
-				<li>sa;ldkh;fgh</li>
-			</ul>
-		</div>
+		<ul>
+			<li>
+				<a href="../../learn-language/">Программа изучения английского языка для школьников 9-11 классы <span>(Подготовка к ЕГЭ)</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Программа изучения английского языка для школьников 6-8 классы <span>"Funny conversational English/English for kids" Веселый разговорный английский</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Программа изучения английского языка для студентов НВГУ <span>"Intensive English Language Course"</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Программа изучения английского языка <span>"Business English for Career Purposes" совместно с Кингстонским Университетом (Лондон, Великобритания) с возможностью последующего обучения в летней школе Кингстонского университета "Summer business school"</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="../../learn-language/">Английский для взрослых	<span>"English for Travelling" (Английский для путешествий)</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Английский для взрослых	<span>"English for beginners" (Английский для начинающих)</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Английский для преподавателей НВГУ	<span>"English for university teachers"</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Программа подготовки к сдаче международного экзамена	<span>CAE, TOEFL по английскому языку</span></a>
+			</li>
+			<li>
+				<a href="../../learn-language/">Индивидуальные занятия по английскому языку (любой уровень)</a>
+			</li>
+		</ul>
 	</div>
 	<?php
-	echo '<h2>Услуги центра</h2>';
-
 	try{
 		$sql = "SELECT COUNT(*) FROM intcenter_services";
 		$query = $db->prepare($sql);

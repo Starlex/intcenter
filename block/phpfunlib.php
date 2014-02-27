@@ -283,7 +283,7 @@ function pagination($resultCount, $contentNum){
 			}
 		}
 		$invisible = ($active !== $countPages) ? '' : ' class="invisible"';
-		echo '<li'.$invisible.'><a title="Следующая страница"" href="'.$next.'">&rarr;</a></li>
+		echo '<li'.$invisible.'><a title="Следующая страница" href="'.$next.'">&rarr;</a></li>
 			<li'.$invisible.'><a title="Последняя страница" href="../'.$type.$countPages.'/"> &gt;&gt; </a></li>';
 		echo"
 			</ul>
