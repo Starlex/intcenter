@@ -36,13 +36,15 @@
 	</div>
 	<?php
 	try{
-		$sql = "SELECT COUNT(*) FROM intcenter_services";
-		$query = $db->prepare($sql);
+		$query = $db->prepare("SELECT COUNT(*) FROM intcenter_services");
 		$query->execute();
 		$num = $query->fetchColumn();
 
-		$sql = "SELECT * FROM intcenter_services";
-		$query = $db->prepare($sql);
+		$query = $db->prepare("SELECT name, link FROM intcenter_pages");
+		$query->execute();
+		$pages = $query->fetchAll(PDO::FETCH_ASSOC);
+
+		$query = $db->prepare("SELECT * FROM intcenter_services");
 		$query->execute();
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -50,15 +52,24 @@
 		header('Location: /error/');
 	}
 	$page = !isset($_GET['var1']) ? 0 : ( (int)$_GET['var1'] )-1;
-	$numberShown = 6;
+	$numberShown = 7;
 	$firstShown = $page*$numberShown+1;
 	$counter = 0;
 	foreach ($row as $service) {
 		++$counter;
 		if( $counter >= $firstShown and $counter < $firstShown+$numberShown ){
-			?>
-			<div class="service">
-				<span><a href="<?=$service['link'];?>"><?=$service['name'];?></a></span>
+			foreach ($pages as $page) {
+				if( mb_strtolower($service['name'], 'UTF-8') === mb_strtolower($page['name'] , 'UTF-8') ){
+					$title = '<span><a href="'.$page['link'].'">'.$service['name'].'</a></span>';
+					break;
+				}
+				else{
+					$title = '<span>'.$service['name'].'</span>';
+				}
+			}
+			echo'
+			<div class="service">'.$title;
+				?>
 				<img src="<?=$service['img'];?>" alt="pic">
 				<?=$service['annotation'];?>
 			</div>

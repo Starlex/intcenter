@@ -6,7 +6,6 @@
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	config.language = 'ru';
-	// config.uiColor = '#AADC6E';
 	config.removePlugins = 'forms,iframe,pagebreak,flash,smiley,preview,showblocks,language';
 	config.removeButtons = 'Save,NewPage,Print,Templates';
 	config.filebrowserUploadUrl = '/pages/ckeupload.php';

@@ -165,7 +165,7 @@
 				margin-right: 0;
 			}
 				.h-menu a{
-					color: #A2A2A2;
+					color: #036ff3;
 					display: block;
 					font-weight: bold;
 					height: 150px;
@@ -415,14 +415,15 @@
 		overflow: hidden;
 	}
 		.service span{
+				color: #6088e8;
+				font-size: 16px;
+				font-weight: bold;
 			display: block;
 			margin-bottom: 30px;
 		}
 			.service a{
-				color: #737EE7;
+				color: #6088e8;
 				display: inline-block;
-				font-size: 16px;
-				font-weight: bold;
 				text-decoration: none;
 			}
 			.service a:hover{
@@ -440,52 +441,52 @@
 	}
 
 /* style for service menu */
-.menuName{
-	color: #6288eb;
-	display: block;
-	font-family: 'Tahoma';
-	font-size: 16px;
-	font-weight: bold;
-	text-align: center;
-}
-.serviceMenu{
-	background-color: #fff;
-	border: 2px solid #6288EB;
-	display: block;
-	margin-bottom: 30px;
-	overflow: hidden;
-	padding: 20px;
-}
-	.serviceMenu ul{
-		float: left;
-		margin-right: 5px;
-		width: 445px;
+	.menuName{
+		color: #6288eb;
+		display: block;
+		font-family: 'Tahoma';
+		font-size: 16px;
+		font-weight: bold;
+		text-align: center;
+	}
+	.serviceMenu{
+		background-color: #fff;
+		border: 2px solid #6288EB;
+		display: block;
+		margin-bottom: 30px;
+		overflow: hidden;
+		padding: 20px;
 	}
 		.serviceMenu ul{
-			list-style-image: url(../img/check.png);
+			float: left;
+			margin-right: 5px;
+			width: 445px;
 		}
-			.serviceMenu li{
-				margin: 10px 0 10px 25px;
+			.serviceMenu ul{
+				list-style-image: url(../img/check.png);
 			}
-				.serviceMenu li a{
-					color: #313131;
-					display: block;
-					font-size: 12px;
-					font-weight: bold;
-					line-height: 1.5;
-					text-decoration: none;
+				.serviceMenu li{
+					margin: 10px 0 10px 25px;
 				}
-				.serviceMenu li a:hover{
-					color: #036ff3;
-					text-decoration: underline;
-				}
-				.serviceMenu li a:hover span{
-					color: #036ff3;
-				}
-					.serviceMenu li span{
-						color: #616060;
-						font-weight: normal;
+					.serviceMenu li a{
+						color: #313131;
+						display: block;
+						font-size: 12px;
+						font-weight: bold;
+						line-height: 1.5;
+						text-decoration: none;
 					}
+					.serviceMenu li a:hover{
+						color: #036ff3;
+						text-decoration: underline;
+					}
+					.serviceMenu li a:hover span{
+						color: #036ff3;
+					}
+						.serviceMenu li span{
+							color: #616060;
+							font-weight: normal;
+						}
 
 /* style for partners page */
 	.partner{
@@ -542,7 +543,7 @@
 
 /* PAGINATION */
 	.pagination{
-		font-size: 14px;
+		font-size: 12px;
 		margin-top: 30px;
 		text-align: center;
 	}
@@ -563,8 +564,9 @@
 				-webkit-border-radius: 3px;
 				color: #4C4C4C;
 				display: block;
-				padding: 5px 0;
-				width: 35px;
+				height: 24px;
+				line-height: 24px;
+				width: 24px;
 			}
 			.pagination a.active{
 				background: linear-gradient(to bottom, #0070F4, #3B5FE1);
@@ -681,6 +683,9 @@
 		margin: 0;
 		position: fixed;
 		width: 54px;
+	}
+	.image{
+		margin: 0 20px 20px 0;
 	}
 	.cke_dialog table tr td{
 		background: #fff;

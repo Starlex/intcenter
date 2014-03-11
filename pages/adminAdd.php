@@ -74,10 +74,10 @@
 				<span><b class="req">*</b>Аннотация:</span>
 				<textarea name="annotation" rows="5"></textarea>
 			</label>
-			<label>
+			<!-- <label>
 				<span><b class="req">*</b>Основной контент услуги:</span>
 				<textarea class="ckeditor" name="service_content" rows="20"></textarea>
-			</label>
+			</label> -->
 			<div class='button_panel'>
 				<input name='sendService' type='submit' value='Добавить' class='button'>
 			</div>

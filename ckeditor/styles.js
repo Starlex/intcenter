@@ -34,6 +34,13 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Italic Title',		element: 'h2', styles: { 'font-style': 'italic' } },
 	{ name: 'Subtitle',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
 	{
+		name: "Main",
+		element: 'div',
+		styles: {
+			overflow: 'hidden',
+		}
+	},
+	{
 		name: 'Special Container',
 		element: 'div',
 		styles: {
@@ -50,6 +57,39 @@ CKEDITOR.stylesSet.add( 'default', [
 			float: 'left',
 			margin: '0 0 0 30px',
 			width: '200px'
+		}
+	},
+	{
+		name: "About us top",
+		element: 'div',
+		styles: {
+			background: '#fff',
+			border: '2px solid #6288eb',
+			float: 'left',
+			height: '146px',
+			margin: '0 0 0 20px',
+			padding: '0 25px',
+			width: '686px'
+		}
+	},
+	{
+		name: "About us left",
+		element: 'div',
+		styles: {
+			display: 'inline-block',
+			padding: '0 10px 0 0',
+			'vertical-align': 'top',
+			width: '460px'
+		}
+	},
+	{
+		name: "About us right",
+		element: 'div',
+		styles: {
+			display: 'inline-block',
+			padding: '0 15px 0 20px',
+			'vertical-align': 'top',
+			width: '445px'
 		}
 	},
 

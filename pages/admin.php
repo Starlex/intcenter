@@ -346,8 +346,8 @@ elseif(isset($_POST['sendService'])){
 			exit;
 		}
 		try{
-			$sql = "INSERT INTO intcenter_services(img, link, name, annotation, content) VALUES (?,?,?,?,?)";
-			$params = array('../../'.$path_to_img, time().'/', $_POST['title'], $_POST['annotation'], $_POST['service_content']);
+			$sql = "INSERT INTO intcenter_services(img, link, name, annotation) VALUES (?,?,?,?)";
+			$params = array('../../'.$path_to_img, time().'/', $_POST['title'], $_POST['annotation']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
@@ -378,8 +378,8 @@ elseif(isset($_POST['sendService'])){
 			$path_to_img = $old_path_to_img;
 		}
 		try{
-			$sql = "UPDATE intcenter_services SET img=?, name=?, annotation=?, content=? WHERE id=?";
-			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['service_content'], $_POST['service_id']);
+			$sql = "UPDATE intcenter_services SET img=?, name=?, annotation=? WHERE id=?";
+			$params = array('../../'.$path_to_img, $_POST['title'], $_POST['annotation'], $_POST['service_id']);
 			$query = $db->prepare($sql);
 			$query->execute($params);
 		}
